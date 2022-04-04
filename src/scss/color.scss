@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+$orange: #ff6600;
+$background: #ffffff;
+$text-primary: black;
+$text-secondary: #dbdddd;
+$font-primary: "Source Sans Pro", sans-serif;
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+%buttonStyle {
+  background-color: $orange;
+  border: 0;
+  padding: 5px 15px;
+  color: white;
+  border-radius: 100px;
+}
+@mixin textTitle {
+  font-size: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 50px;
+  padding: 10px 0;
+}
