@@ -62,6 +62,10 @@ h6 {
   overflow: hidden;
 }
 
+.wrapper .container {
+  position: relative;
+}
+
 .wrapper .container header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,8 +131,7 @@ h6 {
 
 .wrapper .container .slides .slider {
   width: 100vw;
-  height: 100vh;
-  position: relative;
+  height: 100%;
 }
 
 .wrapper .container .slides .slider-image img {
@@ -191,5 +194,73 @@ h6 {
 .wrapper .container .slides .slider-title button {
   margin-top: 20px;
   padding: 5px 30px;
+}
+
+.wrapper .container footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+  padding: 30px 40px;
+  background-color: #2d2c2c;
+}
+
+.wrapper .container footer div h2 {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.wrapper .container footer div ul {
+  margin-bottom: 10px;
+}
+
+.wrapper .container footer div ul li {
+  color: white;
+}
+
+.wrapper .container footer div ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  line-height: 18px;
+  padding: 5px;
+}
+
+.wrapper .container footer div .tour {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 300px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrapper .container footer div .tour div {
+  width: 100px;
+}
+
+.wrapper .container footer div .tour div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=index.css.map */
