@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+  border: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+.wrapper {
+  background-color: white;
+}
+
+.wrapper .nav {
+  height: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 10px 40px;
+}
+
+.wrapper .nav .account {
+  width: 50px;
+}
+
+.wrapper .nav .account img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100rem;
+}
+
+.wrapper .container {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .container .sidebar {
+  background-color: #ececec;
+  width: 250px;
+  height: 100%;
+}
+
+.wrapper .container .sidebar .heading {
+  padding: 10px;
+}
+
+.wrapper .container .sidebar ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.wrapper .container .sidebar ul li {
+  padding: 10px;
+}
+
+.wrapper .container .sidebar ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  line-height: 24px;
+  padding: 5px 10px;
+  font-weight: 700;
+}
+
+.wrapper .container .sidebar ul li .active {
+  color: #5353e8;
+}
+
+.wrapper .container .main {
+  background-color: #e9e9e9;
+  width: 100%;
+  height: 1000px;
+  padding: 50px;
+}
+
+.wrapper .container .main .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.wrapper .container .main .head .user {
+  width: 20%;
+  height: 150px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.wrapper .container .main .table-list-children {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.wrapper .container .main .table-list-children .card-header .title {
+  font-size: 24px;
+  line-height: 24px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 10px;
+  color: #b1b1b1;
+}
+
+.wrapper .container .main .table-list-children .card-body {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.wrapper .container .main .table-list-children .card-body table {
+  width: 100%;
+}
+
+.wrapper .container .main .table-list-children .card-body table thead tr {
+  border: 2px solid gray;
+  padding: 5px;
+  background-color: whitesmoke;
+}
+
+.wrapper .container .main .table-list-children .card-body table tbody {
+  margin-top: 5px;
+}
+
+.wrapper .container .main .table-list-children .card-body table tbody tr td {
+  padding: 5px;
+}
+/*# sourceMappingURL=dashboard.css.map */
