@@ -1,0 +1,50 @@
+#noi-tieng
+{
+    margin-bottom: 100px;
+}
+.location
+{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.location-element
+{
+    width: 32%;
+    height: 450px;
+    background-image: url(../images/Phoco_hoian-247x300.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.infor
+{
+    margin-top: 30%;
+    padding-left: 30px;
+}
+.infor > h2{
+    font-size: 25px ;
+    margin: 5px 0 0 ;
+
+}
+.infor > h4{
+    font-weight: bolder;
+    font-size: 17px;
+}
+.infor p
+{
+    font-size: 11px;
+    margin: 11px 0;
+}
+.infor button
+{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    padding: 5px 15px;
+    background-color: orange;
+    border-radius: 15px;
+}

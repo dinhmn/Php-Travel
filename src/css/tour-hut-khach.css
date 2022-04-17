@@ -1,0 +1,46 @@
+#tour-hut-khach
+{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.head
+{
+    text-align: center;
+}
+.head > h2{
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+}
+.head > p
+{
+    opacity: 0.4;
+    margin-bottom: 20px;
+}
+.box-hut-element
+{
+    width: 33.33%;
+    height: 270px;
+    background-image: url(../images/95980815-1024x559.jpg);
+    background-size: cover;
+}
+.box-hut
+{
+    display: flex;
+    justify-content: space-between;
+}
+.nd 
+{
+    text-align: center;
+    margin-top: 20%;
+}
+.nd > h3
+{
+    font-size: 30px;
+    color: white;
+    margin-bottom: 10px;
+}
+.nd > p
+{
+    color: white;
+}

@@ -1,0 +1,40 @@
+#nghi-duong
+{
+    background-image: url(http://mauweb.monamedia.net/lets-travel/wp-content/uploads/2018/12/tour_slider_phuquoc-1-1024x258.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 340px;
+}
+.content
+{
+    text-align: center;
+    color: white;
+}
+.content > h4
+{
+    font-weight: bold;
+    padding: 50px 0 20px 0 ;
+}
+.content > h2{
+    font-size: 46.5px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding-bottom: 5px;
+}
+.content  > p
+{
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+.content > button
+{
+    display: block;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    padding: 5px 15px;
+    background-color: orange;
+    border-radius: 15px;
+}
