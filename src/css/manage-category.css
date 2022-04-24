@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+  border: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+.main {
+  height: auto;
+}
+
+.main .href {
+  padding: 20px;
+  width: 100%;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.main .href a {
+  text-decoration: none;
+  color: black;
+}
+
+.main .href span {
+  color: #ff5656;
+}
+
+.main .href h2 {
+  text-align: center;
+  color: purple;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.main .table {
+  padding: 20px;
+  background-color: white;
+}
+
+.main .table-info {
+  padding: 5px 10px;
+}
+
+.main .table-info table {
+  width: 100%;
+}
+
+.main .table-info table thead {
+  background-color: #60cdff;
+  padding: 5px;
+  border: 1px solid #60cdff;
+}
+
+.main .table-info table thead tr th {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.main .table-info table tbody tr td {
+  text-align: center;
+  padding: 10px;
+}
+
+.main .table-info table tbody tr td a button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=manage-category.css.map */

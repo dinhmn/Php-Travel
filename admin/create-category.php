@@ -134,61 +134,41 @@
 
 <body>
     <div class="wrapper">
-        <div class="nav">
-            <div class="logo">Admin</div>
-            <div class="account">
-                <img src="https://images.unsplash.com/photo-1649877756175-c41817130d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=739&q=80"
-                    alt="" />
-            </div>
-        </div>
+        <?php
+            include("./header.php")
+        ?>
         <div class="container">
-            <div class="sidebar">
-                <h3 class="heading">Menu</h3>
-                <ul>
-                    <li>
-                        <a href="#" class="active">
-                            <i class="fa-solid fa-house"></i>
-                            Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-brands fa-youtube"></i>
-                            Category</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-earth-asia"></i> Tour</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-phone"></i> Contact</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-calendar-check"></i> Page</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-plane"></i> Booking</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-briefcase"></i> Issues</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-user"></i>
-                            User</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            Logout</a>
-                    </li>
-                </ul>
-            </div>
-
+            <?php
+            include("./sidebar.php")
+            ?>
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
                     <span><i class="fa-solid fa-angle-right"></i> Package</span>
                 </div>
-                <form action="" method="post" name="package" class="form-class"  enctype="multipart/form-data">
+                <div class="href">
+                    <?php
+                        if(!empty($errors)){?><div class="errorWrap" style="      color: red;
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;">
+                        <strong>ERROR</strong>:<?php echo htmlentities($errors); ?>
+                    </div><?php } 
+                        else if(!empty($mess)){?><div class="errorWrap" style="      color: red;
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;">
+                        <strong>ERROR</strong>:<?php echo htmlentities($mess); ?>
+                    </div><?php }
+                        else if(!empty($msg)){?><div class="succWrap" style="      color: green;
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;">
+                        <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?>
+                    </div><?php }
+                    ?>
+                </div>
+                <form action="" method="post" name="package" class="form-class" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="packageName">Package Name</label>
                         <input type="text" placeholder="Enter your package name..." id="packageName"
@@ -232,15 +212,11 @@
                         <button type="reset">Cancel</button>
                     </div>
                 </form>
-                <?php
-                echo ($imageFile);
-                echo ($image);
-                echo ($newImage);
-                if($errors){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($errors); ?> </div><?php } 
-                else if(!empty($mess)){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($mess); ?> </div><?php }
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }
-                ?>
+
             </div>
+        </div>
+        <div class="footer">
+            <div>Group 5</div>
         </div>
     </div>
 </body>
