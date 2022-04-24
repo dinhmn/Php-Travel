@@ -73,16 +73,87 @@
             </li>
           </ul>
         </div>
+
         <div class="main">
+          <div class="href">
+            <a href="#">Home</a>
+            <span><i class="fa-solid fa-angle-right"></i> Package</span>
+          </div>
           <form action="" method="post" class="form-class">
             <div class="form-group">
-              <label for="name">Category name</label>
+              <label for="packageName">Package Name</label>
               <input
                 type="text"
-                placeholder="Enter your category name..."
-                id="categoryName"
-                name="name"
+                placeholder="Enter your package name..."
+                id="packageName"
+                name="packageName"
               />
+            </div>
+            <div class="form-group">
+              <label for="packageType">Package Type</label>
+              <input
+                type="text"
+                placeholder="Package Type eg- Family Package / Couple Package."
+                id="packageType"
+                name="packageType"
+              />
+            </div>
+            <div class="form-group">
+              <label for="packageLocation">Package Location</label>
+              <input
+                type="text"
+                placeholder="Package Location"
+                id="packageLocation"
+                name="packageLocation"
+              />
+            </div>
+            <div class="form-group">
+              <label for="packagePrice">Package Price in USD</label>
+              <input
+                type="text"
+                placeholder="Package price in USD"
+                id="packagePrice"
+                name="packagePrice"
+              />
+            </div>
+            <div class="form-group">
+              <label for="packageFeatures">Package Features</label>
+              <input
+                type="text"
+                placeholder="Package Location"
+                id="packageFeatures"
+                name="packageFeatures"
+              />
+            </div>
+            <div class="form-group">
+              <label for="packageDetail">Package Details</label>
+              <textarea
+                name="packageDetail"
+                id="packageDetail"
+                cols="50"
+                rows="5"
+                placeholder="Package Details"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="packageImage">Package Image</label>
+              <input
+                type="file"
+                placeholder="Package Location"
+                id="packageImage"
+                name="packageImage"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Status</label>
+              <select name="status" id="status">
+                <option value="On">On</option>
+                <option value="Off">Off</option>
+              </select>
+            </div>
+            <div class="form-button">
+              <button type="submit">Create</button>
+              <button type="reset">Cancel</button>
             </div>
           </form>
         </div>

@@ -49,7 +49,143 @@ h6 {
   overflow-wrap: break-word;
 }
 
-.main .form-class {
+.main {
+  height: auto !important;
+}
+
+.main .href {
   padding: 20px;
+  width: 100%;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.main .href a {
+  text-decoration: none;
+  color: black;
+}
+
+.main .href span {
+  color: #ff5656;
+}
+
+.main .form-class {
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+}
+
+.main .form-class .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.main .form-class .form-group label {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.main .form-class .form-group input,
+.main .form-class .form-group option,
+.main .form-class .form-group select,
+.main .form-class .form-group textarea {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: 1px solid gray;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: gray;
+}
+
+.main .form-class .form-group input::-webkit-input-placeholder,
+.main .form-class .form-group option::-webkit-input-placeholder,
+.main .form-class .form-group select::-webkit-input-placeholder,
+.main .form-class .form-group textarea::-webkit-input-placeholder {
+  color: gray;
+}
+
+.main .form-class .form-group input:-ms-input-placeholder,
+.main .form-class .form-group option:-ms-input-placeholder,
+.main .form-class .form-group select:-ms-input-placeholder,
+.main .form-class .form-group textarea:-ms-input-placeholder {
+  color: gray;
+}
+
+.main .form-class .form-group input::-ms-input-placeholder,
+.main .form-class .form-group option::-ms-input-placeholder,
+.main .form-class .form-group select::-ms-input-placeholder,
+.main .form-class .form-group textarea::-ms-input-placeholder {
+  color: gray;
+}
+
+.main .form-class .form-group input::placeholder,
+.main .form-class .form-group option::placeholder,
+.main .form-class .form-group select::placeholder,
+.main .form-class .form-group textarea::placeholder {
+  color: gray;
+}
+
+.main .form-class .form-group input:focus,
+.main .form-class .form-group option:focus,
+.main .form-class .form-group select:focus,
+.main .form-class .form-group textarea:focus {
+  border-color: purple;
+}
+
+.main .form-class .form-group input#packageImage,
+.main .form-class .form-group option#packageImage,
+.main .form-class .form-group select#packageImage,
+.main .form-class .form-group textarea#packageImage {
+  border: none;
+}
+
+.main .form-class .form-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  gap: 50px;
+}
+
+.main .form-class .form-button button {
+  width: 100px;
+  padding: 10px;
+  background-color: purple;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.main .form-class .form-button button:last-child {
+  background-color: #b4b4b4;
 }
 /*# sourceMappingURL=category.css.map */

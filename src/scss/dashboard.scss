@@ -22,15 +22,18 @@
     }
   }
   .container {
-    padding: 20px 0;
     display: flex;
     justify-content: center;
     .sidebar {
       background-color: rgb(236, 236, 236);
       width: 250px;
-      height: 100%;
+      height: auto;
       .heading {
         padding: 10px;
+        width: 100%;
+        background-color: rgb(128, 57, 128);
+        color: white;
+        text-align: center;
       }
       ul {
         list-style: none;
@@ -55,7 +58,7 @@
       }
     }
     .main {
-      background-color: rgb(233, 233, 233);
+      background-color: rgb(245, 245, 245);
       width: 100%;
       height: 1000px;
       padding: 50px;
