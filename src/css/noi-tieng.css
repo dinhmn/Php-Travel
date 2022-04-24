@@ -1,3 +1,113 @@
+#Tour-Hap-Dan
+{
+    background-color:white;
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+#Tour-Hap-Dan h2{
+    text-align: center;
+    font-size: 35px;
+    padding-top: 50px ;
+    margin-bottom: 20px;
+}
+#Tour-Hap-Dan > p{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.element-tour
+{
+    display: flex;
+    justify-content: space-between;
+}
+.box-element
+{
+    width: 32%;
+    height: 350px;
+    margin-bottom: 25px;
+    background-image: url(../images/banner_image_5.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.box-element > h3
+{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    margin-top: 15%;
+    padding-bottom: 15px;
+}
+.box-element > .stars
+{
+    display: block;
+    margin: 0 auto;
+}
+.box-element > p{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 35px;
+}
+.box-element > button
+{
+    display: block;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    padding: 5px 15px;
+    background-color: orange;
+    border-radius: 15px;
+}
+
+#tour-hut-khach
+{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.head
+{
+    text-align: center;
+}
+.head > h2{
+    font-size: 32px;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+}
+.head > p
+{
+    opacity: 0.4;
+    margin-bottom: 20px;
+}
+.box-hut-element
+{
+    width: 33.33%;
+    height: 270px;
+    background-image: url(../images/95980815-1024x559.jpg);
+    background-size: cover;
+}
+.box-hut
+{
+    display: flex;
+    justify-content: space-between;
+}
+.nd 
+{
+    text-align: center;
+    margin-top: 20%;
+}
+.nd > h3
+{
+    font-size: 30px;
+    color: white;
+    margin-bottom: 10px;
+}
+.nd > p
+{
+    color: white;
+}
+
 #noi-tieng
 {
     margin-bottom: 100px;
@@ -9,6 +119,7 @@
     display: flex;
     justify-content: space-between;
     color: white;
+    margin-bottom: 100px;
 }
 
 .location-element
@@ -47,4 +158,104 @@
     padding: 5px 15px;
     background-color: orange;
     border-radius: 15px;
+}
+.body-du-lich
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    width: 1200px;
+    margin: 0 auto;
+    color: white;
+}
+.du-lich-left
+{
+    width: 49%;
+}
+
+.du-lich-right
+{   background-color: #f2f2f2;
+    width: 49%;
+    background-image: url(../images/360px-Vietnam_map.png);
+    background-repeat: no-repeat;
+    background-size: 588px 1000px;
+    background-position: 0% 0%;
+}
+
+.du-lich-right:first-child
+{
+    background-position: 0% 99%;
+}
+.list-du-lich
+{
+    display: flex;
+    justify-content: space-between;
+}
+.list-du-lich:first-child
+{
+    margin-bottom: 30px;
+}
+.du-lich-elemet
+{
+    width: 48%;
+    background-image: url(../images/Sapa.jpg);
+    background-repeat: no-repeat;
+    height: 200px;
+    background-size: 280px 200px;
+}
+.infor-list
+{
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.infor-list h3
+{
+    font-size: 29px;
+    margin: 5px 0;
+}
+.infor-list p 
+{
+    font-weight: bold;
+    font-size: 17px;
+    margin: 5.9px 0;
+}
+.infor-list >p >  span
+{
+    color: orange;
+}
+.infor-list > button
+{
+    display: block;
+    font-size: 9.7px;
+    font-weight: bold;
+    color: white;
+    padding: 7px 17px;
+    margin: 10px 0;
+    background-color: orange;
+    border-radius: 15px;
+    font-weight: bold;
+}
+.infor-right
+{
+    margin-left: 35px;
+    color: black;
+}
+.infor-right > h2{
+    font-size: 29px;
+    margin: 5.8px 0 ;
+    margin-top: 27px;
+}
+.infor-right > p{
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+.infor-right > h4
+{
+    font-size: 15px;
+    margin: 9px 0 ;
+}
+.infor-right > ul > li
+{
+    font-size: 13px;
+    margin: 0px 0px 6.8px -24px;
 }
