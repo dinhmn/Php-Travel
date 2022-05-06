@@ -1,0 +1,83 @@
+@import "reset";
+@import "color";
+.wrapper {
+  background-image: url("../images/pexels-photo-2246476.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  .container {
+    .login {
+      width: 900px;
+      height: 600px;
+      background-color: rgb(165, 165, 165);
+      transform: translateY(150px);
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      border-radius: 8px;
+      @include flexBetween();
+      &-image {
+        width: 50%;
+        height: 100%;
+        img {
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          flex-shrink: 1;
+        }
+      }
+      &-account {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 50px;
+        .form-class {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .form-group {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: $font-primary;
+            label {
+              font-size: 18px;
+              font-weight: bold;
+              font-family: $font-primary;
+              color: purple;
+              margin-bottom: 5px;
+              letter-spacing: 2px;
+            }
+            input {
+              padding: 10px;
+              width: 100%;
+              border: 1px solid purple;
+              border-radius: 3px;
+            }
+            button {
+              background-color: rgb(131, 64, 131);
+              padding: 10px 50px;
+              cursor: pointer;
+              color: white;
+              box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+              border-radius: 3px;
+              letter-spacing: 2px;
+              &:hover {
+                background-color: purple;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
