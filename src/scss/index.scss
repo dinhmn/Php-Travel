@@ -64,7 +64,7 @@
         // position: absolute;
         &-title {
           position: absolute;
-          top: 40%;
+          top: 7%;
           left: 25%;
           color: $text-secondary;
           @include flexBetween();
@@ -88,7 +88,7 @@
           button {
             @extend %buttonStyle;
             margin-top: 20px;
-            padding: 5px 30px;
+            padding: 9px 30px;
           }
         }
       }
