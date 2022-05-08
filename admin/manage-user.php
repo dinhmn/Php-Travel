@@ -57,7 +57,7 @@
                             <tbody>
                                 <?php
                               $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                              $sql = "select * from tblusers where 1 =1";
+                              $sql = "select * from tbl_users where 1 =1";
                               $results = mysqli_query($connect, $sql); 
                               mysqli_fetch_all($results, MYSQLI_ASSOC);
                               // $result = $connect -> query($sql);

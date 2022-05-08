@@ -146,7 +146,7 @@ h6 {
 
 .wrapper .container .slides .slider-title {
   position: absolute;
-  top: 40%;
+  top: 7%;
   left: 25%;
   color: #dbdddd;
   display: -webkit-box;
@@ -193,7 +193,7 @@ h6 {
 
 .wrapper .container .slides .slider-title button {
   margin-top: 20px;
-  padding: 5px 30px;
+  padding: 9px 30px;
 }
 
 .wrapper .container footer {

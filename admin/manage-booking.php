@@ -62,7 +62,7 @@
                             <tbody>
                                 <?php
                               $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                              $sql = "select * from tblbooking where 1 =1";
+                              $sql = "select * from tbl_booking where 1 =1";
                               
                               $results = mysqli_query($connect, $sql); 
                               mysqli_fetch_all($results, MYSQLI_ASSOC);
@@ -79,7 +79,7 @@
                                     $connect = mysqli_connect($serverName, $username, $password, $mydb);
                                     $id = $row["PackageId"];
                                     // echo ($id);
-                                    $sqlPackage = "select PackageName from tbltourpackages where 1 = 1 and PackageId=$id";
+                                    $sqlPackage = "select PackageName from tbl_tourpackages where 1 = 1 and PackageId=$id";
                                     $result = mysqli_query($connect, $sqlPackage);
                                     mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     foreach($result as $ro){
