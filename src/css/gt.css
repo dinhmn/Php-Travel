@@ -1,0 +1,50 @@
+.container-layer {
+    display: flex;
+    background-color: #ff6600;
+    height: 160px;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+
+}
+
+.container-layer .text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.section-content .row .col1 {
+    width: 20%; 
+}
+.section-content .row .col1 p {
+    text-align: center;
+    line-height: 1.6;
+}
+.f-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    flex-flow: row wrap;
+    padding: 24px;
+}
+
+.f-grid-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    background-color: white;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+   
+}
+.f-grid-col img {
+
+    width: 20%;
+    
+}
