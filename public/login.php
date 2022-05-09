@@ -3,33 +3,27 @@
     error_reporting(0);
     include ("./admin/config.php");
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST["submit"])){
         $user = $_POST['username'];
         $pass = $_POST['password'];
         $passCrypt = md5($pass);
-        if(!empty($user) && !empty($pass)){
-            $sql="Select * from admin where UserName = '$user' and Password = '$passCrypt'";
-            $result = mysqli_query($connect, $sql);
-            // $row=mysqli_fetch_array($result);
-            echo (mysqli_num_rows($result));
-            if (mysqli_num_rows($result) === 1) {
-                $row = mysqli_fetch_assoc($result);
-                if ($row['UserName'] === $user && $row['Password'] === $passCrypt) {
-                    echo "Logged in!";
-                    $_SESSION['username'] = $row['UserName'];
-                    $_SESSION['password'] = $row['Password'];
-                    $_SESSION['id'] = $row['id'];
-                    header("Location: admin/dash.php");
-                    exit();
-                }else {
-                    header("Location: index.php?error=Incorect User name or password");
-                    exit();
-                }
+        $sql="Select * from admin where UserName = '$user' and Password = '$passCrypt'";
+        $result = mysqli_query($connect, $sql);
+        $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) > 0){
+            if ($passCrypt == $row["Password"]){
+                $_SESSION["login"] = true;
+                $_SESSION["id"] - $row["id"];
+                header("location: dash.php");
+            } else {
+                echo 
+                "<script> alert('Wrong Password'); </script>";
             }
-           
-        }
-        }
-        mysqli_close($connect);
+        } else {
+            echo 
+            "<script> alert('User not Registered'); </script>"; 
+        } 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +55,7 @@
                             <input type="password" id="password" name="password" />
                         </div>
                         <div class="form-group">
-                            <button type="submit">Login</button>
+                            <button type="submit" name="submit">Login</button>
                             <small></small>
                         </div>
                     </form>
