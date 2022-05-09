@@ -1,7 +1,9 @@
 <?php
     session_start();
-    error_reporting(0);
-    include ("./admin/config.php");
+    $serverName = "localhost";
+    $username = "root";
+    $password = "";
+    $mydb = "travel";
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
     if(isset($_POST["submit"])){
         $user = $_POST['username'];
@@ -13,8 +15,9 @@
         if (mysqli_num_rows($result) > 0){
             if ($passCrypt == $row["Password"]){
                 $_SESSION["login"] = true;
-                $_SESSION["id"] - $row["id"];
-                header("location: dash.php");
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["user"] = $row["UserName"];
+                header("location: http://localhost/Php-Travel/admin/dash.php");
             } else {
                 echo 
                 "<script> alert('Wrong Password'); </script>";
@@ -24,6 +27,7 @@
             "<script> alert('User not Registered'); </script>"; 
         } 
     }
+    mysqli_close($connect);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +49,7 @@
                     <img src="../src/images/95980815-1024x559.jpg" alt="" />
                 </div>
                 <div class="login-account">
-                    <form action="" method="post" id="loginlogout" class="form-class" name="login">
+                    <form action="" method="post" id="loginlogout" class="form-class" name="login" autocomplete="off">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" id="username" name="username" />
