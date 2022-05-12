@@ -1,23 +1,21 @@
-
 .map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .map iframe {
-    width: 96%;
+  width: 96%;
 }
 
 .form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 .form input {
-    margin: 16px 0px;
+  margin: 16px 0px;
 }
 
 /* .footer {
@@ -25,75 +23,78 @@
     top: 100%;
 } */
 .contact-form {
-    background-image: url(../images/everest-1640566289369.webp);
-    background-repeat: no-repeat;
-    background-position:center ;
-    background-size: 100%;
+  background-image: url(../images/everest-1640566289369.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 .contact-form h1 {
-    text-align: center;
+  text-align: center;
 }
 .form {
-    text-align: center;
-    
+  text-align: center;
 }
 
 #form1 {
-    width: 680px;
-    margin: 0 auto;
+  width: 680px;
+  margin: 0 auto;
 }
 
-#form1 input[type=text] {
-    width: 90%;
-    box-sizing: border-box;
-    font-size: 18px;
-    color: #555;
-    display: block;
-    line-height: 1.2;
-    background-color: #fff;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    height: 50px;
-    padding: 0 20px 0 23px;
-    border: 0;
-    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 5%);
-    -moz-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .05);
-    -webkit-box-shadow: 0 5px 20px 0 rgb(0 0 0 / 5%);
-    -o-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .05);
-    -ms-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .05);
+#form1 input[type="text"],
+#form1 input[type="email"] {
+  width: 90%;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #555;
+  display: block;
+  line-height: 1.2;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  height: 50px;
+  padding: 0 20px 0 23px;
+  border: 0;
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 5%);
+  -moz-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 5px 20px 0 rgb(0 0 0 / 5%);
+  -o-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+  -ms-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
 }
 
-#form1 input[type=text]:focus {
-    border: 0;
-    outline: none;
-    box-shadow: 0 5px 20px 0 rgb(250 66 81 / 10%);
-    -moz-box-shadow: 0 5px 20px 0 rgba(250, 66, 81, .1);
-    -webkit-box-shadow: 0 5px 20px 0 rgb(250 66 81 / 10%);
-    -o-box-shadow: 0 5px 20px 0 rgba(250, 66, 81, .1);
-    -ms-box-shadow: 0 5px 20px 0 rgba(250, 66, 81, .1);
+#form1 input[type="text"]:focus,
+#form1 input[type="email"]:focus {
+  border: 0;
+  outline: none;
+  box-shadow: 0 5px 20px 0 rgb(250 66 81 / 10%);
+  -moz-box-shadow: 0 5px 20px 0 rgba(250, 66, 81, 0.1);
+  -webkit-box-shadow: 0 5px 20px 0 rgb(250 66 81 / 10%);
+  -o-box-shadow: 0 5px 20px 0 rgba(250, 66, 81, 0.1);
+  -ms-box-shadow: 0 5px 20px 0 rgba(250, 66, 81, 0.1);
 }
 
 #form1 #fcontent {
-    outline: none;
-    min-height: 150px;
+  outline: none;
+  min-height: 150px;
 }
 
-#form1 input[type=submit] {
-    background-color: #bd59d4;
-    height: 42px;
-    padding: 5px 20px;
-    border-radius: 21px;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #fff;
-    border: 0;
-    box-shadow: 0 10px 30px 0 rgb(189 89 212 / 50%);
-    -moz-box-shadow: 0 10px 30px 0 rgba(189, 89, 212, .5);
-    -webkit-box-shadow: 0 10px 30px 0 rgb(189 89 212 / 50%);
-    -o-box-shadow: 0 10px 30px 0 rgba(189, 89, 212, .5);
-    -ms-box-shadow: 0 10px 30px 0 rgba(189, 89, 212, .5);
+/* #form1 input[type="submit"] */
+#form1 button {
+  background-color: #bd59d4;
+  height: 42px;
+  padding: 5px 20px;
+  border-radius: 21px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 0;
+  box-shadow: 0 10px 30px 0 rgb(189 89 212 / 50%);
+  -moz-box-shadow: 0 10px 30px 0 rgba(189, 89, 212, 0.5);
+  -webkit-box-shadow: 0 10px 30px 0 rgb(189 89 212 / 50%);
+  -o-box-shadow: 0 10px 30px 0 rgba(189, 89, 212, 0.5);
+  -ms-box-shadow: 0 10px 30px 0 rgba(189, 89, 212, 0.5);
 }
 
-#form1 input[type="submit"]:hover {
-    background: #CC4949;
+/* #form1 input[type="submit"]:hover */
+#form1 button:hover {
+  background: #cc4949;
 }

@@ -2,7 +2,7 @@
       session_start();
       error_reporting();
       include("./config.php");
-
+      include("./permission.php");
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +46,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Username</th>
                                     <th>Phone Number</th>
                                     <th>Email address</th>
                                     <th>Regdate</th>
@@ -69,6 +70,7 @@
                                 <tr>
                                     <td><?php echo ($cnt);?></td>
                                     <td><?php echo ($row["FullName"]);?></td>
+                                    <td><?php echo ($row["Username"]);?></td>
                                     <td><?php echo ($row["MobileNumber"]);?></td>
                                     <td>
                                         <?php echo ($row["EmailId"]);?>

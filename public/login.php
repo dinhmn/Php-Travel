@@ -24,7 +24,7 @@
             }
         } else {
             echo 
-            "<script> alert('User not Registered'); </script>"; 
+            header("location: http://localhost/Php-Travel/public/login.php");
         } 
     }
     mysqli_close($connect);

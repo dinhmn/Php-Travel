@@ -1,7 +1,26 @@
 <?php
-  session_start();
-  error_reporting(0);
-  include("./admin/permission.php");
+    session_start();
+    if (isset($_SESSION['user']) == false) {
+	    header('Location: http://localhost/Php-Travel/public/login.php');   
+    }else {
+        if (isset($_SESSION['login']) == true) {
+            // Ngược lại nếu đã đăng nhập
+            $permission = $_SESSION['login'];
+            $user = $_SESSION["user"];
+            // Kiểm tra quyền của người đó có phải là admin hay không
+            if ($user != 'admin') {
+                // Nếu không phải admin thì xuất thông báo
+                echo "Bạn không đủ quyền truy cập vào trang này<br>";
+                echo "<a href='http://localhost/Php-Travel/public/login.php'> Click để về lại trang chủ</a>";
+                exit();
+            }
+        }
+    }
+    if (isset($_POST["logout"])){
+        if (isset($_SESSION['login']) == true){
+            unset($_SESSION["login"]);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,46 +42,10 @@
 
 <body>
     <div class="wrapper">
-        <div class="nav">
-            <div class="logo">
-                <?php
-                $user = $_SESSION["user"];
-                echo ($user);
-                ?>
-            </div>
-            <div class="account">
-                <img src="https://images.unsplash.com/photo-1649877756175-c41817130d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=739&q=80"
-                    alt="" />
-            </div>
-        </div>
+        <?php include("./header.php")
+        ?>
         <div class="container">
-            <div class="sidebar">
-                <h3 class="heading">Menu</h3>
-                <ul>
-                    <li><a href="#" class="active">
-                            <i class="fa-solid fa-house"></i>
-                            Dashboard</a></li>
-                    <li><a href="#">
-                            <i class="fa-brands fa-youtube"></i>
-                            Category</a></li>
-                    <li><a href="#"><i class="fa-solid fa-earth-asia"></i>
-                            Tour</a></li>
-                    <li><a href="#"><i class="fa-solid fa-phone"></i>
-                            Contact</a></li>
-                    <li><a href="#"><i class="fa-solid fa-calendar-check"></i>
-                            Page</a></li>
-                    <li><a href="#"><i class="fa-solid fa-plane"></i>
-                            Booking</a></li>
-                    <li><a href="#"><i class="fa-solid fa-briefcase"></i>
-                            Issues</a></li>
-                    <li><a href="#">
-                            <i class="fa-solid fa-user"></i>
-                            User</a></li>
-                    <li><a href="#">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            Logout</a></li>
-                </ul>
-            </div>
+            <?php include("./sidebar.php") ?>
             <div class="main">
                 <div class="head">
                     <div class="user">

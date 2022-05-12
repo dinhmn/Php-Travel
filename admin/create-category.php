@@ -1,7 +1,7 @@
 <?php
     session_start();
     error_reporting(0);
-
+    include("./permission.php");
     $name = '';
     $type = '';
     $location = '';
@@ -99,7 +99,7 @@
             $mess = "Ban khong the upload vao thoi diem nay";
         }
     }else {
-        $sql = "INSERT INTO tbltourpackages(PackageName, PackageType, PackageLocation, PackagePrice, PackageFetures, PackageDetails, PackageImage, status) VALUES('$name', '$type', '$location', '$price', '$feature', '$detail', '$newImage', '$status')";
+        $sql = "INSERT INTO tbl_tourpackages(PackageName, PackageType, PackageLocation, PackagePrice, PackageFetures, PackageDetails, PackageImage, status) VALUES('$name', '$type', '$location', '$price', '$feature', '$detail', '$newImage', '$status')";
         // move_uploaded_file($_FILES["packageImage"]["tmp_name"], "D:/xampp/htdocs/Php-Travel/pimages/".$newImage["name"]);
         
         if (mysqli_query($connect, $sql)) {

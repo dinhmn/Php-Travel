@@ -197,7 +197,6 @@ h6 {
 }
 
 .wrapper .container footer {
-  position: relative;
   width: 100%;
   overflow: hidden;
   display: -webkit-box;
@@ -210,7 +209,7 @@ h6 {
       -ms-flex-align: center;
           align-items: center;
   gap: 50px;
-  padding: 30px 40px;
+  padding: 30px 80px;
   background-color: #2d2c2c;
 }
 
@@ -224,18 +223,48 @@ h6 {
 
 .wrapper .container footer div ul {
   margin-bottom: 10px;
+  padding-left: 0px;
+  list-style: none;
 }
 
 .wrapper .container footer div ul li {
   color: white;
+  letter-spacing: 2px;
+  margin: 3px;
 }
 
 .wrapper .container footer div ul li a {
   text-decoration: none;
   color: white;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 2px;
   padding: 5px;
+}
+
+.wrapper .container footer div form input {
+  padding: 3px 10px;
+}
+
+.wrapper .container footer div form input::-webkit-input-placeholder {
+  font-size: 16px;
+}
+
+.wrapper .container footer div form input:-ms-input-placeholder {
+  font-size: 16px;
+}
+
+.wrapper .container footer div form input::-ms-input-placeholder {
+  font-size: 16px;
+}
+
+.wrapper .container footer div form input::placeholder {
+  font-size: 16px;
+}
+
+.wrapper .container footer div form button {
+  padding: 3px 20px;
+  cursor: pointer;
 }
 
 .wrapper .container footer div .tour {
@@ -248,13 +277,10 @@ h6 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 300px;
+  max-width: 200px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-}
-
-.wrapper .container footer div .tour div {
-  width: 100px;
+  grid-gap: 20px;
 }
 
 .wrapper .container footer div .tour div img {

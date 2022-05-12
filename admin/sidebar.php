@@ -32,9 +32,11 @@
                 User</a>
         </li>
         <li>
-            <a href="#">
+            <a href="./logout.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Logout</a>
+                Logout
+                </form>
+            </a>
         </li>
     </ul>
 </div>

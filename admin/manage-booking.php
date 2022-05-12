@@ -2,7 +2,7 @@
   session_start();
   error_reporting();
   include("./config.php");
-
+    include("./permission.php");
 
 
 ?>
