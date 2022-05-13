@@ -20,7 +20,7 @@
     $mydb = "travel";
     
     // Check File
-    $target_dir = "D:/xampp/htdocs/Php-Travel/pimages/";
+    $target_dir = "C:/upload/tour/";
     // $target_file = $target_dir . basename($_FILES["packageImage"]["name"]);
     // $uploadOk = 1;
     // $imageFileType = strtolower(pathinfo($target_dir, PATHINFO_EXTENSION));

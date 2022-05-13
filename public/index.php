@@ -1,6 +1,7 @@
 <?php
     session_start();
     error_reporting(0);
+    include("../admin/config.php");
 ?>
 
 <!DOCTYPE html>
@@ -112,20 +113,6 @@
                 <div class="element-tour">
                     <div class="box-element">
                         <h3>Sapa - Lào Cai</h3>
-                        <div class="stars">
-                            <form action="">
-                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-                            </form>
-                        </div>
                         <p>Giá tour : $500 </p>
                         <button>XEM NGAY</button>
                     </div>
@@ -253,73 +240,39 @@
             <section id="tour-hut-khach">
                 <div class="head">
                     <h2>NHỮNG TOUR HÚT KHÁCH</h2>
-                    <p>Hảo đẹp trai siêu cấp vũ trụ vip pro best Aphelios và Jhin</p>
                 </div>
                 <div class="box-hut">
+                    <?php
+                        $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                        $sql = "select * from tbl_tourpackages where PackagePrice <= 10000000";
+                        $results = mysqli_query($connect, $sql); 
+                        mysqli_fetch_all($results, MYSQLI_ASSOC);
+                        $cnt = 1;
+                        foreach ($results as $row) {
+                            if ($cnt <= 6){
+
+                    ?>
                     <div class="box-hut-element">
+                        <div class="box-hut-image">
+                            <img src="<?php echo ('D://xampp/htdocs/Php-Travel/src/images/' . $row["PackageImage"]);  ?>"
+                                alt="">
+                        </div>
                         <div class="nd">
                             <h3>Sapa</h3>
                             <p>5 ngày 4 đêm</p>
                         </div>
                     </div>
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-hut">
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-hut">
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
-                    <div class="box-hut-element">
-                        <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
-                        </div>
-                    </div>
+
+                    <?php
+                    }}
+                    mysqli_close($connect);
+                    ?>
                 </div>
             </section>
             <section id="noi-tieng">
                 <div class="head ">
                     <h2>NHỮNG ĐỊA ĐIỂM DU LỊCH NỔI TIẾNG</h2>
-                    <p>Hảo đẹp trai siêu cấp vũ trụ vip pro best Aphelios và Jhin</p>
+                    <!-- <p>Hảo đẹp trai siêu cấp vũ trụ vip pro best Aphelios và Jhin</p> -->
                 </div>
                 <div class="location">
                     <div class="location-element">
