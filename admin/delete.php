@@ -5,7 +5,7 @@
     if (isset($_GET['pid'])){
         $pid = intval($_GET['pid']);
     }
-    $sql = "Delete from tbltourpackages where PackageId=$pid";
+    $sql = "Delete from tbl_tourpackages where PackageId=$pid";
     $query = mysqli_query($connect, $sql);
     header("location: manage-category.php");
     mysqli_close($connect);
@@ -17,7 +17,7 @@
     if (isset($_GET['userId'])){
         $userId = intval($_GET['userId']);
     }
-    $sql = "Delete from tblusers where id=$userId";
+    $sql = "Delete from tbl_users where id=$userId";
     $query = mysqli_query($connect, $sql);
     header("location: manage-user.php");
     mysqli_close($connect);
@@ -30,7 +30,7 @@
     if (isset($_GET['contactId'])){
         $contactId = intval($_GET['contactId']);
     }
-    $sql = "Delete from tblenquiry where id=$contactId";
+    $sql = "Delete from tbl_enquiry where id=$contactId";
     $query = mysqli_query($connect, $sql);
     header("location: manage-contact.php");
     mysqli_close($connect);

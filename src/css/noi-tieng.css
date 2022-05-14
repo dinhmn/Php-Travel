@@ -15,8 +15,9 @@
   margin-bottom: 40px;
 }
 .element-tour {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 .box-element {
   width: 32%;
@@ -81,16 +82,15 @@
   margin: auto;
   margin-top: 50px;
   transform: translateX(25px);
-  padding-bottom: 150px;
+  gap: 50px;
 }
 .box-hut-element {
-  position: relative;
-  width: 350px;
+  background-color: rgb(236, 235, 235);
+  border-radius: 10px;
+  padding-bottom: 10px;
 }
 
 .box-hut-image {
-  position: absolute;
-  z-index: -1;
   width: 100%;
 }
 .box-hut-image img {
@@ -98,24 +98,47 @@
   height: 100%;
   object-fit: cover;
   flex-shrink: 1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .nd {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-
   text-align: center;
-  transform: translateY(110px);
+  justify-content: center;
+  align-content: stretch;
+  padding: 5px 10px;
 }
-.nd > h3 {
-  font-size: 30px;
-  color: white;
+.nd > .h3 {
+  font-size: 18px;
+  height: 100px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center */
 }
-.nd > p {
+.nd > h3 a {
+  text-decoration: none;
+  font-size: 18px;
+  height: 100px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: black;
+  /* align-items: center */
+}
+.nd a > button {
+  background-color: orange;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
   color: white;
+  border-radius: 100rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.nd a > button:hover {
+  background-color: rgb(219, 143, 2);
 }
 
 #noi-tieng {

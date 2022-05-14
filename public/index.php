@@ -49,176 +49,40 @@
                     </div>
                 </div>
             </section>
-            <!-- <section>
-          <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'TimTour')">TÌM TOUR</button>
-            <button class="tablinks" onclick="openCity(event, 'TimHotel')">TÌM HOTEL</button>
-            <div id="TimTour" class="tabcontent">
-              <div class="box-tour">
-                <select name="Danhmuc" id="Danhmuc">
-                  <option value="audi">Hảo đẹp trai</option>
-                </select>
-              </div>
-              <div class="box-tour">
-                <select name="Gia" id="Price">
-                  <option value="audi">10000đ</option>
-                </select>
-              </div>
-              <div class="box-tour">
-                <select name="ngay" id="day">
-                  <option value="audi">1</option>
-                </select>
-              </div>
-              <div class="box-tour">
-                <select name="khoihanh" id="adress-start">
-                  <option value="audi">Cà Mau</option>
-                </select>
-              </div>
-              <div class="box-tour-discount">
-                <p>Giảm giá</p>
-                <input type="checkbox" id="discount" value="Yes">
-              </div>
-            </div>
-            <div id="TimHotel" class="tabcontent">
-              <div class="box-tour">
-                <select name="Danhmuc" id="Danhmuc">
-                  <option value="audi">Hảo đẹp trai</option>
-                </select>
-              </div>
-              <div class="box-tour">
-                <select name="Gia" id="Price">
-                  <option value="audi">10000đ</option>
-                </select>
-              </div>
-              <div class="box-tour">
-                <select name="ngay" id="day">
-                  <option value="audi">1</option>
-                </select>
-              </div>
-              <div class="box-tour">
-                <select name="khoihanh" id="adress-start">
-                  <option value="audi">Cà Mau</option>
-                </select>
-              </div>
-              <div class="box-tour-discount">
-                <p>Giảm giá</p>
-                <input type="checkbox" id="discount" value="Yes">
-              </div>
-            </div>
-          </div>
-        </section> -->
-            <section id="Tour-Hap-Dan">
-                <h2>CÁC TOUR HẤP DẪN</h2>
-                <p>Các tour du lịch hàng đầu được chú ý nhiều nhất.</p>
-                <div class="element-tour">
-                    <div class="box-element">
-                        <h3>Sapa - Lào Cai</h3>
-                        <p>Giá tour : $500 </p>
-                        <button>XEM NGAY</button>
-                    </div>
-                    <div class="box-element">
-                        <h3>Sapa - Lào Cai</h3>
-                        <div class="stars">
-                            <form action="">
-                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-                            </form>
-                        </div>
-                        <p>Giá tour : $500 </p>
-                        <button>XEM NGAY</button>
-                    </div>
-                    <div class="box-element">
-                        <h3>Sapa - Lào Cai</h3>
-                        <div class="stars">
-                            <form action="">
-                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-                            </form>
-                        </div>
-                        <p>Giá tour : $500 </p>
-                        <button>XEM NGAY</button>
-                    </div>
+            <section id="tour-hut-khach" class="popular">
+                <div class="head">
+                    <h2>NHỮNG TOUR NỔI TIẾNG</h2>
                 </div>
-                <div class="element-tour">
-                    <div class="box-element">
-                        <h3>Sapa - Lào Cai</h3>
-                        <div class="stars">
-                            <form action="">
-                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-                            </form>
+                <div class="box-hut">
+                    <?php
+                        $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                        $sql = "select * from tbl_tourpackages ORDER BY PackagePrice DESC LIMIT 3";
+                        $results = mysqli_query($connect, $sql); 
+                        mysqli_fetch_all($results, MYSQLI_ASSOC);
+                        $cnt = 1;
+                        foreach ($results as $row) {
+                            if ($cnt <= 3){
+                    ?>
+                    <div class="box-hut-element">
+                        <div class="box-hut-image">
+                            <img src="<?php echo ('../pimages/'.$row["PackageImage"]);  ?>" alt="">
                         </div>
-                        <p>Giá tour : $500 </p>
-                        <button>XEM NGAY</button>
-                    </div>
-                    <div class="box-element">
-                        <h3>Sapa - Lào Cai</h3>
-                        <div class="stars">
-                            <form action="">
-                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-                            </form>
+                        <div class="nd">
+                            <h3 class="h3"><?php echo($row["PackageName"]) ?></h3>
+                            <p><?php echo(number_format($row["PackagePrice"], 0, ',', '.') . " VNĐ"); ?></p>
+                            <a href="#"><button>Xem ngay</button></a>
                         </div>
-                        <p>Giá tour : $500 </p>
-                        <button>XEM NGAY</button>
                     </div>
-                    <div class="box-element">
-                        <h3>Sapa - Lào Cai</h3>
-                        <div class="stars">
-                            <form action="">
-                                <input class="star star-1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-                            </form>
-                        </div>
-                        <p>Giá tour : $500 </p>
-                        <button>XEM NGAY</button>
-                    </div>
+                    <?php
+                    }}
+                    mysqli_close($connect);
+                    ?>
                 </div>
             </section>
             <section id="nghi-duong">
                 <div class="content">
                     <h4>Giảm giá 30% </h4>
-                    <div class="stars">
+                    <!-- <div class="stars">
                         <form action="">
                             <input class="star star-1" id="star-1" type="radio" name="star" />
                             <label class="star star-1" for="star-1"></label>
@@ -231,7 +95,7 @@
                             <input class="star star-5" id="star-5" type="radio" name="star" />
                             <label class="star star-5" for="star-5"></label>
                         </form>
-                    </div>
+                    </div> -->
                     <h2>NGHỈ DƯỠNG TẠI PHÚ QUỐC</h2>
                     <p>Từ 5/12 đến 30/12</p>
                     <button>XEM NGAY</button>
@@ -244,7 +108,7 @@
                 <div class="box-hut">
                     <?php
                         $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                        $sql = "select * from tbl_tourpackages where PackagePrice <= 10000000";
+                        $sql = "select * from tbl_tourpackages ORDER BY PackagePrice asc LIMIT 6";
                         $results = mysqli_query($connect, $sql); 
                         mysqli_fetch_all($results, MYSQLI_ASSOC);
                         $cnt = 1;
@@ -254,12 +118,11 @@
                     ?>
                     <div class="box-hut-element">
                         <div class="box-hut-image">
-                            <img src="<?php echo ('D://xampp/htdocs/Php-Travel/src/images/' . $row["PackageImage"]);  ?>"
-                                alt="">
+                            <img src="<?php echo ('../pimages/'.$row["PackageImage"]);  ?>" alt="">
                         </div>
                         <div class="nd">
-                            <h3>Sapa</h3>
-                            <p>5 ngày 4 đêm</p>
+                            <h3> <a href="#"><?php echo($row["PackageName"]) ?></a></h3>
+                            <!-- <p>5 ngày 4 đêm</p> -->
                         </div>
                     </div>
 
@@ -277,20 +140,7 @@
                 <div class="location">
                     <div class="location-element">
                         <div class="infor">
-                            <div class="stars">
-                                <form action="">
-                                    <input class="star star-1" id="star-1" type="radio" name="star" />
-                                    <label class="star star-1" for="star-1"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-5" id="star-5" type="radio" name="star" />
-                                    <label class="star star-5" for="star-5"></label>
-                                </form>
-                            </div>
+
                             <h2>BÀ NÀ HILLS</h2>
                             <h4>Đà Nẵng</h4>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -303,20 +153,7 @@
                     </div>
                     <div class="location-element">
                         <div class="infor">
-                            <div class="stars">
-                                <form action="">
-                                    <input class="star star-1" id="star-1" type="radio" name="star" />
-                                    <label class="star star-1" for="star-1"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-5" id="star-5" type="radio" name="star" />
-                                    <label class="star star-5" for="star-5"></label>
-                                </form>
-                            </div>
+
                             <h2>BÀ NÀ HILLS</h2>
                             <h4>Đà Nẵng</h4>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -329,20 +166,7 @@
                     </div>
                     <div class="location-element">
                         <div class="infor">
-                            <div class="stars">
-                                <form action="">
-                                    <input class="star star-1" id="star-1" type="radio" name="star" />
-                                    <label class="star star-1" for="star-1"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-5" id="star-5" type="radio" name="star" />
-                                    <label class="star star-5" for="star-5"></label>
-                                </form>
-                            </div>
+
                             <h2>BÀ NÀ HILLS</h2>
                             <h4>Đà Nẵng</h4>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -356,7 +180,7 @@
                 </div>
                 <div class="head ">
                     <h2>CÁC THÀNH PHỐ DU LỊCH</h2>
-                    <p>Hảo đẹp trai siêu cấp vũ trụ vip pro best Aphelios và Jhin</p>
+                    <p>Anh yêu em ở mọi vũ trụ</p>
                 </div>
                 <div class="body-du-lich ">
                     <div class="du-lich-left">

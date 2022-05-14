@@ -95,7 +95,7 @@
           $mess = "Ban khong the upload vao thoi diem nay";
       }
   }else {
-      $sql = "UPDATE tbltourpackages set PackageName = '$name', PackageType = '$type', PackageLocation = '$location', PackagePrice = $price, PackageFetures = '$feature', PackageDetails = '$detail', PackageImage = '$newImage', status = $status where PackageId = $pid;";
+      $sql = "UPDATE tbl_tourpackages set PackageName = '$name', PackageType = '$type', PackageLocation = '$location', PackagePrice = $price, PackageFetures = '$feature', PackageDetails = '$detail', PackageImage = '$newImage', status = $status where PackageId = $pid;";
       // move_uploaded_file($_FILES["packageImage"]["tmp_name"], "D:/xampp/htdocs/Php-Travel/pimages/".$newImage["name"]);
       
       if (mysqli_query($connect, $sql)) {
@@ -143,7 +143,7 @@
                 <?php
                     $connect = mysqli_connect($serverName, $username, $password, $mydb);
                     $pid = intval($_GET["pid"]);
-                    $sql = "select * from tbltourpackages where PackageId=$pid";
+                    $sql = "select * from tbl_tourpackages where PackageId=$pid";
                     $result = mysqli_query($connect, $sql); 
                     $row = mysqli_fetch_array($result);
                     // $result = $connect -> query($sql);

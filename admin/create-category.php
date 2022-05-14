@@ -20,7 +20,7 @@
     $mydb = "travel";
     
     // Check File
-    $target_dir = "C:/upload/tour/";
+    $target_dir = "D:/xampp/htdocs/Php-Travel/pimages/";
     // $target_file = $target_dir . basename($_FILES["packageImage"]["name"]);
     // $uploadOk = 1;
     // $imageFileType = strtolower(pathinfo($target_dir, PATHINFO_EXTENSION));
@@ -33,7 +33,7 @@
     }
 
     // Get value from form
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST['submit'])){
         if (isset($_POST["packageName"])){
             $name = $_POST["packageName"];
         }
@@ -208,7 +208,7 @@
                         </select>
                     </div>
                     <div class="form-button">
-                        <button type="submit">Create</button>
+                        <button type="submit" name="submit">Create</button>
                         <button type="reset">Cancel</button>
                     </div>
                 </form>

@@ -84,8 +84,8 @@
                         <div class="details">
                             <?php
                                 $image = $key['PackageImage'];
-                            ?>
-                            <img width="300" height="300" src="<?php echo ('C:/upload/tour/' . $image);  ?>" alt="">
+                                ?>
+                            <img width='300' height='300' src='../pimages/<?php echo $image; ?>' alt=''>
                             <div class="infor-details">
                                 <span><?php echo ($key["PackageLocation"]);?> </span>
                                 <h4><?php echo ($key["PackageName"]);?> </h4>
