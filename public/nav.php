@@ -7,7 +7,11 @@
             <li><a href="./tour.php">Tour</a></li>
             <li><a href="#">Tin tức</a></li>
             <li><a href="./contact.php">Liên hệ</a></li>
-            <li><a href="./login.php">Login</a></li>
+            <li>
+                <a href="./login.php">Sign in</a>
+                <a href="./login.php">Sign up</a>
+            </li>
+
         </ul>
     </div>
 </header>

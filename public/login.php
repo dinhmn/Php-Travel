@@ -60,7 +60,12 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" name="submit">Login</button>
-                            <small></small>
+                            <small style="margin-top: 5px; letter-spacing: 2px;">Don't have an account?<a
+                                    href="../public/register.php">Sign
+                                    up.</a>
+                                </span>
+                            </small>
+                            <small><a href="../public/index.php">Go home</a></small>
                         </div>
                     </form>
                 </div>

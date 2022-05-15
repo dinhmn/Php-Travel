@@ -87,9 +87,11 @@
                                 ?>
                             <img width='300' height='300' src='../pimages/<?php echo $image; ?>' alt=''>
                             <div class="infor-details">
-                                <span><?php echo ($key["PackageLocation"]);?> </span>
-                                <h4><?php echo ($key["PackageName"]);?> </h4>
-                                <p><?php echo ($key["PackagePrice"]);?> <span class="d">đ</span></p>
+                                <a href="../public/detail.php?did=<?php echo ($key["PackageId"]);?>"><?php echo ($key["PackageName"]);?>
+                                </a>
+                                <p>
+                                    <?php echo(number_format($key["PackagePrice"], 0, ',', '.') . " VNĐ"); ?>
+                                </p>
                             </div>
                         </div>
                         <?php

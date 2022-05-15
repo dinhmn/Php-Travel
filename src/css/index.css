@@ -117,9 +117,21 @@ h6 {
   color: #ff6600;
 }
 
-.wrapper .container header .nav ul li:last-child {
+.wrapper .container header .nav ul li:nth-child(6) {
   padding-left: 10px;
   border-left: 3px solid #ff6600;
+}
+
+.wrapper .container header .nav ul li:nth-child(6) a {
+  padding: 5px 3px;
+}
+
+.wrapper .container header .nav ul li:nth-child(6) a:last-child {
+  font-size: 14px;
+}
+
+.wrapper .container header .nav ul li:last-child {
+  margin-left: -10px;
 }
 
 .wrapper .container header .logo {

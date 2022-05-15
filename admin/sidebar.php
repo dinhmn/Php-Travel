@@ -18,7 +18,7 @@
             <a href="./manage-booking.php"><i class="fa-solid fa-phone"></i> Manage Booking</a>
         </li>
         <li>
-            <a href="./manage-issue.php"><i class="fa-solid fa-calendar-check"></i> Manage Issue</a>
+            <a href="./manage-location.php"><i class="fa-solid fa-calendar-check"></i> Manage Location</a>
         </li>
         <li>
             <a href="./manage-contact.php"><i class="fa-solid fa-plane"></i> Manage Contact</a>

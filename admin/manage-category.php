@@ -41,6 +41,11 @@
                 <div class="href">
                     <h2>Manage Package</h2>
                 </div>
+                <button style="" class="href">
+                    <a href="../admin/create-category.php"
+                        style="padding: 20px 50px;background-color: greenyellow; color: purple;">Add
+                        tour travel</a>
+                </button>
                 <div class="table">
                     <div class="table-info">
                         <table>
@@ -80,7 +85,7 @@
                                     <td>
                                         <a href="update-category.php?pid=<?php echo ($row["PackageId"]);?>"><button
                                                 type="button" class="btn btn-primary btn-block">
-                                                View Details
+                                                View
                                             </button>
                                         </a>
                                         <a href="delete.php?pid=<?php echo ($row["PackageId"]);?>"><button type="button"

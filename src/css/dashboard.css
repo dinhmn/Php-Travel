@@ -249,4 +249,8 @@ h6 {
   font-size: 28px;
   font-weight: bold;
 }
+
+#summernote + div {
+  width: 100%;
+}
 /*# sourceMappingURL=dashboard.css.map */

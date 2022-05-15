@@ -1,18 +1,18 @@
 <?php
-      session_start();
-      error_reporting();
-      include("./config.php");
-      include("./permission.php");
+    session_start();
+    error_reporting();
+    include("./config.php");
+    include("./permission.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage issue</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -34,10 +34,10 @@
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
-                    <span><i class="fa-solid fa-angle-right"></i> Manage User</span>
+                    <a><i class="fa-solid fa-angle-right"></i> Manage Issue</a>
                 </div>
                 <div class="href">
-                    <h2>Manage User</h2>
+                    <h2>Manage Issue</h2>
                 </div>
                 <div class="table">
                     <div class="table-info">
@@ -46,7 +46,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Desc</th>
+                                    <th>City</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -54,21 +54,24 @@
                             <tbody>
                                 <?php
                               $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                              $sql = "select * from tbl_roles where 1 =1";
+                              $sql = "select * from tbl_location where 1 =1";
                               $results = mysqli_query($connect, $sql); 
                               mysqli_fetch_all($results, MYSQLI_ASSOC);
-                              // $result = $connect -> query($sql);
                               $cnt=1;
                               
                               foreach($results as $row){
-                              // while($row = $result ->fetch_assoc()){
                             ?>
                                 <tr>
                                     <td><?php echo ($cnt);?></td>
                                     <td><?php echo ($row["name"]);?></td>
-                                    <td><?php echo ($row["desc"]);?></td>
+                                    <td><?php echo ($row["city"]);?></td>
                                     <td>
-                                        <a href="delete.php?userId=<?php echo ($row["id"]);?>"><button type="button"
+                                        <a href="update-category.php?pid=<?php echo ($row["id"]);?>"><button
+                                                type="button" class="btn btn-primary btn-block">
+                                                Views
+                                            </button>
+                                        </a>
+                                        <a href="delete.php?pid=<?php echo ($row["id"]);?>"><button type="button"
                                                 style="background-color: red; color: white;"
                                                 class="btn btn-primary btn-block">
                                                 Delete

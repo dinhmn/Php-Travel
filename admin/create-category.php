@@ -33,7 +33,7 @@
     }
 
     // Get value from form
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit']) && $_POST['randcheck']==$_SESSION['rand']){
         if (isset($_POST["packageName"])){
             $name = $_POST["packageName"];
         }
@@ -109,11 +109,9 @@
         }
     }
 
-    
-
+    unset($_POST);
     mysqli_close($connect);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,9 +125,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- include summernote css/js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <!-- Import CSS -->
     <link rel="stylesheet" href="../src/css/dashboard.css" />
     <link rel="stylesheet" href="../src/css/category.css" />
+
 </head>
 
 <body>
@@ -193,8 +198,8 @@
                     </div>
                     <div class="form-group">
                         <label for="packageDetail">Package Details</label>
-                        <textarea name="packageDetail" id="packageDetail" cols="50" rows="5"
-                            placeholder="Package Details"></textarea>
+                        <textarea name="packageDetail" cols="50" rows="5" placeholder="Package Details"
+                            id="summernote"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="packageImage">Package Image</label>
@@ -207,6 +212,11 @@
                             <option value="0">Off</option>
                         </select>
                     </div>
+                    <?php
+                        $rand=rand();
+                        $_SESSION['rand']=$rand;
+                    ?>
+                    <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
                     <div class="form-button">
                         <button type="submit" name="submit">Create</button>
                         <button type="reset">Cancel</button>
@@ -219,6 +229,27 @@
             <div>Group 5</div>
         </div>
     </div>
+    <script type="text/javascript">
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+    </script>
+    <script>
+    $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+    </script>
 </body>
 
 </html>

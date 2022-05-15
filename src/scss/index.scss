@@ -34,9 +34,18 @@
                 color: $orange;
               }
             }
-            &:last-child {
+            &:nth-child(6) {
               padding-left: 10px;
               border-left: 3px solid $orange;
+              a {
+                padding: 5px 3px;
+                &:last-child {
+                  font-size: 14px;
+                }
+              }
+            }
+            &:last-child {
+              margin-left: -10px;
             }
           }
         }

@@ -59,7 +59,7 @@
                             <tbody>
                                 <?php
                               $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                              $sql = "select * from tbl_tourpackages where 1 =1";
+                              $sql = "select * from tbl_pages where 1 =1";
                               $results = mysqli_query($connect, $sql); 
                               mysqli_fetch_all($results, MYSQLI_ASSOC);
                               // $result = $connect -> query($sql);

@@ -48,13 +48,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Package</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>From</th>
-                                    <th>To</th>
-                                    <th>Comment</th>
-                                    <th>Reg Date</th>
+
+                                    <th>Address</th>
+                                    <th>Phone</th>
                                     <th>Cancelled By</th>
-                                    <th>Updation Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -87,15 +87,15 @@
                                     }
                                     
                                     ?></td>
+                                    <td><?php echo ($row["FullName"]);?></td>
                                     <td><?php echo ($row["UserEmail"]);?></td>
                                     <td>
                                         <?php echo ($row["FromDate"]);?>
                                     </td>
-                                    <td><?php echo ($row["ToDate"]);?></td>
-                                    <td><?php echo ($row["Comment"]);?></td>
-                                    <td><?php echo ($row["RegDate"]);?></td>
+
+                                    <td><?php echo ($row["Address"]);?></td>
+                                    <td><?php echo ($row["Phone"]);?></td>
                                     <td><?php echo ($row["CancelledBy"]);?></td>
-                                    <td><?php echo ($row["UpdationDate"]);?></td>
 
                                     <td>
                                         <a href="update-category.php?pid=<?php echo ($row["id"]);?>"><button
