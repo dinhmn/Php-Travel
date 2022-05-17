@@ -46,9 +46,9 @@
         $sex = false;
     }
     $sql = "insert into tbl_booking(PackageId, FullName, UserEmail, FromDate, DateOfBirth,Address, Phone, Person, Room, Sex, message) values($did, '$fullname', '$email','$date','$dateOfBirth', '$address','$phone', '$count',  '$room', '$sex', '$message');";
-    if( mysqli_query($connect, $sql)){
+    if(mysqli_query($connect, $sql)){
         $msg = "Tour travel is booking successful.";
-        echo "<script> alert('$msg'); </script>";
+        // echo "<script> alert('$msg'); </script>";
     }
     
 ?>
@@ -86,7 +86,7 @@
                         <h4>Rất tốt</h4>
                     </div>
                     <div class="title">
-                        <?php echo ($tour["PackageName"]); ?>
+                        <?php echo (isset($tour["PackageName"]) ? $tour["PackageName"] : ""); ?>
                     </div>
                     <div class="entry">
                         <span>Khởi hành: <b>
@@ -115,33 +115,33 @@
                             <div class="name">
                                 <label>Họ và Tên <b>*</b></label>
                                 <input class="form-control" id="contact_name" name="Fullname" type="text"
-                                    value="<?php echo($_SESSION["fullname"]); ?>">
+                                    value="<?php echo(isset($_SESSION["fullname"]) ? $_SESSION["fullname"] : ""); ?>">
                             </div>
                             <div class="mail">
                                 <label>Email <b>*</b></label>
                                 <input class="form-control" id="email" name="Email" type="text"
-                                    value="<?php echo($_SESSION["email"]); ?>">
+                                    value="<?php echo(isset($_SESSION["email"]) ? $_SESSION["email"] : ""); ?>">
                             </div>
                             <div class="phone">
                                 <label>Số điện thoại <b>*</b></label>
                                 <input class="form-control" id="mobilephone" name="Telephone"
                                     onkeypress="return funCheckInt(event)" type="text"
-                                    value="<?php echo($_SESSION["phone"]); ?>">
+                                    value="<?php echo(isset($_SESSION["phone"]) ? $_SESSION["phone"] : ""); ?>">
                             </div>
                             <div class="addess">
                                 <label>Địa chỉ</label>
                                 <input class="form-control" id="address" name="Address" type="text"
-                                    value="<?php echo($_SESSION["address"]); ?>">
+                                    value="<?php echo(isset($_SESSION["address"]) ? $_SESSION["address"] : ""); ?>">
                             </div>
                             <div class="addess">
                                 <label>Số lượng:</label>
                                 <input class="form-control" id="total" name="total" type="text"
-                                    value="<?php echo($_SESSION["count"]); ?>">
+                                    value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : ""); ?>">
                             </div>
                             <div class="addess">
                                 <label>Số lượng phòng:</label>
                                 <input class="form-control" id="room" name="room" type="text"
-                                    value="<?php echo($_SESSION["room"]); ?>">
+                                    value="<?php echo(isset($_SESSION["room"]) ? $_SESSION["room"] : ""); ?>">
                             </div>
                             <div class="addess">
                                 <label>Ngày sinh</label>
