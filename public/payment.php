@@ -1,7 +1,9 @@
 <?php
     session_start();
-    error_reporting(0);
-    include("./admin/config.php");
+    $serverName = "localhost";
+    $username = "root";
+    $password = "";
+    $mydb = "travel";
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
     $did = $_SESSION["tourId"];
     
@@ -44,11 +46,9 @@
         $sex = false;
     }
     $sql = "insert into tbl_booking(PackageId, FullName, UserEmail, FromDate, DateOfBirth,Address, Phone, Person, Room, Sex, message) values($did, '$fullname', '$email','$date','$dateOfBirth', '$address','$phone', '$count',  '$room', '$sex', '$message');";
-    
     if( mysqli_query($connect, $sql)){
         $msg = "Tour travel is booking successful.";
         echo "<script> alert('$msg'); </script>";
-        session_unset();
     }
     
 ?>

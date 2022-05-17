@@ -8,16 +8,21 @@
     $password = "";
     $mydb = "travel";
     
+    
+
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-    $type = $desc = $status = '';
+    $location = $city = $desc = $status = '';
     if (!$connect){
         die("Lỗi kết nối: " .mysqli_connect_error());
     }
 
     // Get value from form
     if(isset($_POST['submit'])){
-        if (isset($_POST["type"])){
-            $type = $_POST["type"];
+        if (isset($_POST["location"])){
+            $location = $_POST["location"];
+        }
+        if (isset($_POST["city"])){
+            $city = $_POST["city"];
         }
         if (isset($_POST["description"])){
             $desc = $_POST["description"];
@@ -26,7 +31,8 @@
             $status = $_POST["status"];
         }
     }
-    $sql = "INSERT INTO tbl_pages(type, detail, status) VALUES('$type', '$desc', '$status')";
+    $sql = "INSERT INTO tbl_location(name, city, description, status) VALUES('$location', '$city', '$desc', '$status')";
+
     if (mysqli_query($connect, $sql)) {
         $msg="Package Created Successfully";
     } else {
@@ -74,12 +80,19 @@
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
-                    <span><i class="fa-solid fa-angle-right"></i>Pages</span>
+                    <span><i class="fa-solid fa-angle-right"></i>Location</span>
+                </div>
+                <div class="href">
+
                 </div>
                 <form action="" method="post" name="package" class="form-class">
                     <div class="form-group">
-                        <label for="type">Type</label>
-                        <input type="text" placeholder="Enter your location..." id="type" name="type" />
+                        <label for="location">Location</label>
+                        <input type="text" placeholder="Enter your location..." id="location" name="location" />
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" placeholder="Enter your city..." id="city" name="city" />
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>

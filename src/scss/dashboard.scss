@@ -2,7 +2,7 @@
 @import "color";
 
 .wrapper {
-  background-color: white;
+  background-color: slategrey;
   .nav {
     height: 50px;
     width: 100%;
@@ -14,8 +14,9 @@
       h3 {
         font-size: 20px;
         font-weight: bold;
-        line-height: 24px;
+        line-height: 28px;
         font-family: $font-primary;
+        color: purple;
       }
     }
     &-right {
@@ -50,7 +51,7 @@
     .sidebar {
       background-color: rgb(236, 236, 236);
       width: 250px;
-      height: auto;
+      height: 100vh;
       .heading {
         padding: 10px;
         width: 100%;
@@ -85,6 +86,10 @@
       width: 100%;
       padding: 50px;
       height: auto;
+      & > div,
+      button {
+        border-radius: 8px;
+      }
       .head {
         display: flex;
         justify-content: space-between;
@@ -151,6 +156,7 @@
     margin: auto;
     text-align: center;
     width: 100%;
+    height: 100%;
     font-size: 28px;
     font-weight: bold;
   }

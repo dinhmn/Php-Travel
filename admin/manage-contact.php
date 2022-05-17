@@ -48,7 +48,6 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
-                                    <th>Subject</th>
                                     <th>Description</th>
                                     <th>Posting Date</th>
                                     <th>Action</th>
@@ -72,7 +71,6 @@
                                     <td>
                                         <?php echo ($row["MobileNumber"]);?>
                                     </td>
-                                    <td>$<?php echo ($row["Subject"]);?></td>
                                     <td><?php echo ($row["Description"]);?></td>
                                     <td><?php echo ($row["PostingDate"]);?></td>
                                     <td>

@@ -29,7 +29,7 @@
         <li>
             <a href="./manage-user.php">
                 <i class="fa-solid fa-user"></i>
-                User</a>
+                Manage User</a>
         </li>
         <li>
             <a href="./logout.php">

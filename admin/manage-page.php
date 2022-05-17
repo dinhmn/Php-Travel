@@ -36,22 +36,22 @@
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
-                    <span><i class="fa-solid fa-angle-right"></i> Manage Package</span>
+                    <span><i class="fa-solid fa-angle-right"></i> Manage Pages</span>
                 </div>
                 <div class="href">
-                    <h2>Manage Package</h2>
+                    <h2>Manage Pages</h2>
                 </div>
+                <button style="" class="href">
+                    <a href="../admin/create-page.php"
+                        style="padding: 20px 50px;background-color: greenyellow; color: purple;">Create Page</a>
+                </button>
                 <div class="table">
                     <div class="table-info">
                         <table>
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
                                     <th>Type</th>
-                                    <th>Location</th>
-                                    <th>Price</th>
-                                    <th>Creation Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -69,13 +69,7 @@
                             ?>
                                 <tr>
                                     <td><?php echo ($cnt);?></td>
-                                    <td><?php echo ($row["PackageName"]);?></td>
-                                    <td><?php echo ($row["PackageType"]);?></td>
-                                    <td>
-                                        <?php echo ($row["PackageLocation"]);?>
-                                    </td>
-                                    <td>$<?php echo ($row["PackagePrice"]);?></td>
-                                    <td><?php echo ($row["Creationdate"]);?></td>
+                                    <td><?php echo ($row["type"]);?></td>
                                     <td>
                                         <a href="update-category.php?pid=<?php echo ($row["PackageId"]);?>"><button
                                                 type="button" class="btn btn-primary btn-block">

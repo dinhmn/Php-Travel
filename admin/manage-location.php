@@ -34,11 +34,16 @@
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
-                    <a><i class="fa-solid fa-angle-right"></i> Manage Issue</a>
+                    <a><i class="fa-solid fa-angle-right"></i> Manage Location</a>
                 </div>
                 <div class="href">
-                    <h2>Manage Issue</h2>
+                    <h2>Manage Location</h2>
                 </div>
+                <button class="href">
+                    <a href="../admin/create-location.php"
+                        style="padding: 20px 50px;background-color: slategrey; color: whitesmoke;">Create
+                        Location</a>
+                </button>
                 <div class="table">
                     <div class="table-info">
                         <table>

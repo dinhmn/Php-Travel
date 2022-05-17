@@ -9,7 +9,7 @@
             <li><a href="./contact.php">Liên hệ</a></li>
             <li>
                 <a href="./login.php">Sign in</a>
-                <a href="./login.php">Sign up</a>
+                <a href="./register.php">Sign up</a>
             </li>
 
         </ul>

@@ -1,3 +1,18 @@
+<?php
+    session_start();
+
+    $serverName = "localhost";
+    $username = "root";
+    $password = "";
+    $mydb = "travel";
+
+    $connect = mysqli_connect($serverName, $username, $password, $mydb);
+
+    $sql = "select * from tbl_pages where type = 'introduce' and status = '1'";
+    $result = mysqli_query($connect, $sql);
+    $row = mysqli_fetch_array($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +24,10 @@
 
     <!-- Import CSS -->
     <link rel="stylesheet" href="../src/css/index.css" />
-    <link rel="stylesheet" href="../src/css/search.css" />
-    <link rel="stylesheet" href="/src/css/vote-star.css" />
+    <link rel="stylesheet" href="../src/css/desc.css" />
+
     <link rel="stylesheet prefetch" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" />
-    <link rel="stylesheet" href="../src/css/nghi-duong-phu-quoc.css" />
-    <link rel="stylesheet" href="../src/css/noi-tieng.css" />
-    <link rel="stylesheet" href="../src/css/gt.css" />
+
 
     <!-- Import Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -25,33 +38,17 @@
 <body>
     <div class="wrapper">
         <div class="container">
-            <header class="menu">
-                <span class="logo">Let's travel</span>
-                <div class="nav">
-                    <ul>
-                        <li><a href="#">Trang chủ</a></li>
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="#">Tour du lịch</a></li>
-                        <li><a href="#">Khách sạn</a></li>
-                        <li><a href="#">Tin tức</a></li>
-                        <li><a href="#">Liên hệ</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
-                </div>
-            </header>
-
-            <div class="banner-layers-container">
+            <?php include("./nav.php"); ?>
+            <div class="banner">
                 <h1>MONA TRAVEL</h1>
-                <h4>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                    nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                    volutpat.
-                </h4>
+            </div>
+            <div class="banner-layers-container">
+                <p><?php echo($row["detail"]); ?></p>
             </div>
             <?php include("./footer.php") ?>
         </div>
     </div>
-    <script>
+    <!-- <script>
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -65,7 +62,7 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-    </script>
+    </script> -->
 </body>
 
 </html>

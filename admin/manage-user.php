@@ -71,15 +71,22 @@
                                     <td><?php echo ($cnt);?></td>
                                     <td><?php echo ($row["FullName"]);?></td>
                                     <td><?php echo ($row["Username"]);?></td>
-                                    <td><?php echo ($row["MobileNumber"]);?></td>
+                                    <td><?php echo ($row["PhoneNumber"]);?></td>
                                     <td>
-                                        <?php echo ($row["EmailId"]);?>
+                                        <?php echo ($row["Email"]);?>
                                     </td>
-                                    <td>$<?php echo ($row["RegDate"]);?></td>
+                                    <td>
+                                        <?php
+                                        //  echo ($row["RegDate"]);
+                                         $date = date("j M Y", strtotime($row["RegDate"]));
+                                        echo ($date);
+                                         ?>
+
+                                    </td>
                                     <td><?php echo ($row["UpdationDate"]);?></td>
                                     <td>
-                                        <a href="delete.php?userId=<?php echo ($row["id"]);?>"><button type="button"
-                                                style="background-color: red; color: white;"
+                                        <a href="delete-user.php?userId=<?php echo ($row["id"]);?>"><button
+                                                type="button" style="background-color: red; color: white;"
                                                 class="btn btn-primary btn-block">
                                                 Delete
                                             </button>
