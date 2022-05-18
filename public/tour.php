@@ -32,45 +32,25 @@
                 <div class="content-left">
                     <h3>NHỮNG TOUR KHÁC</h3>
                     <div class="hr"></div>
+                    <?php
+                            $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                            $sql = "select * from tbl_tourpackages where 1 =1";
+                            $results = mysqli_query($connect, $sql);
+                            mysqli_fetch_all($results, MYSQLI_ASSOC);
+                            $count = 1;
+                            foreach ($results as $k) {
+                            if ($count <= 5){
+
+                            
+                        ?>
                     <div class="box-tour">
-                        <img src="../src/images/dulich.jpg" alt="">
+                        <img src='../pimages/<?php echo $k["PackageImage"]; ?>' alt="">
                         <div class="infor">
-                            <h4>Du lịch Phú Quốc - Nam Đảo 3 ngày 2 đêm dịp noel & tết dương lịch 2021</h4>
-                            <p>4,999,999 <span class="d">đ</span></p>
+                            <h4><?php echo($k["PackageName"]) ?></h4>
+                            <p><?php echo(number_format($k["PackagePrice"], 0, ',', '.') . " VNĐ"); ?></p>
                         </div>
                     </div>
-                    <div class="hrn"></div>
-                    <div class="box-tour">
-                        <img src="../src/images/dulich.jpg" alt="">
-                        <div class="infor">
-                            <h4>Du lịch Phú Quốc - Nam Đảo 3 ngày 2 đêm dịp noel & tết dương lịch 2021</h4>
-                            <p>4,999,999 <span class="d">đ</span></p>
-                        </div>
-                    </div>
-                    <div class="hrn"></div>
-                    <div class="box-tour">
-                        <img src="../src/images/dulich.jpg" alt="">
-                        <div class="infor">
-                            <h4>Du lịch Phú Quốc - Nam Đảo 3 ngày 2 đêm dịp noel & tết dương lịch 2021</h4>
-                            <p>4,999,999 <span class="d">đ</span></p>
-                        </div>
-                    </div>
-                    <div class="hrn"></div>
-                    <div class="box-tour">
-                        <img src="../src/images/dulich.jpg" alt="">
-                        <div class="infor">
-                            <h4>Du lịch Phú Quốc - Nam Đảo 3 ngày 2 đêm dịp noel & tết dương lịch 2021</h4>
-                            <p>4,999,999 <span class="d">đ</span></p>
-                        </div>
-                    </div>
-                    <div class="hrn"></div>
-                    <div class="box-tour">
-                        <img src="../src/images/dulich.jpg" alt="">
-                        <div class="infor">
-                            <h4>Du lịch Phú Quốc - Nam Đảo 3 ngày 2 đêm dịp noel & tết dương lịch 2021</h4>
-                            <p>4,999,999 <span class="d">đ</span></p>
-                        </div>
-                    </div>
+                    <?php $count++; }} mysqli_close($connect); ?>
                 </div>
                 <div class="content-right">
                     <div class="list">

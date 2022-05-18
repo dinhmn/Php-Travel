@@ -71,12 +71,12 @@
                                     <td><?php echo ($cnt);?></td>
                                     <td><?php echo ($row["type"]);?></td>
                                     <td>
-                                        <a href="update-category.php?pid=<?php echo ($row["PackageId"]);?>"><button
-                                                type="button" class="btn btn-primary btn-block">
-                                                View Details
+                                        <!-- <a href="update-page.php?pid=<?php echo ($row["id"]);?>"><button type="button"
+                                                class="btn btn-primary btn-block">
+                                                View
                                             </button>
-                                        </a>
-                                        <a href="delete.php?pid=<?php echo ($row["PackageId"]);?>"><button type="button"
+                                        </a> -->
+                                        <a href="delete-pages.php?pid=<?php echo ($row["id"]);?>"><button type="button"
                                                 style="background-color: red; color: white;"
                                                 class="btn btn-primary btn-block">
                                                 Delete

@@ -2,12 +2,11 @@
     include ("./config.php");
     
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-    if (isset($_GET['pid'])){
-        $pid = intval($_GET['pid']);
+    if (isset($_GET['bid'])){
+        $pid = intval($_GET['bid']);
     }
-    $sql = "Delete from tbl_tourpackages where PackageId=$pid";
+    $sql = "Delete from tbl_booking where BookingId=$bid";
     $query = mysqli_query($connect, $sql);
-    header("location: manage-category.php");
+    header("location: manage-booking.php");
     mysqli_close($connect);
 ?>
-

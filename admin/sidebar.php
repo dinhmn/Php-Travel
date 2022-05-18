@@ -12,9 +12,6 @@
                 Package Tour</a>
         </li>
         <li>
-            <a href="./manage-user.php"><i class="fa-solid fa-earth-asia"></i> Manage User</a>
-        </li>
-        <li>
             <a href="./manage-booking.php"><i class="fa-solid fa-phone"></i> Manage Booking</a>
         </li>
         <li>
@@ -27,9 +24,19 @@
             <a href="./manage-page.php"><i class="fa-solid fa-briefcase"></i> Manage Page</a>
         </li>
         <li>
+            <a href="./manage-news.php"><i class="fa-solid fa-briefcase"></i> Manage News</a>
+        </li>
+        <li>
             <a href="./manage-user.php">
                 <i class="fa-solid fa-user"></i>
                 Manage User</a>
+        </li>
+        <li>
+            <a href="../public/index.php">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Store
+                </form>
+            </a>
         </li>
         <li>
             <a href="./logout.php">
@@ -40,10 +47,17 @@
         </li>
     </ul>
 </div>
-<!-- <script>
+<script>
 var sub = document.querySelectorAll(".sidebar ul > li > a");
-document.querySelectorAll(".sidebar ul > li > a").click(function() {
-    $('.active').removeClass('active');
-    $(this).addClass("active");
-});
-</script> -->
+console.log(sub);
+for (let index = 0; index < sub.length; index++) {
+    sub[index].onclick = function() {
+        for (let i = 0; i < sub.length; i++) {
+            sub[i].classList.remove("active");
+
+        }
+        sub[index].classList.add("active");
+    }
+
+}
+</script>

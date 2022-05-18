@@ -136,7 +136,7 @@
                             <div class="addess">
                                 <label>Số lượng:</label>
                                 <input class="form-control" id="total" name="total" type="text"
-                                    value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : ""); ?>">
+                                    value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?>">
                             </div>
                             <div class="addess">
                                 <label>Số lượng phòng:</label>
@@ -163,7 +163,7 @@
                                     <textarea style="width: 100%; height: 120px;" class="form-control" cols="20"
                                         id="note" name="note"
                                         placeholder="Vui lòng nhập nội dung lời nhắn bằng tiếng Anh hoặc tiếng Việt"
-                                        rows="5"><?php echo($_SESSION["message"]); ?></textarea>
+                                        rows="5"><?php echo(isset($_SESSION["message"]) ? $_SESSION["message"] : ""); ?></textarea>
                                 </div>
                             </div>
                             <div class="order" style="width: 100%;">
@@ -203,7 +203,7 @@
                                         <th class="l1">Hành khách</th>
                                         <th class="l2 text-right">
                                             <i class="fal ti-user"
-                                                id="AmoutPerson"><?php echo($_SESSION["count"]); ?></i>
+                                                id="AmoutPerson"><?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?></i>
                                             <p class="add-more"></p>
                                         </th>
                                     </tr>
@@ -212,7 +212,7 @@
                                         <th class="l2 text-right">
                                             <i class="fal ti-user" id="AmoutRoom">
                                                 <?php
-                                                echo($_SESSION["room"]); 
+                                                echo(isset($_SESSION["room"]) ? $_SESSION["room"] : 0); 
                                                 ?>
                                             </i>
                                             <p class="add-more"></p>
@@ -222,8 +222,13 @@
                                         <td>Phụ thu phòng riêng</td>
                                         <td class="t-price text-right" id="txtPhuThu">
                                             <?php 
-                                            echo(number_format($_SESSION["room"] * 200000, 0, ',', '.') . " VNĐ");
-                                            $_SESSION["totalRoom"] = $_SESSION["room"] * 200000;
+                                                if (isset($_SESSION["room"])){
+                                                    echo(number_format($_SESSION["room"] * 200000, 0, ',', '.') . " VNĐ");
+                                                    $_SESSION["totalRoom"] = $_SESSION["room"] * 200000;
+                                                } else {
+                                                    echo (0);
+                                                }
+                                            
                                             ?></td>
                                     </tr>
                                     <!-- <tr class="pt">
@@ -237,9 +242,13 @@
                                         <td>Người lớn và trẻ em</td>
                                         <td class="t-price text-right" id="GiamGiaLastMinute">
                                             <?php
+                                                if (isset($_SESSION["count"])){
+                                                    echo(number_format($_SESSION["count"] * 500000, 0, ',', '.') . " VNĐ");
+                                                    $_SESSION["totalPerson"] = $_SESSION["count"] * 500000;
+                                                } else {
+                                                    echo (0);
+                                                }
                                                 
-                                                echo(number_format($_SESSION["count"] * 500000, 0, ',', '.') . " VNĐ");
-                                                $_SESSION["totalPerson"] = $_SESSION["count"] * 500000;
                                                 ?>
                                         </td>
                                     </tr>

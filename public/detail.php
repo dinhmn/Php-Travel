@@ -1,7 +1,10 @@
 <?php
     session_start();
-    error_reporting(0);
-    include("../admin/config.php");
+    $serverName = "localhost";
+    $username = "root";
+    $password = "";
+    $mydb = "travel";
+    
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
 
     if (isset($_GET['did'])){
@@ -19,7 +22,7 @@
         $_SESSION["guest"] = $guest;
         $_SESSION["tourId"] = $did;
         $_SESSION["tour"] = $row;
-        // header("location: http://localhost/Php-Travel/public/payment.php");
+        header("location: http://localhost/Php-Travel/public/payment.php");
       }
     }
     
@@ -53,7 +56,7 @@
                     <h3> <?php echo(number_format($row["PackagePrice"], 0, ',', '.') . " VNĐ"); ?></h3>
                     <p>Đặc điểm: <?php echo ($row["PackageFetures"]) ?>
                     </p>
-                    <form action="payment.php" method="post" name="session_guest">
+                    <form action="" method="post" name="session_guest">
                         <div class="form-group">
                             <label for="dateoftravel"
                                 style="width: 100px;display: inline-block;font-size: 18px;">From</label>

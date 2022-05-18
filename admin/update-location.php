@@ -1,78 +1,44 @@
 <?php
-    // session_start();
-    // error_reporting(0);
-    // include("./permission.php");
+    session_start();
+    error_reporting(0);
+    include("./permission.php");
+    
     $serverName = "localhost";
     $username = "root";
     $password = "";
     $mydb = "travel";
     
-    $title = $desc = $status = '';
-    $newImage = '';
-    $image = '';
-    $target_dir = "D:/xampp/htdocs/Php-Travel/pimages/";
+    $pid = intval($_GET['pid']);
 
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-    
+    $location = $city = $desc = $status = '';
     if (!$connect){
         die("Lỗi kết nối: " .mysqli_connect_error());
     }
+
     // Get value from form
-    if(isset($_POST['submit'])){
-        if (isset($_POST["title"])){
-            $title = $_POST["title"];
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if (isset($_POST["location"])){
+            $location = $_POST["location"];
+        }
+        if (isset($_POST["city"])){
+            $city = $_POST["city"];
         }
         if (isset($_POST["description"])){
             $desc = $_POST["description"];
-        }
-        
-        if (isset($_FILES["imgNews"])){
-            $errors = [];
-            $image = $_FILES["imgNews"];
-            $allow_size = 30;
-            $imageFile = $image["name"]; 
-            $imageFile = explode(".", $imageFile);
-            $ext = end($imageFile);
-            $newImage = md5(uniqid()).'.'.$ext;
-            $allow_ext = ['png', 'jpg', 'gif', 'jpeg'];
-            
-            if (in_array($ext, $allow_ext)){
-                $size = $image["size"]/1024/1024;
-                if($size <= $allow_size){
-                    $upload = move_uploaded_file($image["tmp_name"], $target_dir.$newImage);
-                    if (!$upload){
-                        $errors[] = "upload_error";
-                    }
-                } else {
-                    $errors[] = "size_error";
-                }
-            }else {
-                $errors[] = "ext_error";
-            }
         }
         if (isset($_POST["status"])){
             $status = $_POST["status"];
         }
     }
-    if (!empty($errors)){
-        $mess = '';
-        if (in_array('ext_error', $errors)){
-            $mess = "Dinh dang file khong hop le";
-        } else if(in_array('size_error', $errors)){
-            $mess = "Dung luong khong vuot qua".$allow_size.'MB';
-        } else {
-            $mess = "Ban khong the upload vao thoi diem nay";
-        }
-    }else {
-        // move_uploaded_file($_FILES["packageImage"]["tmp_name"], "D:/xampp/htdocs/Php-Travel/pimages/".$newImage["name"]);
-        $sql = "INSERT INTO tbl_news(title, description, image, status) VALUES('$title', '$desc','$newImage', '$status')";
-        if (mysqli_query($connect, $sql)) {
-            $msg="Package Created Successfully";
-        } else {
-            $errors="Something went wrong. Please try again";
-        }
+    $sql = "UPDATE tbl_location set name = '$location', city = '$city', description = '$desc', status = '$status' where 1 and id=$pid";
+    if (mysqli_query($connect, $sql)) {
+        $msg="Package Created Successfully";
+        // header("location: manage-location.php");
+    } else {
+        $errors="Something went wrong. Please try again";
     }
-
+    unset($_POST);
 
     mysqli_close($connect);
 ?>
@@ -114,22 +80,35 @@
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
-                    <span><i class="fa-solid fa-angle-right"></i>News</span>
+                    <span><i class="fa-solid fa-angle-right"></i>Location</span>
                 </div>
-                <form action="" method="post" name="package" class="form-class" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" placeholder="Enter your title..." id="title" name="title" />
-                    </div>
+                <div class="href">
 
+                </div>
+                <form action="" method="post" name="package" class="form-class">
+                    <?php
+                    $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                    $pid = intval($_GET["pid"]);
+                    $sql = "select * from tbl_location where id=$pid";
+                    $result = mysqli_query($connect, $sql); 
+                    $row = mysqli_fetch_array($result);
+                    // $result = $connect -> query($sql);
+                    
+                    ?>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" placeholder="Enter your location..." id="location" name="location"
+                            value="<?php echo($row["name"]) ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" placeholder="Enter your city..." id="city" name="city"
+                            value="<?php echo($row["city"]) ?>" />
+                    </div>
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" cols="50" rows="5" placeholder="description"
-                            id="summernote"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="imgNews">Image</label>
-                        <input type="file" placeholder="Package Image" id="imgNews" name="imgNews" />
+                            value="<?php echo($row["description"]) ?>" id="summernote"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -138,10 +117,15 @@
                             <option value="0">Off</option>
                         </select>
                     </div>
-                    <input type="hidden" value="<?php echo ($rand); ?>" name="randcheck" />
+
                     <div class="form-button">
-                        <button type="submit" name="submit">Create</button>
-                        <button type="reset">Cancel</button>
+                        <a href="manage-location.php"
+                            style="width: 100px; background-color: blueviolet !important;"><button type="submit"
+                                style="width: 100%; background-color: transparent;">Update</button></a>
+                        <a href="manage-location.php"
+                            style="width: 100px; background-color: rgb(180, 180, 180) !important;"><button type="button"
+                                style="width: 100%; background-color: transparent;">Cancel</button></a>
+                        <?php mysqli_close($connect); ?>
                     </div>
                 </form>
 
@@ -151,6 +135,11 @@
             <div>Group 5</div>
         </div>
     </div>
+    <!-- <script type="text/javascript">
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+    </script> -->
     <script>
     $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',

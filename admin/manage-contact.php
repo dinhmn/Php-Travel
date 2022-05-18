@@ -74,13 +74,8 @@
                                     <td><?php echo ($row["Description"]);?></td>
                                     <td><?php echo ($row["PostingDate"]);?></td>
                                     <td>
-                                        <!-- <a href="manage-contact.php?contactId=<?php echo ($row["id"]);?>"><button
-                                                type="button" class="btn btn-primary btn-block">
-                                                Read
-                                            </button>
-                                        </a> -->
-                                        <a href="delete.php?contactId=<?php echo ($row["id"]);?>"><button type="button"
-                                                style="background-color: red; color: white;"
+                                        <a href="delete-contact.php?contactId=<?php echo ($row["id"]);?>"><button
+                                                type="button" style="background-color: red; color: white;"
                                                 class="btn btn-primary btn-block">
                                                 Delete
                                             </button>

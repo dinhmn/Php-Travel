@@ -70,7 +70,9 @@
                         <div class="nd">
                             <h3 class="h3"><?php echo($row["PackageName"]) ?></h3>
                             <p><?php echo(number_format($row["PackagePrice"], 0, ',', '.') . " VNĐ"); ?></p>
-                            <a href="#"><button>Xem ngay</button></a>
+                            <a
+                                href="http://localhost/Php-Travel/public/detail.php?did=<?php echo($row["PackageId"]); ?>"><button>Xem
+                                    ngay</button></a>
                         </div>
                     </div>
                     <?php
@@ -82,20 +84,6 @@
             <section id="nghi-duong">
                 <div class="content">
                     <h4>Giảm giá 30% </h4>
-                    <!-- <div class="stars">
-                        <form action="">
-                            <input class="star star-1" id="star-1" type="radio" name="star" />
-                            <label class="star star-1" for="star-1"></label>
-                            <input class="star star-2" id="star-2" type="radio" name="star" />
-                            <label class="star star-2" for="star-2"></label>
-                            <input class="star star-3" id="star-3" type="radio" name="star" />
-                            <label class="star star-3" for="star-3"></label>
-                            <input class="star star-4" id="star-4" type="radio" name="star" />
-                            <label class="star star-4" for="star-4"></label>
-                            <input class="star star-5" id="star-5" type="radio" name="star" />
-                            <label class="star star-5" for="star-5"></label>
-                        </form>
-                    </div> -->
                     <h2>NGHỈ DƯỠNG TẠI PHÚ QUỐC</h2>
                     <p>Từ 5/12 đến 30/12</p>
                     <button>XEM NGAY</button>
@@ -121,7 +109,9 @@
                             <img src="<?php echo ('../pimages/'.$row["PackageImage"]);  ?>" alt="">
                         </div>
                         <div class="nd">
-                            <h3> <a href="#"><?php echo($row["PackageName"]) ?></a></h3>
+                            <h3> <a
+                                    href="http://localhost/Php-Travel/public/detail.php?did=<?php echo($row["PackageId"]); ?>"><?php echo($row["PackageName"]) ?></a>
+                            </h3>
                             <!-- <p>5 ngày 4 đêm</p> -->
                         </div>
                     </div>
@@ -138,45 +128,25 @@
                     <!-- <p>Hảo đẹp trai siêu cấp vũ trụ vip pro best Aphelios và Jhin</p> -->
                 </div>
                 <div class="location">
+                    <?php
+                    $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                    $sql = "select * from tbl_location where 1 =1";
+                    $results = mysqli_query($connect, $sql);
+                    mysqli_fetch_all($results, MYSQLI_ASSOC);
+                    $count = 1;
+                    foreach ($results as $row) {
+                        if($count <= 3){
+                    ?>
                     <div class="location-element">
                         <div class="infor">
+                            <h2><?php echo($row["name"]); ?></h2>
+                            <h4><?php echo($row["city"]); ?></h4>
 
-                            <h2>BÀ NÀ HILLS</h2>
-                            <h4>Đà Nẵng</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Similique nostrum eveniet fugit ad, omnis quasi repudiandae
-                                blanditiis itaque veritatis repellat in ea tempore doloremque.
-                                Corrupti sequi eveniet blanditiis? Quae, nulla.
-                            </p>
                             <button>TÌM HIỂU</button>
                         </div>
                     </div>
-                    <div class="location-element">
-                        <div class="infor">
 
-                            <h2>BÀ NÀ HILLS</h2>
-                            <h4>Đà Nẵng</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Similique nostrum eveniet fugit ad, omnis quasi repudiandae
-                                blanditiis itaque veritatis repellat in ea tempore doloremque.
-                                Corrupti sequi eveniet blanditiis? Quae, nulla.
-                            </p>
-                            <button>TÌM HIỂU</button>
-                        </div>
-                    </div>
-                    <div class="location-element">
-                        <div class="infor">
-
-                            <h2>BÀ NÀ HILLS</h2>
-                            <h4>Đà Nẵng</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Similique nostrum eveniet fugit ad, omnis quasi repudiandae
-                                blanditiis itaque veritatis repellat in ea tempore doloremque.
-                                Corrupti sequi eveniet blanditiis? Quae, nulla.
-                            </p>
-                            <button>TÌM HIỂU</button>
-                        </div>
-                    </div>
+                    <?php $count++;}} mysqli_close($connect); ?>
                 </div>
                 <div class="head ">
                     <h2>CÁC THÀNH PHỐ DU LỊCH</h2>
@@ -185,36 +155,43 @@
                 <div class="body-du-lich ">
                     <div class="du-lich-left">
                         <div class="list-du-lich">
+                            <?php
+                        $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                        $sql = "select * from tbl_location where 1 =1";
+                        $results = mysqli_query($connect, $sql);
+                        mysqli_fetch_all($results, MYSQLI_ASSOC);
+                        $count = 1;
+                        foreach ($results as $row) {
+                            if($count <= 2){
+                        ?>
                             <div class="du-lich-elemet">
                                 <div class="infor-list">
-                                    <h3>Sapa</h3>
+                                    <h3><?php echo($row["city"]); ?></h3>
                                     <p>Giá: <span>300$</span> / người</p>
                                     <button>XEM NGAY</button>
                                 </div>
                             </div>
-                            <div class="du-lich-elemet">
-                                <div class="infor-list">
-                                    <h3>Sapa</h3>
-                                    <p>Giá: <span>300$</span> / người</p>
-                                    <button>XEM NGAY</button>
-                                </div>
-                            </div>
+
+                            <?php $count++;}} mysqli_close($connect); ?>
                         </div>
                         <div class="list-du-lich">
+                            <?php
+                            $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                            $sql = "select * from tbl_location where 1 =1 order by id desc;";
+                            $results = mysqli_query($connect, $sql);
+                            mysqli_fetch_all($results, MYSQLI_ASSOC);
+                            $count = 1;
+                            foreach ($results as $row) {
+                                if($count <= 2){
+                            ?>
                             <div class="du-lich-elemet">
                                 <div class="infor-list">
-                                    <h3>Sapa</h3>
+                                    <h3><?php echo($row["city"]); ?></h3>
                                     <p>Giá: <span>300$</span> / người</p>
                                     <button>XEM NGAY</button>
                                 </div>
                             </div>
-                            <div class="du-lich-elemet">
-                                <div class="infor-list">
-                                    <h3>Sapa</h3>
-                                    <p>Giá: <span>300$</span> / người</p>
-                                    <button>XEM NGAY</button>
-                                </div>
-                            </div>
+                            <?php $count++;}} mysqli_close($connect); ?>
                         </div>
                     </div>
                     <div class="du-lich-right">

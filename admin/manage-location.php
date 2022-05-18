@@ -71,12 +71,12 @@
                                     <td><?php echo ($row["name"]);?></td>
                                     <td><?php echo ($row["city"]);?></td>
                                     <td>
-                                        <a href="update-category.php?pid=<?php echo ($row["id"]);?>"><button
+                                        <a href="update-location.php?pid=<?php echo ($row["id"]);?>"><button
                                                 type="button" class="btn btn-primary btn-block">
                                                 Views
                                             </button>
                                         </a>
-                                        <a href="delete.php?pid=<?php echo ($row["id"]);?>"><button type="button"
+                                        <a href="delete-location.php?pid=<?php echo ($row["id"]);?>"><button type="button"
                                                 style="background-color: red; color: white;"
                                                 class="btn btn-primary btn-block">
                                                 Delete

@@ -35,13 +35,13 @@
             <div class="main">
                 <div class="href">
                     <a href="#">Home</a>
-                    <span><i class="fa-solid fa-angle-right"></i> Manage Pages</span>
+                    <span><i class="fa-solid fa-angle-right"></i> Manage News</span>
                 </div>
                 <div class="href">
                     <h2>Manage Pages</h2>
                 </div>
                 <button style="" class="href">
-                    <a href="../admin/create-page.php"
+                    <a href="../admin/create-news.php"
                         style="padding: 20px 50px;background-color: greenyellow; color: purple;">Create Page</a>
                 </button>
                 <div class="table">
@@ -69,14 +69,13 @@
                                 <tr>
                                     <td><?php echo ($cnt);?></td>
                                     <td><?php echo ($row["title"]);?></td>
-                                    <td><?php echo ($row["image"]);?></td>
                                     <td>
-                                        <a href="update-category.php?pid=<?php echo ($row["PackageId"]);?>"><button
-                                                type="button" class="btn btn-primary btn-block">
-                                                View Details
+                                        <a href="update-news.php?pid=<?php echo ($row["id"]);?>"><button type="button"
+                                                class="btn btn-primary btn-block">
+                                                View
                                             </button>
                                         </a>
-                                        <a href="delete.php?pid=<?php echo ($row["PackageId"]);?>"><button type="button"
+                                        <a href="delete-news.php?pid=<?php echo ($row["id"]); ?>"><button type="button"
                                                 style="background-color: red; color: white;"
                                                 class="btn btn-primary btn-block">
                                                 Delete

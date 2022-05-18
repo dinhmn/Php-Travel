@@ -48,25 +48,31 @@
                 <h3>Tin tức nổi bật</h3>
             </section>
             <section class="main">
+                <?php
+                $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                $sql = "select * from tbl_news where 1 =1";
+                $results = mysqli_query($connect, $sql);
+                mysqli_fetch_all($results, MYSQLI_ASSOC);
+                foreach ($results as $row) {
+                
+                ?>
                 <div class="news">
                     <div class="news-img">
-                        <img src="../src/images/dulich.jpg" alt="">
+                        <img src="<?php echo ('../pimages/'.$row["image"]);  ?>" alt="">
                     </div>
                     <div class="news-title">
-                        <a href="#" class="news-header">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad
+                        <a href="../public/newsId.php?pic=<?php echo ($row["id"]); ?>" class="news-header">
+                            <?php echo ($row["title"]);  ?>
                         </a>
                         <p class="news-content">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus fugit libero laboriosam
-                            ea eveniet. Sunt, placeat, tempore praesentium, nulla voluptatibus deserunt repellat unde
-                            enim sint repudiandae ut consequatur vel nihil.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit rerum vel
+                            praesentium, repudiandae alias itaque ad eius atque ipsum est necessitatibus illum aut
+                            provident nobis. Accusamus iure maxime sed dignissimos.
                         </p>
                     </div>
                 </div>
+                <?php } mysqli_close($connect); ?>
             </section>
-            <div class="detail">
-                <?php echo ($row["PackageDetails"]); ?>
-            </div>
             <?php include("./footer.php") ?>
         </div>
     </div>
