@@ -37,13 +37,13 @@
                             alt="" />
                     </div>
                     <div class="slider-title">
-                        <h1>Công ty mona travel</h1>
+                        <h1>Công ty HaUI Travel AĐH</h1>
                         <h3>Chuyên tổ chức các tour du lịch trong nước</h3>
                         <small>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            Similique nostrum eveniet fugit ad, omnis quasi repudiandae
-                            blanditiis itaque veritatis repellat in ea tempore doloremque.
-                            Corrupti sequi eveniet blanditiis? Quae, nulla.
+                            Ngành du lịch là một ngành phát triển rất tốt dựa vào
+                            thương mại điện tử. Nhóm 5 đã xây dựng website mô phỏng quá trình 
+                            bán tour du lịch cho người dùng. Giao diện sử dụng thân thiện với 
+                            người dùng. Dễ dàng tương tác với người quản lí.
                         </small>
                         <button type="button">Xem ngay</button>
                     </div>
@@ -276,21 +276,7 @@
             <?php include("./footer.php") ?>
         </div>
     </div>
-    <script>
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    </script>
+
 
 </body>
 
