@@ -1,5 +1,5 @@
 <header class="menu">
-    <span class="logo">Let's travel</span>
+    <span class="logo">TOURPLUS</span>
     <div class="nav">
         <ul>
             <li><a href="./index.php">Trang chủ</a></li>
