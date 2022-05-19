@@ -4,7 +4,7 @@
     include ("./admin/config.php");
     $message = "";
     if (count($_POST) > 0) {
-        $con = mysqli_connect($serverName, $username, $password, $mydb);
+        $con = mysqli_connect($serverName, $username, $password, $mydb );
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST["username"])){

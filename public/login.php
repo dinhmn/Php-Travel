@@ -39,6 +39,7 @@
     <title>Document</title>
     <!-- Import CSS -->
     <link rel="stylesheet" href="../src/css/login.css" />
+    <link rel="stylesheet" href="../src/css/index.css" />
 </head>
 
 <body>
