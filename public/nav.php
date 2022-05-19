@@ -1,5 +1,8 @@
 <header class="menu">
-    <span class="logo">TOURPLUS</span>
+    <span class="logo" style="display: flex;">
+        <img style="width: 75px;" src="../src/images/logo.png" alt="">
+        <h3 style="line-height: 70px;">TourPlus</h3>
+    </span>
     <div class="nav">
         <ul>
             <li><a href="./index.php">Trang chủ</a></li>

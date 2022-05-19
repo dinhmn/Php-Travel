@@ -40,7 +40,7 @@
         <div class="container">
             <?php include("./nav.php"); ?>
             <div class="banner">
-                <h1>MONA TRAVEL</h1>
+                <h1>TOURPLUS</h1>
             </div>
             <div class="banner-layers-container">
                 <p><?php echo($row["detail"]); ?></p>
