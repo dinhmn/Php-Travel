@@ -35,14 +35,12 @@
             <a href="../public/index.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 Store
-                </form>
             </a>
         </li>
         <li>
             <a href="./logout.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 Logout
-                </form>
             </a>
         </li>
     </ul>

@@ -112,21 +112,50 @@
                     <h3>Thông tin liên lạc</h3>
                     <div class="customer-contact mb-3">
                         <div class="customer-contact-inner">
+                            <?php
+                                // $id = $_SESSION["user"];
+
+                                $user = $_SESSION["user"];
+                                $pass = $_SESSION["pass"];
+                                $sqli = "Select * from tbl_users where Username = '$user' and Password='$pass'";
+                            // $sql = "Select * from tbl_users where Username = '$user' and Password='$passCrypt'";
+
+
+                                $query = mysqli_query($connect, $sqli);
+                                $re = mysqli_fetch_array($query);
+                                
+                            ?>
                             <div class="name">
                                 <label>Họ và Tên <b>*</b></label>
-                                <input class="form-control" id="contact_name" name="Fullname" type="text"
-                                    value="<?php echo(isset($_SESSION["fullname"]) ? $_SESSION["fullname"] : ""); ?>">
+                                <input class="form-control" id="contact_name" name="Fullname" type="text" value="
+                                <?php 
+                                    if ($_SESSION["user"]) {
+                                        echo ($re['FullName']);
+                                    } else {
+                                        echo(isset($_SESSION["fullname"]) ? $_SESSION["fullname"] : ""); 
+                                    }
+                                    ?>">
                             </div>
                             <div class="mail">
                                 <label>Email <b>*</b></label>
-                                <input class="form-control" id="email" name="Email" type="text"
-                                    value="<?php echo(isset($_SESSION["email"]) ? $_SESSION["email"] : ""); ?>">
+                                <input class="form-control" id="email" name="Email" type="text" value="<?php
+                                    if ($_SESSION["user"]) {
+                                        echo($re['Email']);
+                                    } else {
+                                        echo(isset($_SESSION["email"]) ? $_SESSION["email"] : ""); 
+                                    }
+                                    ?>">
                             </div>
                             <div class="phone">
                                 <label>Số điện thoại <b>*</b></label>
                                 <input class="form-control" id="mobilephone" name="Telephone"
-                                    onkeypress="return funCheckInt(event)" type="text"
-                                    value="<?php echo(isset($_SESSION["phone"]) ? $_SESSION["phone"] : ""); ?>">
+                                    onkeypress="return funCheckInt(event)" type="text" value="<?php
+                                    if ($_SESSION["user"]) {
+                                        echo($re['PhoneNumber']);
+                                    } else {
+                                         echo(isset($_SESSION["phone"]) ? $_SESSION["phone"] : ""); 
+                                    }
+                                    ?>">
                             </div>
                             <div class="addess">
                                 <label>Địa chỉ</label>
@@ -270,6 +299,7 @@
                                         <td>Tổng cộng</td>
                                         <td class="t-price text-right" id="TotalPrice">
                                             <?php
+                                            
                                             $total = $_SESSION["totalPerson"] + $_SESSION["totalRoom"] + $tour["PackagePrice"];
                                         echo(number_format($total, 0, ',', '.') . " VNĐ");
                                         

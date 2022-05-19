@@ -2,11 +2,22 @@
   session_start();
   error_reporting();
   include("./config.php");
-  
-  
-
-  mysqli_close($connect);
-
+  $confirm = '';
+  $bid = intval($_GET["bid"]);
+  $connect = mysqli_connect($serverName, $username, $password, $mydb);
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST["confirm"])){
+            $confirm = $_POST["confirm"];
+        }
+    }
+    $sql = "UPDATE tbl_booking set CancelledBy = '$confirm' where BookingId = $bid";
+    // $result = mysqli_query($connect, $sql);
+    if (mysqli_query($connect, $sql)){
+        $msg="Update Successfully";
+    }else {
+        $errors="Something went wrong. Please try again";
+    }
+    mysqli_close($connect);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,70 +57,66 @@
                 </div>
                 <?php
                     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                    $pid = intval($_GET["pid"]);
-                    $sql = "select * from tbl_tourpackages where PackageId=$pid";
+                    $bid = intval($_GET["bid"]);
+                    $sql = "select * from tbl_booking where BookingId=$bid";
                     $result = mysqli_query($connect, $sql); 
                     $row = mysqli_fetch_array($result);
-                    // $result = $connect -> query($sql);
-                    mysqli_close($connect);
+                    $id = $row["PackageId"];
+                   
                 ?>
                 <form action="" method="post" name="package" class="form-class" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="packageName">Package Name</label>
-                        <input type="text" placeholder="Enter your package name..." id="packageName" name="packageName"
-                            value="<?php echo($row["PackageName"]) ?>" />
+                    <div class="form-group" style="display: flex;">
+                        <b>Name</b>
+                        <span><?php echo($row["FullName"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Email</b>
+                        <span><?php echo($row["UserEmail"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Address</b>
+                        <span><?php echo($row["Address"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Phone</b>
+                        <span><?php echo($row["Phone"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Person/Room</b>
+                        <span><?php echo($row["Person"]."/".$row["Room"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Name</b>
+                        <span><?php echo($row["message"]) ?></span>
+                    </div>
+                    <?php
+                        $sql1 = "select * from tbl_tourpackages where PackageId=$id";
+                        $result1 = mysqli_query($connect, $sql1); 
+                        $row1 = mysqli_fetch_array($result1);
+                    ?>
+                    <div class="form-group" style="display: flex;">
+                        <b>Tour</b>
+                        <span><?php echo($row1["PackageName"]); ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <div>
+                            <b for="status">Price: </b>
+                            <span><?php echo($row1["PackagePrice"]); ?></span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="packageType">Package Type</label>
-                        <input type="text" placeholder="Package Type eg- Family Package / Couple Package."
-                            id="packageType" name="packageType" value="<?php echo($row["PackageType"]) ?>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="packageLocation">Package Location</label>
-                        <input type="text" placeholder="Package Location" id="packageLocation" name="packageLocation"
-                            value="<?php echo($row["PackageLocation"]) ?>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="packagePrice">Package Price in USD</label>
-                        <input type="text" placeholder="Package price in USD" id="packagePrice" name="packagePrice"
-                            value="<?php echo($row["PackagePrice"]) ?>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="packageFeatures">Package Features</label>
-                        <input type="text" placeholder="Package Features" id="packageFeatures" name="packageFeatures"
-                            value="<?php echo($row["PackageFetures"]) ?>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="packageDetail">Package Details</label>
-                        <textarea name="packageDetail" id="summernote" cols="50" rows="5"
-                            placeholder="Package Details"><?php echo($row["PackageDetails"]) ?></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="packageImage">Package Image</label>
-                        <input type="file" placeholder="Package Image" id="packageImage" name="packageImage"
-                            value="<?php echo($row["PackageImage"]) ?>" />
-                        <?php
-                            // if ($row["PackageImage"]){
-                            //     echo "<input $row["PackageImage"]/>"
-                            // }
-                        ?>
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status">
-
-                            <option value="1">On</option>
-                            <option value="0">Off</option>
+                        <label for="confirm">Confirm</label>
+                        <select name="confirm" id="confirm">
+                            <option value="Confirm">Confirm</option>
+                            <option value="Cancel">Cancel</option>
                         </select>
                     </div>
                     <div class="form-button">
-                        <a href="manage-category.php"
-                            style="width: 100px; background-color: blueviolet !important;"><button type="submit"
-                                style="width: 100%; background-color: transparent;">Update</button></a>
-                        <a href="manage-category.php"
-                            style="width: 100px; background-color: rgb(180, 180, 180) !important;"><button type="button"
-                                style="width: 100%; background-color: transparent;">Cancel</button></a>
+                        <a href="manage-booking.php"
+                            style="width: 100px; background-color: rgb(180, 180, 180) !important;"><button type="submit"
+                                style="width: 100%; background-color: transparent;">Submit</button></a>
                     </div>
+                    <?php  mysqli_close($connect); ?>
                 </form>
             </div>
         </div>

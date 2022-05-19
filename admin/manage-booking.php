@@ -98,7 +98,7 @@
                                     <td><?php echo ($row["CancelledBy"]);?></td>
 
                                     <td>
-                                        <a href="update-category.php?bid=<?php echo ($row["BookingId"]);?>"><button
+                                        <a href="booking.php?bid=<?php echo ($row["BookingId"]);?>"><button
                                                 type="button" class="btn btn-primary btn-block">
                                                 View
                                             </button>

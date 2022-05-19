@@ -5,29 +5,8 @@
     $password = "";
     $mydb = "travel";
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-    if(isset($_POST["submit"])){
-        $user = $_POST['username'];
-        $pass = $_POST['password'];
-        $passCrypt = md5($pass);
-        $sql="Select * from admin where UserName = '$user' and Password = '$passCrypt'";
-        $result = mysqli_query($connect, $sql);
-        $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) > 0){
-            if ($passCrypt == $row["Password"]){
-                $_SESSION["login"] = true;
-                $_SESSION["id"] = $row["id"];
-                $_SESSION["user"] = $row["UserName"];
-                header("location: http://localhost/Php-Travel/admin/dash.php");
-            } else {
-                echo 
-                "<script> alert('Wrong Password'); </script>";
-            }
-        } else {
-            echo 
-            header("location: http://localhost/Php-Travel/public/login.php");
-        } 
-    }
-    mysqli_close($connect);
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,10 +28,40 @@
                     <img src="../src/images/95980815-1024x559.jpg" alt="" />
                 </div>
                 <div class="login-account">
-                    <form action="" method="post" id="loginlogout" class="form-class" name="login" autocomplete="off">
+                    <?php 
+                        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                            $user = $_POST['username'];
+                            $pass = $_POST['password'];
+                            $passCrypt = md5($pass);
+                            echo  ($user);
+                            echo ($pass);
+                            
+                            $sql="Select * from admin where UserName = '$user' and Password = '$passCrypt'";
+                            // $sql = "Select * from tbl_users where Username = '$user' and Password='$passCrypt'";
+                            $result = mysqli_query($connect, $sql);
+                            $row = mysqli_fetch_assoc($result);
+
+                            if (mysqli_num_rows($result) > 0){
+                                if ($passCrypt == $row["Password"]){
+                                    $_SESSION["login"] = true;
+                                    $_SESSION["id"] = $row["id"];
+                                    $_SESSION["user"] = $row["UserName"];
+                                    $_SESSION["pass"] = $row["Password"];
+                                    header("location: http://localhost/Php-Travel/admin/dash.php");
+                                } else {
+                                    echo 
+                                    "<script> alert('Wrong Password'); </script>";
+                                }
+                            } else {
+                                header("location: http://localhost/Php-Travel/public/login.php");
+                            } 
+                        }
+                        ?>
+                    <form action="" method="post" id="loginlogout" class="form-class" name="login">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" id="username" name="username" />
+
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
@@ -68,6 +77,7 @@
                             <small><a href="../public/index.php">Go home</a></small>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -75,3 +85,4 @@
 </body>
 
 </html>
+<?php mysqli_close($connect); ?>

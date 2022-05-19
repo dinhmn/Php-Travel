@@ -9,9 +9,10 @@
             // Kiểm tra quyền của người đó có phải là admin hay không
             if ($user != 'admin') {
                 // Nếu không phải admin thì xuất thông báo
-                echo "Bạn không đủ quyền truy cập vào trang này<br>";
-                echo "<a href='http://localhost/Php-Travel/public/login.php'> Click để về lại trang chủ</a>";
-                exit();
+                // echo "Bạn không đủ quyền truy cập vào trang này<br>";
+                // echo "<a href='http://localhost/Php-Travel/public/login.php'> Click để về lại trang chủ</a>";
+                // exit();
+                header("location: http://localhost/Php-Travel/public/index.php");
             }
         }
     }
