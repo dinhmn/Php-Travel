@@ -6,7 +6,9 @@
     $mydb = "travel";
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
     $did = $_SESSION["tourId"];
-    
+    $_SESSION["totalPerson"] = 0;
+    $_SESSION["totalRoom"] = 0;
+    $_SESSION["dateOfBirth"] = '';
     $date = $_SESSION["date"];
     $guest = $_SESSION["guest"];
     $tour = $_SESSION["tour"];

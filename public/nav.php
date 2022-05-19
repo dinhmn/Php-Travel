@@ -1,5 +1,6 @@
 <header class="menu">
-    <span class="logo">TOURPLUS</span>
+    <span class="logo" style="display: flex; gap: 20px; justify-content: center; align-items: center;">TOURPLUS <img
+            src="../src/images/logo.png" alt="" style="width: 50px; height: 50px; object-fit: cover;"> </span>
     <div class="nav">
         <ul>
             <li><a href="./index.php">Trang chủ</a></li>
@@ -9,16 +10,14 @@
             <li><a href="./contact.php">Liên hệ</a></li>
 
             <?php
-                if ($_SESSION["user"]){
-                    echo "
+                if ($_SESSION["user"] != null){
+                    echo ("
                         <li>
-                            <span> 
-                    ";
+                            <span> ");
                     echo ($_SESSION["user"]);
                     echo ("</span>
                         <a href='http://localhost/Php-Travel/admin/logout.php'>Logout</a>
-                    </li>
-                ");
+                    </li>");
                 } else {
                     echo ("
                     <li>

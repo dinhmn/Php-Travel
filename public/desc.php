@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    error_reporting(0);
     $serverName = "localhost";
     $username = "root";
     $password = "";
@@ -11,6 +11,7 @@
     $sql = "select * from tbl_pages where type = 'introduce' and status = '1'";
     $result = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -66,3 +67,4 @@
 </body>
 
 </html>
+<?php mysqli_close($connect); ?>

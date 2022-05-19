@@ -1,7 +1,7 @@
 <?php
     session_start();
-    // include("./permission.php");
     
+    // include("./permission.php");
 
     $serverName = "localhost";
     $username = "root";
@@ -13,8 +13,6 @@
     if (!$connect){
         die("Lỗi kết nối: " .mysqli_connect_error());
     }
-
-    
 
     // Get value from form
     if($_SERVER["REQUEST_METHOD"] == "POST"){
