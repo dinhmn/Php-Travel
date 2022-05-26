@@ -38,11 +38,11 @@
                     <span><i class="fa-solid fa-angle-right"></i> Manage News</span>
                 </div>
                 <div class="href">
-                    <h2>Manage Pages</h2>
+                    <h2>Manage News</h2>
                 </div>
                 <button style="" class="href">
                     <a href="../admin/create-news.php"
-                        style="padding: 20px 50px;background-color: greenyellow; color: purple;">Create Page</a>
+                        style="padding: 20px 50px;background-color: greenyellow; color: purple;">Create News</a>
                 </button>
                 <div class="table">
                     <div class="table-info">

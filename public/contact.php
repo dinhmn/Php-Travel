@@ -48,8 +48,8 @@
         // Lưu dữ liệu
         if (!$error){
 
-            echo 'Dữ liệu có thể lưu trữ';
-            $sql = "insert into tbl_contact(FullName, EmailId, MobileNumber, Subject,Description) values('$name', '$email', '$phone', '', '$message')";
+            // echo 'Dữ liệu có thể lưu trữ';
+            $sql = "insert into tbl_contact(FullName, EmailId, MobileNumber, Description) values('$name', '$email', '$phone', '$message')";
             if(mysqli_query($connect, $sql)) {
                 $msg = "Contact is successfully";
             }
@@ -116,7 +116,7 @@
             <?php include("./footer.php") ?>
         </div>
     </div>
-    
+
 </body>
 
 </html>
