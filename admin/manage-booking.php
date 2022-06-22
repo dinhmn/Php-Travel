@@ -92,21 +92,13 @@
                                     <td>
                                         <?php echo ($row["FromDate"]);?>
                                     </td>
-
                                     <td><?php echo ($row["Address"]);?></td>
                                     <td><?php echo ($row["Phone"]);?></td>
                                     <td><?php echo ($row["CancelledBy"]);?></td>
-
                                     <td>
                                         <a href="booking.php?bid=<?php echo ($row["BookingId"]);?>"><button
                                                 type="button" class="btn btn-primary btn-block">
                                                 View
-                                            </button>
-                                        </a>
-                                        <a href="delete-booking.php?bid=<?php echo ($row["BookingId"]);?>"><button
-                                                type="button" style="background-color: red; color: white;"
-                                                class="btn btn-primary btn-block">
-                                                Delete
                                             </button>
                                         </a>
                                     </td>

@@ -111,7 +111,7 @@
                 </div>
             </section>
             <section class="total">
-                <form class="col-md-8 col-12 left" method="post" id="form">
+                <form class="col-md-8 col-12 left" style="width: 100%;" method="post" id="form">
                     <h2>Tổng quan về chuyến đi</h2>
                     <h3>Thông tin liên lạc</h3>
                     <div class="customer-contact mb-3">
@@ -131,8 +131,7 @@
                             ?>
                             <div class="name">
                                 <label>Họ và Tên <b>*</b></label>
-                                <input class="form-control" id="contact_name" name="Fullname" type="text" value="
-                                <?php 
+                                <input class="form-control" id="contact_name" require name="Fullname" type="text" value="<?php 
                                     if ($_SESSION["user"]) {
                                         echo ($re['FullName']);
                                     } else {
@@ -142,7 +141,7 @@
                             </div>
                             <div class="mail">
                                 <label>Email <b>*</b></label>
-                                <input class="form-control" id="email" name="Email" type="text" value="<?php
+                                <input class="form-control" id="email" require name="Email" type="text" value="<?php
                                     if ($_SESSION["user"]) {
                                         echo($re['Email']);
                                     } else {
@@ -152,7 +151,7 @@
                             </div>
                             <div class="phone">
                                 <label>Số điện thoại <b>*</b></label>
-                                <input class="form-control" id="mobilephone" name="Telephone"
+                                <input class="form-control" id="mobilephone" require name="Telephone"
                                     onkeypress="return funCheckInt(event)" type="text" value="<?php
                                     if ($_SESSION["user"]) {
                                         echo($re['PhoneNumber']);
@@ -168,8 +167,32 @@
                             </div>
                             <div class="addess">
                                 <label>Số lượng:</label>
-                                <input class="form-control" id="total" name="total" type="text"
-                                    value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?>">
+                                <div class="person">
+                                    <div>
+                                        <small>Người lớn:<b>(>12 tuổi)</b></small>
+                                        <span class="adust-minus"> - </span>
+                                        <input disable class="form-control adust" id="total" name="total" type="text"
+                                            value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?>">
+                                        <span class="adust-plus"> + </span>
+                                    </div>
+                                    <div>
+                                        <small>Trẻ em:(Từ 5-11 tuổi)</small>
+                                        <span class="children-minus"> - </span>
+                                        <input disable class="form-control children" id="total" name="total" type="text"
+                                            value="0">
+                                        <span class="children-plus"> + </span>
+                                    </div>
+                                    <div>
+                                        <small>Trẻ nhỏ và em bé:(< 5 tuổi)</small>
+                                                <span class="baby-minus"> - </span>
+                                                <input disable class="form-control baby" id="total" name="total"
+                                                    type="text" value="0">
+                                                <span class="baby-plus"> + </span>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                             <div class="addess">
                                 <label>Số lượng phòng:</label>
@@ -200,130 +223,62 @@
                                 </div>
                             </div>
                             <div class="order" style="width: 100%;">
-                                <button type="submit" class="btn btn-primary btn-order" name="submit">Đặt
-                                    ngay</button>
+                                <button type="submit" class="btn btn-primary btn-order" name="submit">Kiểm tra</button>
                             </div>
                         </div>
                     </div>
                 </form>
-                <section class="col-md-4 col-12 right">
-                    <div class="group-checkout">
-                        <h3>Tóm tắt chuyến đi</h3>
-                        <p class="package-title">Tour trọn gói <span> (<?php echo ($guest) ?> khách)</span></p>
-                        <div class="product-1">
-                            <div class="product-image-1">
-                                <img src='../pimages/<?php echo $tour["PackageImage"]; ?>' class="img-fluid"
-                                    alt="image">
-                            </div>
-                            <div class="product-content-1">
-                                <p class="title-1"><?php echo($tour["PackageName"]); ?></p>
-                            </div>
-                        </div>
-                        <div class="go-tour">
-                            <div class="start">
-                                <i class="fal fa-calendar-minus"></i>
-                                <div class="start-content">
-                                    <h4>Bắt đầu chuyến đi</h4>
-                                    <p class="time"><?php echo($date) ?></p>
-                                    <p class="from"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <table style="width: 100%;">
-                                <tbody style="width:425px;">
-                                    <tr>
-                                        <th class="l1">Hành khách</th>
-                                        <th class="l2 text-right">
-                                            <i class="fal ti-user"
-                                                id="AmoutPerson"><?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?></i>
-                                            <p class="add-more"></p>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th class="l1">Số phòng</th>
-                                        <th class="l2 text-right">
-                                            <i class="fal ti-user" id="AmoutRoom">
-                                                <?php
-                                                echo(isset($_SESSION["room"]) ? $_SESSION["room"] : 0); 
-                                                ?>
-                                            </i>
-                                            <p class="add-more"></p>
-                                        </th>
-                                    </tr>
-                                    <tr class="pt">
-                                        <td>Phụ thu phòng riêng</td>
-                                        <td class="t-price text-right" id="txtPhuThu">
-                                            <?php 
-                                                if (isset($_SESSION["room"])){
-                                                    echo(number_format($_SESSION["room"] * 200000, 0, ',', '.') . " VNĐ");
-                                                    $_SESSION["totalRoom"] = $_SESSION["room"] * 200000;
-                                                } else {
-                                                    echo (0);
-                                                }
-                                            
-                                            ?></td>
-                                    </tr>
-                                    <!-- <tr class="pt">
-                                        <td>Giảm giá tour giờ chót</td>
-                                        <td class="t-price text-right" id="txtGiamGiaLastMinute">còn <span
-                                                id="remainLastMinuteGuest">6 </span> / <span
-                                                id="totalLastMinuteGuest">7</span>
-                                            chỗ</td>
-                                    </tr> -->
-                                    <tr>
-                                        <td>Người lớn và trẻ em</td>
-                                        <td class="t-price text-right" id="GiamGiaLastMinute">
-                                            <?php
-                                                if (isset($_SESSION["count"])){
-                                                    echo(number_format($_SESSION["count"] * 500000, 0, ',', '.') . " VNĐ");
-                                                    $_SESSION["totalPerson"] = $_SESSION["count"] * 500000;
-                                                } else {
-                                                    echo (0);
-                                                }
-                                                
-                                                ?>
-                                        </td>
-                                    </tr>
-                                    <!-- <tr class="cuppon">
-                                        <td>Mã giảm giá </td>
-                                        <td class="cp-form text-right">
-                                            <form action="#">
-                                                <input class="form-control-1" id="DiscountCode" name="DiscountCode"
-                                                    placeholder="Thêm mã" required="required" type="text" value="">
-                                                <input type="hidden" id="hdDiscountCode">
-                                                <input type="hidden" id="hdDiscountCode-Price" value="0"> &nbsp;
-                                                <input type="button" class="btn btn-success" id="btnDiscountCode"
-                                                    value="Áp dụng">
-                                            </form>
-                                        </td>
-                                    </tr> -->
 
-                                    <tr class="total-1">
-                                        <td>Tổng cộng</td>
-                                        <td class="t-price text-right" id="TotalPrice">
-                                            <?php
-                                            
-                                            $total = $_SESSION["totalPerson"] + $_SESSION["totalRoom"] + $tour["PackagePrice"];
-                                        echo(number_format($total, 0, ',', '.') . " VNĐ");
-                                        
-                                        ?>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </section>
         </div>
     </div>
-    <script type='text/javascript'>
+    <script type="text/javascript">
     // var date = document.getElementById("datepicker");
     // date.datepicker() {
     // "dateFormat": "dd-mm-yyyy"
     // });
     // date.datapicker
+    var adultPlug = document.querySelector(".adust-plus");
+    var per = document.querySelector(".form-control.adust").value;
+    let total = Number(per);
+    adultPlug.onclick = function() {
+        total = total + 1;
+        document.querySelector(".form-control.adust").value = total;
+    }
+    var adultMinus = document.querySelector(".adust-minus");
+    adultMinus.onclick = function() {
+        if (total <= 0) total = total;
+        else total = total - 1;
+        document.querySelector(".form-control.adust").value = total;
+    }
+
+    var childrenPlug = document.querySelector(".children-plus");
+    var chil = document.querySelector(".form-control.children").value;
+    let totalChil = Number(chil);
+    childrenPlug.onclick = function() {
+        totalChil = totalChil + 1;
+        document.querySelector(".form-control.children").value = totalChil;
+    }
+    var childrenMinus = document.querySelector(".children-minus");
+    childrenMinus.onclick = function() {
+        if (totalChil <= 0) totalChil = totalChil;
+        else totalChil = totalChil - 1;
+        document.querySelector(".form-control.children").value = totalChil;
+    }
+
+    var babyPlug = document.querySelector(".baby-plus");
+    var baby = document.querySelector(".form-control.baby").value;
+    let totalBaby = Number(baby);
+    babyPlug.onclick = function() {
+        totalBaby = totalBaby + 1;
+        document.querySelector(".form-control.baby").value = totalBaby;
+    }
+    var babyMinus = document.querySelector(".baby-minus");
+    babyMinus.onclick = function() {
+        if (totalBaby <= 0) totalBaby = totalBaby;
+        else totalBaby = totalBaby - 1;
+        document.querySelector(".form-control.baby").value = totalBaby;
+    }
+
 
     function hide(x) {
         if (x == 0) {

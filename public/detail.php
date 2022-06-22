@@ -54,7 +54,7 @@
                 <img width="600" height="600" src='../pimages/<?php echo $row["PackageImage"]; ?>' alt="">
                 <div class="infor-tour">
                     <h1><?php echo ($row["PackageName"]) ?></h1>
-                    <h3> <?php echo(number_format($row["PackagePrice"], 0, ',', '.') . " VNĐ"); ?></h3>
+                    <h3> <?php echo(number_format($row["PackagePrice"], 0, ',', '.') . " VNĐ"); ?>/khách</h3>
                     <p>Đặc điểm: <?php echo ($row["PackageFetures"]) ?>
                     </p>
                     <form action="" method="post" name="session_guest">
@@ -88,13 +88,13 @@
                         $rowi = mysqli_fetch_array($resulti); 
                         foreach ($resulti as $key) {
                         ?>
-
                         <div class="list-tour-1">
                             <img src='../pimages/<?php echo $key["PackageImage"]; ?>' alt="">
                             <div class="infor-tour-1">
                                 <a
                                     href="../public/detail.php?did=<?php echo ($key["PackageId"]);?>"><?php echo ($key["PackageName"]); ?></a>
-                                <h4><?php echo(number_format($key["PackagePrice"], 0, ',', '.') . " VNĐ"); ?></h4>
+                                <small><b><?php echo(number_format($key["PackagePrice"], 0, ',', '.') . " VNĐ"); ?>/khách</b>
+                                </small>
                             </div>
                         </div>
                         <?php } ?>

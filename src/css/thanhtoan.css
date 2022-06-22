@@ -500,6 +500,45 @@ tr {
 .cuppon {
   padding: 10px;
 }
+.adust,
+.children,
+.baby {
+  width: 50px;
+  text-align: center;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.adust-minus,
+.adust-plus,
+.children-minus,
+.children-plus,
+.baby-minus,
+.baby-plus {
+  padding: 5px 10px;
+  border-radius: 100rem;
+  max-width: 20px;
+  max-height: 20px;
+  cursor: pointer;
+  margin: 0 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.adust-minus:hover,
+.adust-plus:hover,
+.children-minus:hover,
+.children-plus:hover,
+.baby-minus:hover,
+.baby-plus:hover {
+  background-color: #a9aaac;
+}
 .total-1 > td:first-child {
   color: #2d4271;
   font-size: 25px;

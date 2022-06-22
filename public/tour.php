@@ -56,7 +56,7 @@
                     <div class="list">
                         <?php
                             $connect = mysqli_connect($serverName, $username, $password, $mydb);
-                            $sql = "select * from tbl_tourpackages where 1 =1";
+                            $sql = "select * from tbl_tourpackages where 1 = 1";
                             $results = mysqli_query($connect, $sql);
                             mysqli_fetch_all($results, MYSQLI_ASSOC);
                             foreach ($results as $key) {
@@ -70,7 +70,7 @@
                                 <a href="../public/detail.php?did=<?php echo ($key["PackageId"]);?>"><?php echo ($key["PackageName"]);?>
                                 </a>
                                 <p>
-                                    <?php echo(number_format($key["PackagePrice"], 0, ',', '.') . " VNĐ"); ?>
+                                    <?php echo(number_format($key["PackagePrice"], 0, ',', '.') . " VNĐ"); ?>/ khách
                                 </p>
                             </div>
                         </div>
