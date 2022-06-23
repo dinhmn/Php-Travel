@@ -11,6 +11,9 @@
     $_SESSION["totalPerson"] = 0;
     $_SESSION["totalRoom"] = 0;
     $_SESSION["dateOfBirth"] = '';
+    $_SESSION["totalAdust"] = 0;
+    $_SESSION["totalBaby"] = 0;
+    $_SESSION["totalChildren"] = 0;
     $date = $_SESSION["date"];
     $guest = $_SESSION["guest"];
     $tour = $_SESSION["tour"];
@@ -26,22 +29,29 @@
         if (isset($_POST["Telephone"])){
             $phone  = $_POST["Telephone"];
         }
+
         $address = $_POST["Address"];
-        $count = $_POST["total"];
+        // $count = $_POST["total"];
         $dateOfBirth = $_POST["dateof"];
         $room = $_POST["room"];
         $sex = $_POST["sex"];
         $message = $_POST["note"];
+        $adust = $_POST["totalAdust"];
+        $baby = $_POST["totalBaby"];
+        $children = $_POST["totalChildren"];
         if ($_POST["Fullname"] && $_POST["Email"] && $_POST["Telephone"]){
             $_SESSION["fullname"] = $fullname;
             $_SESSION["email"] = $email;
             $_SESSION["phone"] = $phone;
             $_SESSION["address"] = $address;
-            $_SESSION["count"] = $count;
+            // $_SESSION["count"] = $count;
             $_SESSION["dateOfBirth"] = $dateOfBirth;
             $_SESSION["room"] = $room;
             $_SESSION["message"] = $message;
             $_SESSION["sex"] = $sex;
+            $_SESSION["totalAdust"] = $adust;
+            $_SESSION["totalBaby"] = $baby;
+            $_SESSION["totalChildren"] = $children;
         }
     }
     if ($sex == "Male"){
@@ -49,10 +59,10 @@
     } else {
         $sex = false;
     }
-    $sql = "insert into tbl_booking(PackageId, FullName, UserEmail, FromDate, DateOfBirth,Address, Phone, Person, Room, Sex, message) values($did, '$fullname', '$email','$date','$dateOfBirth', '$address','$phone', '$count',  '$room', '$sex', '$message');";
+    $sql = "insert into tbl_booking(PackageId, FullName, UserEmail, FromDate, DateOfBirth,Address, Phone, Person, Room, Sex, message) values($did, '$fullname', '$email','$date','$dateOfBirth', '$address','$phone', '$adust',  '$room', '$sex', '$message');";
     if(mysqli_query($connect, $sql)){
         $msg = "Tour travel is booking successful.";
-        // echo "<script> alert('$msg'); </script>";
+        echo "<script> alert('$msg'); </script>";
     }
     
 ?>
@@ -118,30 +128,28 @@
                         <div class="customer-contact-inner">
                             <?php
                                 // $id = $_SESSION["user"];
-
                                 $user = $_SESSION["user"];
                                 $pass = $_SESSION["pass"];
                                 $sqli = "Select * from tbl_users where Username = '$user' and Password='$pass'";
                             // $sql = "Select * from tbl_users where Username = '$user' and Password='$passCrypt'";
-
-
                                 $query = mysqli_query($connect, $sqli);
                                 $re = mysqli_fetch_array($query);
-                                
                             ?>
                             <div class="name">
                                 <label>Họ và Tên <b>*</b></label>
-                                <input class="form-control" id="contact_name" require name="Fullname" type="text" value="<?php 
+                                <input value="
+                                    <?php 
                                     if ($_SESSION["user"]) {
                                         echo ($re['FullName']);
                                     } else {
                                         echo(isset($_SESSION["fullname"]) ? $_SESSION["fullname"] : ""); 
                                     }
-                                    ?>">
+                                    ?>
+                                    " class="form-control" id="contact_name" required name="Fullname" type="text">
                             </div>
                             <div class="mail">
                                 <label>Email <b>*</b></label>
-                                <input class="form-control" id="email" require name="Email" type="text" value="<?php
+                                <input class="form-control" id="email" required name="Email" type="text" value="<?php
                                     if ($_SESSION["user"]) {
                                         echo($re['Email']);
                                     } else {
@@ -151,7 +159,7 @@
                             </div>
                             <div class="phone">
                                 <label>Số điện thoại <b>*</b></label>
-                                <input class="form-control" id="mobilephone" require name="Telephone"
+                                <input class="form-control" id="mobilephone" required name="Telephone"
                                     onkeypress="return funCheckInt(event)" type="text" value="<?php
                                     if ($_SESSION["user"]) {
                                         echo($re['PhoneNumber']);
@@ -171,28 +179,25 @@
                                     <div>
                                         <small>Người lớn:<b>(>12 tuổi)</b></small>
                                         <span class="adust-minus"> - </span>
-                                        <input disable class="form-control adust" id="total" name="total" type="text"
+                                        <input class="form-control adust" id="totalAdust" name="totalAdust" type="text"
                                             value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?>">
                                         <span class="adust-plus"> + </span>
                                     </div>
                                     <div>
                                         <small>Trẻ em:(Từ 5-11 tuổi)</small>
                                         <span class="children-minus"> - </span>
-                                        <input disable class="form-control children" id="total" name="total" type="text"
-                                            value="0">
-                                        <span class="children-plus"> + </span>
+                                        <input class="form-control children" id="totalChildren" name="totalChildren"
+                                            type="text" value="0">
+                                        <span class="children-plus"> + <?php echo ($children); ?> </span>
                                     </div>
                                     <div>
                                         <small>Trẻ nhỏ và em bé:(< 5 tuổi)</small>
                                                 <span class="baby-minus"> - </span>
-                                                <input disable class="form-control baby" id="total" name="total"
+                                                <input class="form-control baby" id="totalBaby" name="totalBaby"
                                                     type="text" value="0">
                                                 <span class="baby-plus"> + </span>
                                     </div>
                                 </div>
-
-
-
                             </div>
                             <div class="addess">
                                 <label>Số lượng phòng:</label>
@@ -223,146 +228,144 @@
                                 </div>
                             </div>
                             <div class="order" style="width: 100%;">
-                                <button type="submit" class="btn btn-primary btn-order" name="submit">Kiểm tra</button>
+                                <button type="submit" class="btn btn-primary btn-order" name="submit">
+                                    <!-- <a href="./checkout.php" style="text-decoration: none; color: white;"> -->
+                                    Kiểm tra
+                                    <!-- </a> -->
+                                </button>
                             </div>
                         </div>
                     </div>
                 </form>
-
+            </section>
         </div>
-    </div>
-    <script type="text/javascript">
-    // var date = document.getElementById("datepicker");
-    // date.datepicker() {
-    // "dateFormat": "dd-mm-yyyy"
-    // });
-    // date.datapicker
-    var adultPlug = document.querySelector(".adust-plus");
-    var per = document.querySelector(".form-control.adust").value;
-    let total = Number(per);
-    adultPlug.onclick = function() {
-        total = total + 1;
-        document.querySelector(".form-control.adust").value = total;
-    }
-    var adultMinus = document.querySelector(".adust-minus");
-    adultMinus.onclick = function() {
-        if (total <= 0) total = total;
-        else total = total - 1;
-        document.querySelector(".form-control.adust").value = total;
-    }
-
-    var childrenPlug = document.querySelector(".children-plus");
-    var chil = document.querySelector(".form-control.children").value;
-    let totalChil = Number(chil);
-    childrenPlug.onclick = function() {
-        totalChil = totalChil + 1;
-        document.querySelector(".form-control.children").value = totalChil;
-    }
-    var childrenMinus = document.querySelector(".children-minus");
-    childrenMinus.onclick = function() {
-        if (totalChil <= 0) totalChil = totalChil;
-        else totalChil = totalChil - 1;
-        document.querySelector(".form-control.children").value = totalChil;
-    }
-
-    var babyPlug = document.querySelector(".baby-plus");
-    var baby = document.querySelector(".form-control.baby").value;
-    let totalBaby = Number(baby);
-    babyPlug.onclick = function() {
-        totalBaby = totalBaby + 1;
-        document.querySelector(".form-control.baby").value = totalBaby;
-    }
-    var babyMinus = document.querySelector(".baby-minus");
-    babyMinus.onclick = function() {
-        if (totalBaby <= 0) totalBaby = totalBaby;
-        else totalBaby = totalBaby - 1;
-        document.querySelector(".form-control.baby").value = totalBaby;
-    }
-
-
-    function hide(x) {
-        if (x == 0) {
-            document.getElementById("cus").style.display = 'none'
-        } else {
-            document.getElementById("cus").style.display = 'block'
-            return;
+        <script type="text/javascript">
+        var adultPlug = document.querySelector(".adust-plus");
+        var per = document.querySelector(".form-control.adust").value;
+        let total = Number(per);
+        adultPlug.onclick = function() {
+            total = total + 1;
+            document.querySelector(".form-control.adust").value = total;
         }
-    }
-    var minus = document.getElementsByClassName("minus");
-    var plus = document.getElementsByClassName("plus");
+        var adultMinus = document.querySelector(".adust-minus");
+        adultMinus.onclick = function() {
+            if (total <= 0) total = total;
+            else total = total - 1;
+            document.querySelector(".form-control.adust").value = total;
+        }
 
-    function Minus1() {
-        let number = document.getElementById("adult").innerText;
-        let so = parseInt(number)
-        if (so == 0) {
-            so = 0;
-        } else {
-            so = so - 1;
+        var childrenPlug = document.querySelector(".children-plus");
+        var chil = document.querySelector(".form-control.children").value;
+        let totalChil = Number(chil);
+        childrenPlug.onclick = function() {
+            totalChil = totalChil + 1;
+            document.querySelector(".form-control.children").value = totalChil;
+        }
+        var childrenMinus = document.querySelector(".children-minus");
+        childrenMinus.onclick = function() {
+            if (totalChil <= 0) totalChil = totalChil;
+            else totalChil = totalChil - 1;
+            document.querySelector(".form-control.children").value = totalChil;
+        }
+
+        var babyPlug = document.querySelector(".baby-plus");
+        var baby = document.querySelector(".form-control.baby").value;
+        let totalBaby = Number(baby);
+        babyPlug.onclick = function() {
+            totalBaby = totalBaby + 1;
+            document.querySelector(".form-control.baby").value = totalBaby;
+        }
+        var babyMinus = document.querySelector(".baby-minus");
+        babyMinus.onclick = function() {
+            if (totalBaby <= 0) totalBaby = totalBaby;
+            else totalBaby = totalBaby - 1;
+            document.querySelector(".form-control.baby").value = totalBaby;
+        }
+
+
+        function hide(x) {
+            if (x == 0) {
+                document.getElementById("cus").style.display = 'none'
+            } else {
+                document.getElementById("cus").style.display = 'block'
+                return;
+            }
+        }
+        var minus = document.getElementsByClassName("minus");
+        var plus = document.getElementsByClassName("plus");
+
+        function Minus1() {
+            let number = document.getElementById("adult").innerText;
+            let so = parseInt(number)
+            if (so == 0) {
+                so = 0;
+            } else {
+                so = so - 1;
+                document.getElementById("adult").innerHTML = so;
+            }
+        }
+
+        function Plus1() {
+            let number = document.getElementById("adult").innerText;
+            let so = parseInt(number)
+            so = so + 1;
             document.getElementById("adult").innerHTML = so;
         }
-    }
 
-    function Plus1() {
-        let number = document.getElementById("adult").innerText;
-        let so = parseInt(number)
-        so = so + 1;
-        document.getElementById("adult").innerHTML = so;
-    }
+        function Minus2() {
+            let number = document.getElementById("children").innerText;
+            let so = parseInt(number)
+            if (so == 0) {
+                so = 0;
+            } else {
+                so = so - 1;
+                document.getElementById("children").innerHTML = so;
+            }
+        }
 
-    function Minus2() {
-        let number = document.getElementById("children").innerText;
-        let so = parseInt(number)
-        if (so == 0) {
-            so = 0;
-        } else {
-            so = so - 1;
+        function Plus2() {
+            let number = document.getElementById("children").innerText;
+            let so = parseInt(number)
+            so = so + 1;
             document.getElementById("children").innerHTML = so;
         }
-    }
 
-    function Plus2() {
-        let number = document.getElementById("children").innerText;
-        let so = parseInt(number)
-        so = so + 1;
-        document.getElementById("children").innerHTML = so;
-    }
+        function Minus3() {
+            let number = document.getElementById("smallchildren").innerText;
+            let so = parseInt(number)
+            if (so == 0) {
+                so = 0;
+            } else {
+                so = so - 1;
+                document.getElementById("smallchildren").innerHTML = so;
+            }
+        }
 
-    function Minus3() {
-        let number = document.getElementById("smallchildren").innerText;
-        let so = parseInt(number)
-        if (so == 0) {
-            so = 0;
-        } else {
-            so = so - 1;
+        function Plus3() {
+            let number = document.getElementById("smallchildren").innerText;
+            let so = parseInt(number)
+            so = so + 1;
             document.getElementById("smallchildren").innerHTML = so;
         }
-    }
 
-    function Plus3() {
-        let number = document.getElementById("smallchildren").innerText;
-        let so = parseInt(number)
-        so = so + 1;
-        document.getElementById("smallchildren").innerHTML = so;
-    }
+        function Minus4() {
+            let number = document.getElementById("baby").innerText;
+            let so = parseInt(number)
+            if (so == 0) {
+                so = 0;
+            } else {
+                so = so - 1;
+                document.getElementById("baby").innerHTML = so;
+            }
+        }
 
-    function Minus4() {
-        let number = document.getElementById("baby").innerText;
-        let so = parseInt(number)
-        if (so == 0) {
-            so = 0;
-        } else {
-            so = so - 1;
+        function Plus4() {
+            let number = document.getElementById("baby").innerText;
+            let so = parseInt(number)
+            so = so + 1;
             document.getElementById("baby").innerHTML = so;
         }
-    }
-
-    function Plus4() {
-        let number = document.getElementById("baby").innerText;
-        let so = parseInt(number)
-        so = so + 1;
-        document.getElementById("baby").innerHTML = so;
-    }
-    </script>
+        </script>
 </body>
 
 </html>
