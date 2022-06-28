@@ -17,10 +17,13 @@
     $date = $_SESSION["date"];
     $guest = $_SESSION["guest"];
     $tour = $_SESSION["tour"];
-    $fullname = $email = $phone = $address = $count = $room = $dateOfBirth = $sex = $message = '';
+    $count = 0;
+    $count = $_SESSION["NguoiLon"] + $_SESSION["TreEm"] + $_SESSION["TreNho"];
+    //$fullname = $email = $phone = $address  = $room = $dateOfBirth = $sex = $message = '';
     /*for ($i=0; $i < $adust; $i++) { 
         $adust = $_POST["adust$i"];
     }*/
+
 
     
 ?>
@@ -79,90 +82,25 @@
             <section class="total">
                 <form class="col-md-8 col-12 left" style="width: 100%;" method="post" id="form">
                     <h2>Nhập thông tin người tham gia </h2>
-                    <h3>Thông tin liên lạc người lớn (>12 tuổi)</h3>
-                    <div class="customer-contact mb-3">
-                        <?php
-                            for ($i=0; $i < $adust; $i++) {
-                        ?>
-                        <div class="customer-contact-inner"
-                            style="display: flex; justify-content: flex-start; gap: 50px; padding: 0 25px;">
-                            <div style="width: 400px;">
-                                <label>Người lớn: </label>
-                                <input class="form-control" type="text" key="<?php echo ($value); ?>"
-                                    name="adust<?php echo ($i) ?>">
-                            </div>
-                            <div class="addess" style="width: 200px;">
-                                <label>Ngày sinh</label>
-                                <input class="form-control" id="dateof" name="dateofAdust<?php echo ($i) ?>"
-                                    type="date">
-                            </div>
-                            <div class="addess" style="width: 200px;">
-                                <label>Sex</label>
-                                <select class="form-control" name="sexAdust<?php echo ($i) ?>" id="sex"
-                                    style="padding: 3px 10px; width: 100%;">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-                        <?php $cnt++; } ?>
+                    <div class="nguoilon">
+                        <h3>Thông tin liên lạc người lớn (>12 tuổi)</h3>
+                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới tính</label><br>
+                        <textarea style="border: 1px solid black;" name="nguoilon" id="" cols="100" rows="5"></textarea>
                     </div>
-                    <h3>Thông tin liên lạc trẻ nhỏ (5-11 tuổi)</h3>
-                    <div class="customer-contact mb-3">
-                        <?php
-                            for ($i=0; $i < $children; $i++) {
-                        ?>
-                        <div class="customer-contact-inner"
-                            style="display: flex; justify-content: flex-start; gap: 50px; padding: 0 25px;">
-                            <div style="width: 400px;">
-                                <label>Trẻ nhỏ: </label>
-                                <input class="form-control" type="text" key="<?php echo ($value); ?>"
-                                    name="children<?php echo ($i); ?>">
-                            </div>
-                            <div class="addess" style="width: 200px;">
-                                <label>Ngày sinh</label>
-                                <input class="form-control" id="dateof" name="dateofChildren<?php echo ($i); ?>"
-                                    type="date" value="">
-                            </div>
-                            <div class="addess" style="width: 200px;">
-                                <label>Sex</label>
-                                <select class="form-control" name="sex" id="sexChildren<?php echo ($i); ?>"
-                                    value="baby<?php echo($_SESSION["sex"]); ?>"
-                                    style="padding: 3px 10px; width: 100%;">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-                        <?php $cnt++; } ?>
+                    <div class="trenho">
+                         <h3>Thông tin liên lạc trẻ nhỏ (5-11 tuổi)</h3>
+                         <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới tính</label><br>
+                        <textarea style="border: 1px solid black;" name="trenho" id="" cols="100" rows="5"></textarea>
                     </div>
-                    <h3>Thông tin liên lạc trẻ em(< 5 tuổi)</h3>
-                            <div class="customer-contact mb-3">
-                                <?php
-                            for ($i=0; $i < $baby; $i++) {
-                        ?>
-                                <div class="customer-contact-inner"
-                                    style="display: flex; justify-content: flex-start; gap: 50px; padding: 0 25px;">
-                                    <div style="width: 400px;">
-                                        <label>Trẻ em: </label>
-                                        <input class="form-control" type="text" key="<?php echo ($value); ?>"
-                                            name="baby<?php echo ($i) ?>">
-                                    </div>
-                                    <div class="addess" style="width: 200px;">
-                                        <label>Ngày sinh</label>
-                                        <input class="form-control" id="dateof" name="dateofBaby<?php echo ($i) ?>"
-                                            type="date">
-                                    </div>
-                                    <div class="addess" style="width: 200px;">
-                                        <label>Sex</label>
-                                        <select class="form-control" name="sexBaby<?php echo ($i) ?>" id="sex"
-                                            style="padding: 3px 10px; width: 100%;">
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <?php $cnt++; } ?>
+                    <div class="treem">
+                        <h3>Thông tin liên lạc trẻ em(< 5 tuổi)</h3>
+                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới tính</label><br>
+                        <textarea style="border: 1px solid black;" name="treem" id="" cols="100" rows="5"></textarea>
+                    </div>
+                   
+                    
+                    
+                            
                                 <section class="col-md-4 col-12 right">
                     <div class="group-checkout">
                         <h3>Tóm tắt chuyến đi</h3>
@@ -193,7 +131,7 @@
                                         <th class="l1">Hành khách</th>
                                         <th class="l2 text-right">
                                             <i class="fal ti-user"
-                                                id="AmoutPerson"><?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?></i>
+                                                id="AmoutPerson"><?php echo $count;  ?></i>
                                             <p class="add-more"></p>
                                         </th>
                                     </tr>
@@ -221,13 +159,6 @@
                                             
                                             ?></td>
                                     </tr>
-                                    <!-- <tr class="pt">
-                                        <td>Giảm giá tour giờ chót</td>
-                                        <td class="t-price text-right" id="txtGiamGiaLastMinute">còn <span
-                                                id="remainLastMinuteGuest">6 </span> / <span
-                                                id="totalLastMinuteGuest">7</span>
-                                            chỗ</td>
-                                    </tr> -->
                                     <tr>
                                         <td>Người lớn và trẻ em</td>
                                         <td class="t-price text-right" id="GiamGiaLastMinute">
@@ -242,19 +173,6 @@
                                                 ?>
                                         </td>
                                     </tr>
-                                    <!-- <tr class="cuppon">
-                                        <td>Mã giảm giá </td>
-                                        <td class="cp-form text-right">
-                                            <form action="#">
-                                                <input class="form-control-1" id="DiscountCode" name="DiscountCode"
-                                                    placeholder="Thêm mã" required="required" type="text" value="">
-                                                <input type="hidden" id="hdDiscountCode">
-                                                <input type="hidden" id="hdDiscountCode-Price" value="0"> &nbsp;
-                                                <input type="button" class="btn btn-success" id="btnDiscountCode"
-                                                    value="Áp dụng">
-                                            </form>
-                                        </td>
-                                    </tr> -->
 
                                     <tr class="total-1">
                                         <td>Tổng cộng</td>
@@ -274,8 +192,7 @@
                     </div>
                 </section>
                                 <div class="order" style="width: 100%;">
-                                    <button type="submit" class="btn btn-primary btn-order" name="submit">Kiểm
-                                        tra</button>
+                                    <button type="submit" class="btn btn-primary btn-order" name="submit">Thanh toán</button>
                                 </div>
                             </div>
 
@@ -414,3 +331,5 @@
 
 </html>
 <?php mysqli_close($connect); ?>
+<?php session_unset();?>
+<?php session_destroy();?>
