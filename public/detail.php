@@ -17,8 +17,8 @@
     $row = mysqli_fetch_array($result);
     if(isset($_POST["submit"])){
       $date = $_POST["dateoftravel"];
-      $guest = $_POST["guest"];
-      if ($_POST["dateoftravel"] && $_POST["guest"]) {
+      
+      if ($_POST["dateoftravel"]) {
         $_SESSION["date"] = $date;
         $_SESSION["guest"] = $guest;
         $_SESSION["tourId"] = $did;
@@ -64,19 +64,7 @@
                             <input type="date" name="dateoftravel" id="dateoftravel" require
                                 style="border: 1px solid #e3e3e3;padding: 3px 10px;border-radius: 3px;flex-shrink: 1;width: 80%;">
                         </div>
-                        <div class="form-group">
-                            <label for="guest" style="width: 100px;display: inline-block;font-size: 18px;">Số
-                                khách</label>
-                            <select name="guest" id="guest"
-                                style="border: 1px solid #e3e3e3;padding: 3px 10px;border-radius: 3px;flex-shrink: 1;width: 80%;">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
+                        
                         <button type="submit" name="submit">Đặt ngay</button>
                     </form>
                     <hr>

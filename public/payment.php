@@ -17,52 +17,39 @@
     $date = $_SESSION["date"];
     $guest = $_SESSION["guest"];
     $tour = $_SESSION["tour"];
-    $fullname = $email = $phone = $address = $count = $room = $dateOfBirth = $sex = $message = '';
+    $fullname = $email = $phone = $address = $NguoiLon = $TreEm = $TreNho = $room = $date = $sex = $message = '';
 
     if (isset($_POST["submit"])){
-        if (isset($_POST["Fullname"])){
-            $fullname  = $_POST["Fullname"];
-        }
-        if (isset($_POST["Email"])){
-            $email  = $_POST["Email"];
-        }
-        if (isset($_POST["Telephone"])){
-            $phone  = $_POST["Telephone"];
-        }
 
-        $address = $_POST["Address"];
-        // $count = $_POST["total"];
-        $dateOfBirth = $_POST["dateof"];
-        $room = $_POST["room"];
-        $sex = $_POST["sex"];
-        $message = $_POST["note"];
-        $adust = $_POST["totalAdust"];
-        $baby = $_POST["totalBaby"];
-        $children = $_POST["totalChildren"];
-        if ($_POST["Fullname"] && $_POST["Email"] && $_POST["Telephone"]){
-            $_SESSION["fullname"] = $fullname;
-            $_SESSION["email"] = $email;
-            $_SESSION["phone"] = $phone;
-            $_SESSION["address"] = $address;
-            // $_SESSION["count"] = $count;
-            $_SESSION["dateOfBirth"] = $dateOfBirth;
-            $_SESSION["room"] = $room;
-            $_SESSION["message"] = $message;
-            $_SESSION["sex"] = $sex;
-            $_SESSION["totalAdust"] = $adust;
-            $_SESSION["totalBaby"] = $baby;
-            $_SESSION["totalChildren"] = $children;
-        }
-    }
-    if ($sex == "Male"){
-        $sex = true;
-    } else {
-        $sex = false;
-    }
-    $sql = "insert into tbl_booking(PackageId, FullName, UserEmail, FromDate, DateOfBirth,Address, Phone, Person, Room, Sex, message) values($did, '$fullname', '$email','$date','$dateOfBirth', '$address','$phone', '$adust',  '$room', '$sex', '$message');";
-    if(mysqli_query($connect, $sql)){
-        $msg = "Tour travel is booking successful.";
-        echo "<script> alert('$msg'); </script>";
+        $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
+        $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
+        $phone = isset($_POST["Telephone"]) ? $_POST["Telephone"] : "";
+
+        $address = isset($_POST["Address"]) ? $_POST["Address"] : "";
+
+        $dateOfBirth = isset($_POST["dateof"]) ? $_POST["dateof"] : "";
+        $room = isset($_POST["room"]) ? $_POST["room"] : "";
+
+        $sex = isset($_POST["sex"]) ? $_POST["sex"] : "";
+        $message = isset($_POST["note"]) ? $_POST["note"] : "";
+        $adust = $_POST["NguoiLon"];
+        $baby = $_POST["TreEm"];
+        $children = $_POST["TreNho"];
+
+        
+        $_SESSION["fullname"] = $fullname;
+        $_SESSION["email"] = $email;
+        $_SESSION["phone"] = $phone;
+        $_SESSION["address"] = $address;
+        // $_SESSION["count"] = $count;
+        $_SESSION["dateOfBirth"] = $dateOfBirth;
+        $_SESSION["room"] = $room;
+        $_SESSION["message"] = $message;
+        $_SESSION["sex"] = $sex;
+        $_SESSION["NguoiLon"] = $adust;
+        $_SESSION["TreEm"] = $baby;
+        $_SESSION["TreNho"] = $children;
+        
     }
     
 ?>
@@ -121,7 +108,7 @@
                 </div>
             </section>
             <section class="total">
-                <form class="col-md-8 col-12 left" style="width: 100%;" method="post" id="form">
+                <form action="checkout.php" class="col-md-8 col-12 left" style="width: 100%;" method="post" id="form">
                     <h2>Tổng quan về chuyến đi</h2>
                     <h3>Thông tin liên lạc</h3>
                     <div class="customer-contact mb-3">
@@ -179,21 +166,21 @@
                                     <div>
                                         <small>Người lớn:<b>(>12 tuổi)</b></small>
                                         <span class="adust-minus"> - </span>
-                                        <input class="form-control adust" id="totalAdust" name="totalAdust" type="text"
-                                            value="<?php echo(isset($_SESSION["count"]) ? $_SESSION["count"] : $guest); ?>">
+                                        <input class="form-control adust" id="totalAdust" name="NguoiLon" type="text"
+                                            value="0">
                                         <span class="adust-plus"> + </span>
                                     </div>
                                     <div>
                                         <small>Trẻ em:(Từ 5-11 tuổi)</small>
                                         <span class="children-minus"> - </span>
-                                        <input class="form-control children" id="totalChildren" name="totalChildren"
+                                        <input class="form-control children" id="totalChildren" name="TreEm"
                                             type="text" value="0">
                                         <span class="children-plus"> + <?php echo ($children); ?> </span>
                                     </div>
                                     <div>
                                         <small>Trẻ nhỏ và em bé:(< 5 tuổi)</small>
                                                 <span class="baby-minus"> - </span>
-                                                <input class="form-control baby" id="totalBaby" name="totalBaby"
+                                                <input class="form-control baby" id="totalBaby" name="TreNho"
                                                     type="text" value="0">
                                                 <span class="baby-plus"> + </span>
                                     </div>
@@ -238,6 +225,7 @@
                     </div>
                 </form>
             </section>
+            
         </div>
         <script type="text/javascript">
         var adultPlug = document.querySelector(".adust-plus");
