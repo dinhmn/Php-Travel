@@ -21,8 +21,8 @@
                 } else {
                     echo ("
                     <li>
-                        <a href='./login.php'>Sign in</a>
-                        <a href='./register.php'>Sign up</a>
+                        <a href='./login.php'>Đăng nhập</a>
+                        <a href='./register.php'>Đăng kí</a>
                     </li>
                     ");
                 }

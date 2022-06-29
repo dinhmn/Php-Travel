@@ -7,52 +7,59 @@
     $password = "";
     $mydb = "travel";
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
-    $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
-    $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
-    $phone = isset($_POST["Telephone"]) ? $_POST["Telephone"] : "";
+
     $did = $_SESSION["tourId"];
-    $address = isset($_POST["Address"]) ? $_POST["Address"] : "";
 
-    $dateOfBirth = isset($_POST["dateof"]) ? $_POST["dateof"] : "";
-    $room = isset($_POST["room"]) ? $_POST["room"] : "";
 
-    $sex = isset($_POST["sex"]) ? $_POST["sex"] : "";
-    $message = isset($_POST["note"]) ? $_POST["note"] : "";
-    $adust = $_POST["NguoiLon"];
-    $baby = $_POST["TreEm"];
-    $children = $_POST["TreNho"];
 
-    $_SESSION["totalPerson"] = 0;
-    $_SESSION["totalRoom"] = 0;
-    $_SESSION["dateOfBirth"] = '';
-    $date = $_SESSION["date"];
-    $guest = $_SESSION["guest"];
-    $tour = $_SESSION["tour"];
-    $CountPerson = $adust + $baby + $children;
-    $total = $adust*9290000 + $baby*5574000 + $children*3700000;
-    if(isset($_POST['submit']))
-    {
-        $inforNguoiLon = isset($_POST['nguoilon']) ? $_POST['nguoilon'] : "";
-        $inforTreNho = isset($_POST['trenho']) ? $_POST['trenho'] : "";
-        $inforTreEm = isset($_POST['treem']) ? $_POST['treem'] : "";
 
-        $sqltour = "INSERT INTO tbl_booking values (null,$did,'$fullname','$email','$date','$dateOfBirth','$phone','$address',$adust,$baby,$children,$room,'nam','$message',null)";
-        if(mysqli_query($connect,$sqltour))
-        {
-            echo 'success';
-        }
-        else
-        {
-            echo 'abc';
-        }
-        /*$sqlinfor1 = "INSERT INTO tbl_tourist values (null,'$inforNguoiLon',12,'$did')";
-        $sqlinfor2 = "INSERT INTO tbl_tourist values (null,'$inforTreNho',5,'$did')";
-        $sqlinfor3 = "INSERT INTO tbl_tourist values (null,'$inforTreEm',1,'$did')";
-        mysqli_query($connect,$sqlinfor1);
-        mysqli_query($connect,$sqlinfor2);
-        mysqli_query($connect,$sqlinfor3);*/
+    $fullname = $email = $phone = $address = $NguoiLon = $TreEm = $TreNho = $room = $date = $sex = $message = $adust = $baby = $children = '';
+    $CountPerson = $total = 0;
+    if (isset($_POST["submitt"])){
+        $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
+        $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
+        $phone = isset($_POST["Telephone"]) ? $_POST["Telephone"] : "";
+        $address = isset($_POST["Address"]) ? $_POST["Address"] : "";
+        $dateOfBirth = isset($_POST["dateof"]) ? $_POST["dateof"] : "";
+        $room = isset($_POST["room"]) ? $_POST["room"] : "";
+
+        $sex = isset($_POST["sex"]) ? $_POST["sex"] : "";
+        $message = isset($_POST["note"]) ? $_POST["note"] : "";
+        $adust = $_POST["NguoiLon"];
+        $baby = ($_POST["TreEm"]);
+        $children = $_POST["TreNho"];
+        $adust = $_POST["NguoiLon"];
+        $baby = $_POST["TreEm"];
+        $children = $_POST["TreNho"];
+        $CountPerson = $adust + $baby + $children;
+        $total = $adust*9290000 + $baby*5574000 + $children*3700000;
+
+        $sqltour = "INSERT INTO tbl_booking(PackageId, FullName, UserEmail, FromDate, dateOfBirth, Phone, Address, NguoiLon, TreEm, TreNho, Room, Sex, Message, price)
+        values ($did,'$fullname','$email','$date','$dateOfBirth','$phone','$address',$adust,$baby,$children,$room,'nam','$message', $total)";
         
-    }
+        mysqli_query($connect,$sqltour);
+
+
+    }   
+
+    $queryS = "select BookingId from tbl_booking where FullName = '$fullname' and UserEmail = '$email'";
+    $queryId = mysqli_query($connect, $queryS);
+
+    echo($queryId);
+    $inforNguoiLon = $inforTreNho = $inforTreEm = '';
+        $inforNguoiLon = isset($_POST["nguoilon"]) ? $_POST["nguoilon"] : "";
+        $inforTreNho = isset($_POST["trenho"]) ? $_POST["trenho"] : "";
+        $inforTreEm = isset($_POST["treem"]) ? $_POST["treem"] : "";
+        
+        $sqlinfor1 = "INSERT INTO tbl_tourist(Fullname, BookingId) values('ddd',1)";
+        echo ($sqlinfor1);
+        // $sqlinfor2 = "INSERT INTO tbl_tourist(Fullname, BookingId) values ('$inforTreNho',$queryId)";
+        // $sqlinfor3 = "INSERT INTO tbl_tourist(Fullname, BookingId) values ('$inforTreEm',$queryId)";
+        mysqli_query($connect,$sqlinfor1);
+        // mysqli_query($connect,$sqlinfor2);
+        // mysqli_query($connect,$sqlinfor3);
+
+
 
     
 ?>
@@ -113,114 +120,112 @@
                     <h2>Nhập thông tin người tham gia </h2>
                     <div class="nguoilon">
                         <h3>Thông tin liên lạc người lớn (>12 tuổi)</h3>
-                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới tính</label><br>
+                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
+                            tính</label><br>
                         <textarea style="border: 1px solid black;" name="nguoilon" id="" cols="100" rows="5"></textarea>
                     </div>
                     <div class="trenho">
-                         <h3>Thông tin liên lạc trẻ nhỏ (5-11 tuổi)</h3>
-                         <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới tính</label><br>
+                        <h3>Thông tin liên lạc trẻ nhỏ (5-11 tuổi)</h3>
+                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
+                            tính</label><br>
                         <textarea style="border: 1px solid black;" name="trenho" id="" cols="100" rows="5"></textarea>
                     </div>
                     <div class="treem">
                         <h3>Thông tin liên lạc trẻ em(< 5 tuổi)</h3>
-                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới tính</label><br>
-                        <textarea style="border: 1px solid black;" name="treem" id="" cols="100" rows="5"></textarea>
+                                <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
+                                    tính</label><br>
+                                <textarea style="border: 1px solid black;" name="treem" id="" cols="100"
+                                    rows="5"></textarea>
                     </div>
-                   
-                    
-                    
-                            
-                                <section class="col-md-4 col-12 right">
-                    <div class="group-checkout">
-                        <h3>Tóm tắt chuyến đi</h3>
-                        <p class="package-title">Tour trọn gói <span> (<?php echo ($guest) ?> khách)</span></p>
-                        <div class="product-1">
-                            <div class="product-image-1">
-                                <img src='../pimages/<?php echo $tour["PackageImage"]; ?>' class="img-fluid"
-                                    alt="image">
-                            </div>
-                            <div class="product-content-1">
-                                <p class="title-1"><?php echo($tour["PackageName"]); ?></p>
-                            </div>
-                        </div>
-                        <div class="go-tour">
-                            <div class="start">
-                                <i class="fal fa-calendar-minus"></i>
-                                <div class="start-content">
-                                    <h4>Bắt đầu chuyến đi</h4>
-                                    <p class="time"><?php echo($date) ?></p>
-                                    <p class="from"></p>
+                    <section class="col-md-4 col-12 right">
+                        <div class="group-checkout">
+                            <h3>Tóm tắt chuyến đi</h3>
+                            <p class="package-title">Tour trọn gói <span> (<?php echo ($guest) ?> khách)</span></p>
+                            <div class="product-1">
+                                <div class="product-image-1">
+                                    <img src='../pimages/<?php echo $tour["PackageImage"]; ?>' class="img-fluid"
+                                        alt="image">
+                                </div>
+                                <div class="product-content-1">
+                                    <p class="title-1"><?php echo($tour["PackageName"]); ?></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="detail">
-                            <table style="width: 100%;">
-                                <tbody style="width:425px;">
-                                    <tr>
-                                        <th class="l1">Hành khách</th>
-                                        <th class="l2 text-right">
-                                            <i class="fal ti-user"
-                                                id="AmoutPerson"><?php echo $CountPerson;  ?></i>
-                                            <p class="add-more"></p>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th class="l1">Số phòng</th>
-                                        <th class="l2 text-right">
-                                            <i class="fal ti-user" id="AmoutRoom">
-                                                <?php
+                            <div class="go-tour">
+                                <div class="start">
+                                    <i class="fal fa-calendar-minus"></i>
+                                    <div class="start-content">
+                                        <h4>Bắt đầu chuyến đi</h4>
+                                        <p class="time"><?php echo($date) ?></p>
+                                        <p class="from"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <table style="width: 100%;">
+                                    <tbody style="width:425px;">
+                                        <tr>
+                                            <th class="l1">Hành khách</th>
+                                            <th class="l2 text-right">
+                                                <i class="fal ti-user" id="AmoutPerson"><?php echo $CountPerson;  ?></i>
+                                                <p class="add-more"></p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="l1">Số phòng</th>
+                                            <th class="l2 text-right">
+                                                <i class="fal ti-user" id="AmoutRoom">
+                                                    <?php
                                                 echo $room; 
                                                 ?>
-                                            </i>
-                                            <p class="add-more"></p>
-                                        </th>
-                                    </tr>
-                                    <tr class="pt">
-                                        <td>Người lớn</td>
-                                        <td class="t-price text-right" id="txtPhuThu">
-                                            <?php 
+                                                </i>
+                                                <p class="add-more"></p>
+                                            </th>
+                                        </tr>
+                                        <tr class="pt">
+                                            <td>Người lớn</td>
+                                            <td class="t-price text-right" id="txtPhuThu">
+                                                <?php 
                                                 echo $adust . 'x 9.290.000đ'
                                             
                                             ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trẻ nhỏ</td>
-                                        <td class="t-price text-right" id="GiamGiaLastMinute">
-                                            <?php
+                                        </tr>
+                                        <tr>
+                                            <td>Trẻ nhỏ</td>
+                                            <td class="t-price text-right" id="GiamGiaLastMinute">
+                                                <?php
                                                 echo $baby . 'x 5.574.000đ'
                                                 
                                                 ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trẻ em</td>
-                                        <td class="t-price text-right" id="GiamGiaLastMinute">
-                                            <?php
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trẻ em</td>
+                                            <td class="t-price text-right" id="GiamGiaLastMinute">
+                                                <?php
                                                 echo $children . 'x 3.700.000đ'
                                                 
                                                 ?>
-                                        </td>
-                                    </tr>
-                                    <tr class="total-1">
-                                        <td>Tổng cộng</td>
-                                        <td class="t-price text-right" id="TotalPrice">
-                                            <?php
+                                            </td>
+                                        </tr>
+                                        <tr class="total-1">
+                                            <td>Tổng cộng</td>
+                                            <td class="t-price text-right" id="TotalPrice">
+                                                <?php
                                             
                                             echo(number_format($total, 0, ',', '.') . " VNĐ");
                                         
                                         ?>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                        </div>
-                    </div>
-                    </section>
-                                <div class="order" style="width: 100%;">
-                                    <button type="submit" class="btn btn-primary btn-order" name="submit">Thanh toán</button>
-                                </div>
                             </div>
+                        </div>
+                    </section>
+                    <div class="order" style="width: 100%;">
+                        <button type="submit" class="btn btn-primary btn-order" name="submit">Thanh toán</button>
+                    </div>
 
                 </form>
             </section>

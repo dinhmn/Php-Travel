@@ -17,40 +17,7 @@
     $date = $_SESSION["date"];
     $guest = $_SESSION["guest"];
     $tour = $_SESSION["tour"];
-    $fullname = $email = $phone = $address = $NguoiLon = $TreEm = $TreNho = $room = $date = $sex = $message = '';
-
-    if (isset($_POST["submitt"])){
-
-        $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
-        $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
-        $phone = isset($_POST["Telephone"]) ? $_POST["Telephone"] : "";
-
-        $address = isset($_POST["Address"]) ? $_POST["Address"] : "";
-
-        $dateOfBirth = isset($_POST["dateof"]) ? $_POST["dateof"] : "";
-        $room = isset($_POST["room"]) ? $_POST["room"] : "";
-
-        $sex = isset($_POST["sex"]) ? $_POST["sex"] : "";
-        $message = isset($_POST["note"]) ? $_POST["note"] : "";
-        $adust = $_POST["NguoiLon"];
-        $baby = ($_POST["TreEm"]);
-        $children = $_POST["TreNho"];
-
-        
-        /*$_SESSION["fullname"] = $fullname;
-        $_SESSION["email"] = $email;
-        $_SESSION["phone"] = $phone;
-        $_SESSION["address"] = $address;
-        // $_SESSION["count"] = $count;
-        $_SESSION["dateOfBirth"] = $dateOfBirth;
-        $_SESSION["room"] = $room;
-        $_SESSION["message"] = $message;
-        $_SESSION["sex"] = $sex;
-        $_SESSION["NguoiLon"] = $adust;
-        $_SESSION["TreEm"] = $baby;
-        $_SESSION["TreNho"] = $children;*/
-        
-    }
+    
     
 ?>
 
@@ -173,8 +140,8 @@
                                     <div>
                                         <small>Trẻ em:(Từ 5-11 tuổi)</small>
                                         <span class="children-minus"> - </span>
-                                        <input class="form-control children" id="totalChildren" name="TreEm"
-                                            type="text" value="0">
+                                        <input class="form-control children" id="totalChildren" name="TreEm" type="text"
+                                            value="0">
                                         <span class="children-plus"> + <?php echo ($children); ?> </span>
                                     </div>
                                     <div>
@@ -225,7 +192,7 @@
                     </div>
                 </form>
             </section>
-            
+
         </div>
         <script type="text/javascript">
         var adultPlug = document.querySelector(".adust-plus");
