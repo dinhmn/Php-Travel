@@ -7,23 +7,52 @@
     $password = "";
     $mydb = "travel";
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
+    $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
+    $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
+    $phone = isset($_POST["Telephone"]) ? $_POST["Telephone"] : "";
     $did = $_SESSION["tourId"];
+    $address = isset($_POST["Address"]) ? $_POST["Address"] : "";
+
+    $dateOfBirth = isset($_POST["dateof"]) ? $_POST["dateof"] : "";
+    $room = isset($_POST["room"]) ? $_POST["room"] : "";
+
+    $sex = isset($_POST["sex"]) ? $_POST["sex"] : "";
+    $message = isset($_POST["note"]) ? $_POST["note"] : "";
+    $adust = $_POST["NguoiLon"];
+    $baby = $_POST["TreEm"];
+    $children = $_POST["TreNho"];
+
     $_SESSION["totalPerson"] = 0;
     $_SESSION["totalRoom"] = 0;
     $_SESSION["dateOfBirth"] = '';
-    $adust = $_SESSION["NguoiLon"];
-    $baby = $_SESSION["TreEm"];
-    $children = $_SESSION["TreNho"];
     $date = $_SESSION["date"];
     $guest = $_SESSION["guest"];
     $tour = $_SESSION["tour"];
-    $count = 0;
-    $count = $_SESSION["NguoiLon"] + $_SESSION["TreEm"] + $_SESSION["TreNho"];
-    //$fullname = $email = $phone = $address  = $room = $dateOfBirth = $sex = $message = '';
-    /*for ($i=0; $i < $adust; $i++) { 
-        $adust = $_POST["adust$i"];
-    }*/
+    $CountPerson = $adust + $baby + $children;
+    $total = $adust*9290000 + $baby*5574000 + $children*3700000;
+    if(isset($_POST['submit']))
+    {
+        $inforNguoiLon = isset($_POST['nguoilon']) ? $_POST['nguoilon'] : "";
+        $inforTreNho = isset($_POST['trenho']) ? $_POST['trenho'] : "";
+        $inforTreEm = isset($_POST['treem']) ? $_POST['treem'] : "";
 
+        $sqltour = "INSERT INTO tbl_booking values (null,$did,'$fullname','$email','$date','$dateOfBirth','$phone','$address',$adust,$baby,$children,$room,'nam','$message',null)";
+        if(mysqli_query($connect,$sqltour))
+        {
+            echo 'success';
+        }
+        else
+        {
+            echo 'abc';
+        }
+        /*$sqlinfor1 = "INSERT INTO tbl_tourist values (null,'$inforNguoiLon',12,'$did')";
+        $sqlinfor2 = "INSERT INTO tbl_tourist values (null,'$inforTreNho',5,'$did')";
+        $sqlinfor3 = "INSERT INTO tbl_tourist values (null,'$inforTreEm',1,'$did')";
+        mysqli_query($connect,$sqlinfor1);
+        mysqli_query($connect,$sqlinfor2);
+        mysqli_query($connect,$sqlinfor3);*/
+        
+    }
 
     
 ?>
@@ -131,7 +160,7 @@
                                         <th class="l1">Hành khách</th>
                                         <th class="l2 text-right">
                                             <i class="fal ti-user"
-                                                id="AmoutPerson"><?php echo $count;  ?></i>
+                                                id="AmoutPerson"><?php echo $CountPerson;  ?></i>
                                             <p class="add-more"></p>
                                         </th>
                                     </tr>
@@ -140,47 +169,44 @@
                                         <th class="l2 text-right">
                                             <i class="fal ti-user" id="AmoutRoom">
                                                 <?php
-                                                echo(isset($_SESSION["room"]) ? $_SESSION["room"] : 0); 
+                                                echo $room; 
                                                 ?>
                                             </i>
                                             <p class="add-more"></p>
                                         </th>
                                     </tr>
                                     <tr class="pt">
-                                        <td>Phụ thu phòng riêng</td>
+                                        <td>Người lớn</td>
                                         <td class="t-price text-right" id="txtPhuThu">
                                             <?php 
-                                                if (isset($_SESSION["room"])){
-                                                    echo(number_format($_SESSION["room"] * 200000, 0, ',', '.') . " VNĐ");
-                                                    $_SESSION["totalRoom"] = $_SESSION["room"] * 200000;
-                                                } else {
-                                                    echo (0);
-                                                }
+                                                echo $adust . 'x 9.290.000đ'
                                             
                                             ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Người lớn và trẻ em</td>
+                                        <td>Trẻ nhỏ</td>
                                         <td class="t-price text-right" id="GiamGiaLastMinute">
                                             <?php
-                                                if (isset($_SESSION["count"])){
-                                                    echo(number_format($_SESSION["count"] * 500000, 0, ',', '.') . " VNĐ");
-                                                    $_SESSION["totalPerson"] = $_SESSION["count"] * 500000;
-                                                } else {
-                                                    echo (0);
-                                                }
+                                                echo $baby . 'x 5.574.000đ'
                                                 
                                                 ?>
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <td>Trẻ em</td>
+                                        <td class="t-price text-right" id="GiamGiaLastMinute">
+                                            <?php
+                                                echo $children . 'x 3.700.000đ'
+                                                
+                                                ?>
+                                        </td>
+                                    </tr>
                                     <tr class="total-1">
                                         <td>Tổng cộng</td>
                                         <td class="t-price text-right" id="TotalPrice">
                                             <?php
                                             
-                                            $total = $_SESSION["totalPerson"] + $_SESSION["totalRoom"] + $tour["PackagePrice"];
-                                        echo(number_format($total, 0, ',', '.') . " VNĐ");
+                                            echo(number_format($total, 0, ',', '.') . " VNĐ");
                                         
                                         ?>
                                         </td>
@@ -190,7 +216,7 @@
 
                         </div>
                     </div>
-                </section>
+                    </section>
                                 <div class="order" style="width: 100%;">
                                     <button type="submit" class="btn btn-primary btn-order" name="submit">Thanh toán</button>
                                 </div>
@@ -331,5 +357,3 @@
 
 </html>
 <?php mysqli_close($connect); ?>
-<?php session_unset();?>
-<?php session_destroy();?>

@@ -19,7 +19,7 @@
     $tour = $_SESSION["tour"];
     $fullname = $email = $phone = $address = $NguoiLon = $TreEm = $TreNho = $room = $date = $sex = $message = '';
 
-    if (isset($_POST["submit"])){
+    if (isset($_POST["submitt"])){
 
         $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
         $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
@@ -33,11 +33,11 @@
         $sex = isset($_POST["sex"]) ? $_POST["sex"] : "";
         $message = isset($_POST["note"]) ? $_POST["note"] : "";
         $adust = $_POST["NguoiLon"];
-        $baby = $_POST["TreEm"];
+        $baby = ($_POST["TreEm"]);
         $children = $_POST["TreNho"];
 
         
-        $_SESSION["fullname"] = $fullname;
+        /*$_SESSION["fullname"] = $fullname;
         $_SESSION["email"] = $email;
         $_SESSION["phone"] = $phone;
         $_SESSION["address"] = $address;
@@ -48,7 +48,7 @@
         $_SESSION["sex"] = $sex;
         $_SESSION["NguoiLon"] = $adust;
         $_SESSION["TreEm"] = $baby;
-        $_SESSION["TreNho"] = $children;
+        $_SESSION["TreNho"] = $children;*/
         
     }
     
@@ -215,7 +215,7 @@
                                 </div>
                             </div>
                             <div class="order" style="width: 100%;">
-                                <button type="submit" class="btn btn-primary btn-order" name="submit">
+                                <button type="submit" class="btn btn-primary btn-order" name="submitt">
                                     <!-- <a href="./checkout.php" style="text-decoration: none; color: white;"> -->
                                     Kiểm tra
                                     <!-- </a> -->
