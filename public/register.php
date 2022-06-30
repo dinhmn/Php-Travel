@@ -104,26 +104,26 @@
                 <div class="login-account">
                     <form action="" method="post" id="loginlogout" class="form-class" name="login" autocomplete="off">
                         <div class="form-group">
-                            <label for="fullname">Fullname</label>
+                            <label for="fullname">Họ và tên</label>
                             <input type="text" id="fullname" name="fullname" />
                             <small style="color: red;"><?php echo($fullnameError); ?></small>
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label for="username">Tài khoản</label>
                             <input type="text" id="username" name="username" />
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Mật khẩu</label>
                             <input type="password" id="password" name="password" />
                             <small style="color: red;"><?php echo($passError); ?></small>
                         </div>
                         <div class="form-group">
-                            <label for="confirm">Confirm</label>
+                            <label for="confirm">Xác nhận mật khẩu</label>
                             <input type="password" id="confirm" name="confirm" />
                             <small style="color: red;"><?php echo($confirmError); ?></small>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
+                            <label for="phone">Điện thoại</label>
                             <input type="text" id="phone" name="phone" />
                             <small style="color: red;"><?php echo($phoneError); ?></small>
                         </div>
@@ -133,8 +133,8 @@
                             <small style="color: red;"><?php echo($emailError); ?></small>
                         </div>
                         <div class="form-group">
-                            <button type="submit" name="submit">Register</button>
-                            <small><a href="../public/index.php">Go home</a></small>
+                            <button type="submit" name="submit">Đăng kí</button>
+                            <small><a href="../public/index.php" style="margin-top: 10px;">Trang chủ</a></small>
                         </div>
                     </form>
                 </div>

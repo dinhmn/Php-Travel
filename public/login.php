@@ -59,22 +59,22 @@
                         ?>
                     <form action="" method="post" id="loginlogout" class="form-class" name="login">
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label for="username">Tài khoản</label>
                             <input type="text" id="username" name="username" />
 
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Mật khẩu</label>
                             <input type="password" id="password" name="password" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" name="submit">Login</button>
-                            <small style="margin-top: 5px; letter-spacing: 2px;">Don't have an account?<a
+                            <button type="submit" name="submit">Đăng nhập</button>
+                            <small style="margin-top: 10px; letter-spacing: 2px;">Don't have an account?<a
                                     href="../public/register.php">Sign
                                     up.</a>
                                 </span>
                             </small>
-                            <small><a href="../public/index.php">Go home</a></small>
+                            <small><a href="../public/index.php">Trang chủ</a></small>
                         </div>
                     </form>
 

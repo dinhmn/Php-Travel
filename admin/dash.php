@@ -1,5 +1,9 @@
 <?php
     session_start();
+    $serverName = "localhost";
+    $username = "root";
+    $password = "";
+    $mydb = "travel";
     if (isset($_SESSION['user']) == false) {
 	    header('Location: http://localhost/Php-Travel/public/login.php');   
     }else {
@@ -50,85 +54,82 @@
             <div class="main">
                 <div class="head">
                     <div class="user">
-                        <div>New User</div>
-                        <div>1234</div>
+                        <?php
+                            $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                            $sqlTour = "select count(PackageId) as countTour from tbl_tourpackages where 1=1;";
+                            $tour = mysqli_query($connect, $sqlTour);
+                            $rowTour = mysqli_fetch_array($tour);
+                        ?>
+                        <div>Tour</div>
+                        <div><?php echo ($rowTour["countTour"]); ?></div>
+
                     </div>
                     <div class="user">
-                        <div>New User</div>
-                        <div>1234</div>
+                        <?php
+                            $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                            $sqlTour = "select count(BookingId) as countBooking from tbl_booking where 1=1;";
+                            $tour = mysqli_query($connect, $sqlTour);
+                            $rowTour = mysqli_fetch_array($tour);
+                        ?>
+                        <div>Book</div>
+                        <div><?php echo ($rowTour["countBooking"]); ?></div>
                     </div>
                     <div class="user">
-                        <div>New User</div>
-                        <div>1234</div>
+                        <?php
+                            $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                            $sqlTour = "select count(TouristId) as countTourist from tbl_tourist where 1=1;";
+                            $tour = mysqli_query($connect, $sqlTour);
+                            $rowTour = mysqli_fetch_array($tour);
+                        ?>
+                        <div>Tourist</div>
+                        <div><?php echo ($rowTour["countTourist"]); ?></div>
                     </div>
                     <div class="user">
-                        <div>New User</div>
-                        <div>1234</div>
+                        <?php
+                            $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                            $sqlTour = "select count(id) as countLocation from tbl_location where 1=1;";
+                            $tour = mysqli_query($connect, $sqlTour);
+                            $rowTour = mysqli_fetch_array($tour);
+                        ?>
+                        <div>Location</div>
+                        <div><?php echo ($rowTour["countLocation"]); ?></div>
                     </div>
                 </div>
                 <div class="table-list">
                     <div class="table-list-children">
                         <div class="card card-table">
                             <div class="card-header">
-                                <!-- <div class="tools dropdown"> <span class="icon mdi mdi-download"></span><a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"><span class="icon mdi mdi-more-vert"></span></a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
-                      <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                  </div> -->
                                 <div class="title">Purchases</div>
                             </div>
                             <div class="card-body">
                                 <table class="">
                                     <thead>
                                         <tr>
-                                            <th style="width:40%;">Product</th>
+                                            <th style="width:40%;">Book</th>
                                             <th class="number">Price</th>
-                                            <th style="width:20%;">Date</th>
+                                            <th style="width:20%;">ReDate</th>
                                             <th style="width:20%;">State</th>
-                                            <th class="actions" style="width:5%;"></th>
                                         </tr>
                                     </thead>
                                     <tbody class="no-border-x">
+                                        <?php
+                                        $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                                        $sql = "select * from tbl_booking inner join tbl_tourpackages on tbl_booking.PackageId = tbl_tourpackages.PackageId where 1 =1";
+                                        $results = mysqli_query($connect, $sql); 
+                                        mysqli_fetch_all($results, MYSQLI_ASSOC);
+                                        $cnt=1;
+                                        foreach($results as $row){
+                                        ?>
                                         <tr>
-                                            <td>Sony Xperia M4</td>
-                                            <td class="number">$149</td>
-                                            <td>Aug 23, 2018</td>
-                                            <td class="text-success">Completed</td>
-                                            <td class="actions"><a class="icon" href="#"><i
-                                                        class="mdi mdi-plus-circle-o"></i></a></td>
+                                            <td><?php echo($row["PackageName"]) ?></td>
+                                            <td class="number" style="display: block; text-align: center;">
+                                                <?php echo(number_format($row["price"], 0, ',', '.') . " VNĐ");?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php echo($row["RegDate"])  ?></td>
+                                            <td class="text-success" style="text-align: center;">Completed</td>
                                         </tr>
-                                        <tr>
-                                            <td>Apple iPhone 6</td>
-                                            <td class="number">$535</td>
-                                            <td>Aug 20, 2018</td>
-                                            <td class="text-success">Completed</td>
-                                            <td class="actions"><a class="icon" href="#"><i
-                                                        class="mdi mdi-plus-circle-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Samsung Galaxy S7</td>
-                                            <td class="number">$583</td>
-                                            <td>Aug 18, 2018</td>
-                                            <td class="text-warning">Pending</td>
-                                            <td class="actions"><a class="icon" href="#"><i
-                                                        class="mdi mdi-plus-circle-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>HTC One M9</td>
-                                            <td class="number">$350</td>
-                                            <td>Aug 15, 2018</td>
-                                            <td class="text-warning">Pending</td>
-                                            <td class="actions"><a class="icon" href="#"><i
-                                                        class="mdi mdi-plus-circle-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sony Xperia Z5</td>
-                                            <td class="number">$495</td>
-                                            <td>Aug 13, 2018</td>
-                                            <td class="text-danger">Cancelled</td>
-                                            <td class="actions"><a class="icon" href="#"><i
-                                                        class="mdi mdi-plus-circle-o"></i></a></td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

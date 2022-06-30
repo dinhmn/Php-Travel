@@ -10,13 +10,13 @@
             $confirm = $_POST["confirm"];
         }
     }
-    /*$sql = "UPDATE tbl_booking set CancelledBy = '$confirm' where BookingId = $bid";
+    $sql = "UPDATE tbl_booking set Confirm = '$confirm' where BookingId = $bid";
     // $result = mysqli_query($connect, $sql);
     if (mysqli_query($connect, $sql)){
         $msg="Update Successfully";
     }else {
         $errors="Something went wrong. Please try again";
-    }*/
+    }
     mysqli_close($connect);
 ?>
 <!DOCTYPE html>
@@ -127,16 +127,16 @@
                         <span><?php echo($row1["PackageName"]); ?></span>
                     </div>
                     <h2>Các thành viên của đơn đăng ký này</h2>
-                    <table style="border: 1px solid black;">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                </tr>
-                            </thead>
+                    <table style="border: 1px solid black; width: 100%; padding: 5px 0; margin: 10px 0;">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
 
-                            <tbody>
+                        <tbody>
                             <?php
                               $connect = mysqli_connect($serverName, $username, $password, $mydb);
                               $bid = intval($_GET["bid"]);
@@ -151,41 +151,34 @@
                               foreach($results as $row){
                               // while($row = $result ->fetch_assoc()){
                                 ?>
-                                <tr>
-                                    <td><?php echo ($cnt);?></td>
-                                    <td><?php echo ($row["Fullname"]);?></td>
-                                    <td><?php echo ($row["Age"]);?></td>
-                                </tr>
-                                <?php 
+                            <tr>
+                                <td><?php echo ($cnt);?></td>
+                                <td><?php echo ($row["Fullname"]);?></td>
+                                <td><?php echo ($row["Age"]);?></td>
+                            </tr>
+                            <?php 
                                 $cnt=$cnt+1;
                                 } 
-                                
                                 ?>
-                            </tbody>
-                        </table>
-                    <!-- <div class="form-group">
-                        <label for="confirm">Confirm</label>
-                        <select name="confirm" id="confirm">
-                            <option value="Confirm">Confirm</option>
+                        </tbody>
+                    </table>
+                    <div class="form-group" style="display: flex;">
+                        <b>Trạng thái</b>
+                        <select name="confirm" id="">
                             <option value="Cancel">Cancel</option>
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Confirm">Confirm</option>
                         </select>
                     </div>
-                    <div class="form-button">
-                        <a href="manage-booking.php"
-                            style="width: 100px; background-color: rgb(180, 180, 180) !important;"><button type="submit"
-                                style="width: 100%; background-color: transparent;">Submit</button></a>
-                    </div> -->
                     <?php  mysqli_close($connect); ?>
+                    <div class="form-group" style="display: flex;">
+                        <button type="submit" name="submitt"
+                            style="width: 100%; padding: 10px; cursor: pointer; background-color: #5598e5; color: white; text-transform: uppercase; letter-spacing: 4px;">Save</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    <script>
-    function handleClick(e) {
-        // e.preventDefault();
-        // console.log(1);
-    }
-    </script>
     <script>
     $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',

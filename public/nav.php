@@ -16,7 +16,7 @@
                             <span> ");
                     echo ($_SESSION["user"]);
                     echo ("</span>
-                        <a href='http://localhost/Php-Travel/admin/logout.php'>Logout</a>
+                        <a href='http://localhost/Php-Travel/admin/logout.php'>Đăng xuất</a>
                     </li>");
                 } else {
                     echo ("

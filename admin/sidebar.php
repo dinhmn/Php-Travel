@@ -2,29 +2,29 @@
     <h3 class="heading">Menu</h3>
     <ul>
         <li>
-            <a href="./dash.php" class="active">
+            <a href="./dash.php" class="">
                 <i class="fa-solid fa-house"></i>
                 Dashboard</a>
         </li>
         <li>
             <a href="./manage-category.php">
                 <i class="fa-brands fa-youtube"></i>
-                Package Tour</a>
+                Tour</a>
         </li>
         <li>
-            <a href="./manage-booking.php"><i class="fa-solid fa-phone"></i> Manage Booking</a>
+            <a href="./manage-booking.php"><i class="fa-solid fa-phone"></i> Booking</a>
         </li>
         <li>
-            <a href="./manage-location.php"><i class="fa-solid fa-calendar-check"></i> Manage Location</a>
+            <a href="./manage-location.php"><i class="fa-solid fa-calendar-check"></i> Location</a>
         </li>
         <li>
-            <a href="./manage-contact.php"><i class="fa-solid fa-plane"></i> Manage Contact</a>
+            <a href="./manage-contact.php"><i class="fa-solid fa-plane"></i> Contact</a>
         </li>
         <li>
-            <a href="./manage-page.php"><i class="fa-solid fa-briefcase"></i> Manage Page</a>
+            <a href="./manage-page.php"><i class="fa-solid fa-briefcase"></i> Pages</a>
         </li>
         <li>
-            <a href="./manage-news.php"><i class="fa-solid fa-briefcase"></i> Manage News</a>
+            <a href="./manage-news.php"><i class="fa-solid fa-briefcase"></i> News</a>
         </li>
         <li>
             <a href="./manage-user.php">

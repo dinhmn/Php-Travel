@@ -38,10 +38,9 @@
         $total = $adust*9290000 + $baby*5574000 + $children*3700000;
 
         $_SESSION['name'] = $fullname;
-        $_SESSION['emai'] = $email;
-        $sqltour = "INSERT INTO tbl_booking(PackageId, FullName, UserEmail, FromDate, dateOfBirth, Phone, Address, NguoiLon, TreEm, TreNho, Room, Sex, Message, price)
-        values ($did,'$fullname','$email','$date','$dateOfBirth','$phone','$address',$adust,$baby,$children,$room,'nam','$message', $total)";
-        
+        $_SESSION['email'] = $email;
+        $sqltour = "INSERT INTO tbl_booking(PackageId, FullName, UserEmail, FromDate, dateOfBirth, Phone, Address, NguoiLon, TreEm, TreNho, Room, Sex, Message, price, Confirm)
+        values ($did,'$fullname','$email','$date','$dateOfBirth','$phone','$address',$adust,$baby,$children,$room,'$sex','$message', $total, 'Pending')";
         mysqli_query($connect,$sqltour);
 
     }   
@@ -127,111 +126,118 @@
             </section>
             <section class="total">
                 <form class="col-md-8 col-12 left" style="width: 100%;" method="post" id="form">
-                    <h2>Nhập thông tin người tham gia </h2>
-                    <div class="nguoilon">
-                        <h3>Thông tin liên lạc người lớn (>12 tuổi)</h3>
-                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
-                            tính</label><br>
-                        <textarea style="border: 1px solid black;" name="nguoilon" id="" cols="100" rows="5"></textarea>
-                    </div>
-                    <div class="trenho">
-                        <h3>Thông tin liên lạc trẻ nhỏ (5-11 tuổi)</h3>
-                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
-                            tính</label><br>
-                        <textarea style="border: 1px solid black;" name="trenho" id="" cols="100" rows="5"></textarea>
-                    </div>
-                    <div class="treem">
-                        <h3>Thông tin liên lạc trẻ em(< 5 tuổi)</h3>
+                    <section style="display: block; justify-content: center; gap: 50px;">
+                        <div>
+                            <h2>Nhập thông tin người tham gia </h2>
+                            <div class="nguoilon">
+                                <h3>Thông tin liên lạc người lớn (>12 tuổi)</h3>
                                 <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
                                     tính</label><br>
-                                <textarea style="border: 1px solid black;" name="treem" id="" cols="100"
+                                <textarea style="border: 1px solid black;" name="nguoilon" id="" cols="100"
                                     rows="5"></textarea>
-                    </div>
-                    <section class="col-md-4 col-12 right">
-                        <div class="group-checkout">
-                            <h3>Tóm tắt chuyến đi</h3>
-                            <p class="package-title">Tour trọn gói <span> (<?php echo ($guest) ?> khách)</span></p>
-                            <div class="product-1">
-                                <div class="product-image-1">
-                                    <img src='../pimages/<?php echo $tour["PackageImage"]; ?>' class="img-fluid"
-                                        alt="image">
-                                </div>
-                                <div class="product-content-1">
-                                    <p class="title-1"><?php echo($tour["PackageName"]); ?></p>
-                                </div>
                             </div>
-                            <div class="go-tour">
-                                <div class="start">
-                                    <i class="fal fa-calendar-minus"></i>
-                                    <div class="start-content">
-                                        <h4>Bắt đầu chuyến đi</h4>
-                                        <p class="time"><?php echo($date) ?></p>
-                                        <p class="from"></p>
-                                    </div>
-                                </div>
+                            <div class="trenho">
+                                <h3>Thông tin liên lạc trẻ nhỏ (5-11 tuổi)</h3>
+                                <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi - giới
+                                    tính</label><br>
+                                <textarea style="border: 1px solid black;" name="trenho" id="" cols="100"
+                                    rows="5"></textarea>
                             </div>
-                            <div class="detail">
-                                <table style="width: 100%;">
-                                    <tbody style="width:425px;">
-                                        <tr>
-                                            <th class="l1">Hành khách</th>
-                                            <th class="l2 text-right">
-                                                <i class="fal ti-user" id="AmoutPerson"><?php echo $CountPerson;  ?></i>
-                                                <p class="add-more"></p>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th class="l1">Số phòng</th>
-                                            <th class="l2 text-right">
-                                                <i class="fal ti-user" id="AmoutRoom">
-                                                    <?php
-                                                echo $room; 
-                                                ?>
-                                                </i>
-                                                <p class="add-more"></p>
-                                            </th>
-                                        </tr>
-                                        <tr class="pt">
-                                            <td>Người lớn</td>
-                                            <td class="t-price text-right" id="txtPhuThu">
-                                                <?php 
-                                                echo $adust . 'x 9.290.000đ'
-                                            
-                                            ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trẻ nhỏ</td>
-                                            <td class="t-price text-right" id="GiamGiaLastMinute">
-                                                <?php
-                                                echo $baby . 'x 5.574.000đ'
-                                                
-                                                ?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trẻ em</td>
-                                            <td class="t-price text-right" id="GiamGiaLastMinute">
-                                                <?php
-                                                echo $children . 'x 3.700.000đ'
-                                                
-                                                ?>
-                                            </td>
-                                        </tr>
-                                        <tr class="total-1">
-                                            <td>Tổng cộng</td>
-                                            <td class="t-price text-right" id="TotalPrice">
-                                                <?php
-                                            
-                                            echo(number_format($total, 0, ',', '.') . " VNĐ");
-                                        
-                                        ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
+                            <div class="treem">
+                                <h3>Thông tin liên lạc trẻ em(< 5 tuổi)</h3>
+                                        <label for="">Viết thông tin của từng người theo công thức thức họ tên - tuổi -
+                                            giới
+                                            tính</label><br>
+                                        <textarea style="border: 1px solid black;" name="treem" id="" cols="100"
+                                            rows="5"></textarea>
                             </div>
                         </div>
+                        <section class="col-md-4 col-12 right">
+                            <div class="group-checkout">
+                                <h3>Tóm tắt chuyến đi</h3>
+                                <p class="package-title">Tour trọn gói <span> (<?php echo ($guest) ?> khách)</span></p>
+                                <div class="product-1">
+                                    <div class="product-image-1">
+                                        <img src='../pimages/<?php echo $tour["PackageImage"]; ?>' class="img-fluid"
+                                            alt="image">
+                                    </div>
+                                    <div class="product-content-1">
+                                        <p class="title-1"><?php echo($tour["PackageName"]); ?></p>
+                                    </div>
+                                </div>
+                                <div class="go-tour">
+                                    <div class="start">
+                                        <i class="fal fa-calendar-minus"></i>
+                                        <div class="start-content">
+                                            <h4>Bắt đầu chuyến đi</h4>
+                                            <p class="time"><?php echo($date) ?></p>
+                                            <p class="from"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <table style="width: 100%;">
+                                        <tbody style="width:425px;">
+                                            <tr>
+                                                <th class="l1">Hành khách</th>
+                                                <th class="l2 text-right">
+                                                    <i class="fal ti-user"
+                                                        id="AmoutPerson"><?php echo $CountPerson;  ?></i>
+                                                    <p class="add-more"></p>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th class="l1">Số phòng</th>
+                                                <th class="l2 text-right">
+                                                    <i class="fal ti-user" id="AmoutRoom">
+                                                        <?php
+                                                    echo $room;
+                                                    ?>
+                                                    </i>
+                                                    <p class="add-more"></p>
+                                                </th>
+                                            </tr>
+                                            <tr class="pt">
+                                                <td>Người lớn</td>
+                                                <td class="t-price text-right" id="txtPhuThu">
+                                                    <?php
+                                                    echo $adust . 'x 9.290.000đ'
+                        
+                                                ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Trẻ nhỏ</td>
+                                                <td class="t-price text-right" id="GiamGiaLastMinute">
+                                                    <?php
+                                                    echo $baby . 'x 5.574.000đ'
+                        
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Trẻ em</td>
+                                                <td class="t-price text-right" id="GiamGiaLastMinute">
+                                                    <?php
+                                                    echo $children . 'x 3.700.000đ'
+                        
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="total-1">
+                                                <td>Tổng cộng</td>
+                                                <td class="t-price text-right" id="TotalPrice">
+                                                    <?php
+                        
+                                                echo(number_format($total, 0, ',', '.') . " VNĐ");
+                        
+                                            ?>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
                     </section>
                     <div class="order" style="width: 100%;">
                         <button type="submit" class="btn btn-primary btn-order" name="submit">Thanh toán</button>
