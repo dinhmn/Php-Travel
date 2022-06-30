@@ -46,15 +46,21 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>STT</th>
                                     <th>Package</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>From</th>
-
-                                    <th>Address</th>
+                                    <th>Birthday</th>
                                     <th>Phone</th>
-                                    <th>Cancelled By</th>
+                                    <th>Address</th>
+                                    <th>Nguoi Lon</th>
+                                    <th>Tre Em</th>
+                                    <th>Tre Nho</th>
+                                    <th>Room</th>
+                                    <th>Sex</th>
+                                    <th>Message</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -92,9 +98,16 @@
                                     <td>
                                         <?php echo ($row["FromDate"]);?>
                                     </td>
-                                    <td><?php echo ($row["Address"]);?></td>
+                                    <td><?php echo ($row["dateOfBirth"]);?></td>
                                     <td><?php echo ($row["Phone"]);?></td>
-                                    <td><?php echo ($row["CancelledBy"]);?></td>
+                                    <td><?php echo ($row["Address"]);?></td>
+                                    <td><?php echo ($row["NguoiLon"]);?></td>
+                                    <td><?php echo ($row["TreEm"]);?></td>
+                                    <td><?php echo ($row["TreNho"]);?></td>
+                                    <td><?php echo ($row["Room"]);?></td>
+                                    <td><?php echo ($row["Sex"]);?></td>
+                                    <td><?php echo ($row["Message"]);?></td>
+                                    <td><?php echo ($row["price"]);?></td>
                                     <td>
                                         <a href="booking.php?bid=<?php echo ($row["BookingId"]);?>"><button
                                                 type="button" class="btn btn-primary btn-block">

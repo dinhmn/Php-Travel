@@ -9,13 +9,16 @@
     $connect = mysqli_connect($serverName, $username, $password, $mydb);
 
     $did = $_SESSION["tourId"];
+    $date = $_SESSION["date"];
+    $guest = $_SESSION["guest"];
+    $tour = $_SESSION["tour"];
 
 
 
-
-    $fullname = $email = $phone = $address = $NguoiLon = $TreEm = $TreNho = $room = $date = $sex = $message = $adust = $baby = $children = '';
+    $fullname = $email = $phone = $address = $NguoiLon = $TreEm = $TreNho = $room = $sex = $message = $adust = $baby = $children = '';
     $CountPerson = $total = 0;
     if (isset($_POST["submitt"])){
+        $date = $_SESSION["date"];
         $fullname = isset($_POST["Fullname"]) ? $_POST["Fullname"] : "";
         $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
         $phone = isset($_POST["Telephone"]) ? $_POST["Telephone"] : "";
@@ -34,30 +37,37 @@
         $CountPerson = $adust + $baby + $children;
         $total = $adust*9290000 + $baby*5574000 + $children*3700000;
 
+        $_SESSION['name'] = $fullname;
+        $_SESSION['emai'] = $email;
         $sqltour = "INSERT INTO tbl_booking(PackageId, FullName, UserEmail, FromDate, dateOfBirth, Phone, Address, NguoiLon, TreEm, TreNho, Room, Sex, Message, price)
         values ($did,'$fullname','$email','$date','$dateOfBirth','$phone','$address',$adust,$baby,$children,$room,'nam','$message', $total)";
         
         mysqli_query($connect,$sqltour);
 
-
     }   
+    if(isset($_POST['submit']))
+    {
+        $fullname = $_SESSION['name'];
+        $email = $_SESSION['emai'];
+        $queryS = "select BookingId from tbl_booking where FullName = '$fullname' and UserEmail = '$email'";
+        $kq = mysqli_query($connect, $queryS);
+        $row  = mysqli_fetch_array($kq);
 
-    $queryS = "select BookingId from tbl_booking where FullName = '$fullname' and UserEmail = '$email'";
-    $queryId = mysqli_query($connect, $queryS);
+        $BkId = $row['BookingId'];
 
-    echo($queryId);
-    $inforNguoiLon = $inforTreNho = $inforTreEm = '';
         $inforNguoiLon = isset($_POST["nguoilon"]) ? $_POST["nguoilon"] : "";
         $inforTreNho = isset($_POST["trenho"]) ? $_POST["trenho"] : "";
         $inforTreEm = isset($_POST["treem"]) ? $_POST["treem"] : "";
         
-        $sqlinfor1 = "INSERT INTO tbl_tourist(Fullname, BookingId) values('ddd',1)";
-        echo ($sqlinfor1);
-        // $sqlinfor2 = "INSERT INTO tbl_tourist(Fullname, BookingId) values ('$inforTreNho',$queryId)";
-        // $sqlinfor3 = "INSERT INTO tbl_tourist(Fullname, BookingId) values ('$inforTreEm',$queryId)";
+        $sqlinfor1 = "INSERT INTO tbl_tourist(Fullname,Age, BookingId) values('$inforNguoiLon',12,$BkId)";
+        $sqlinfor2 = "INSERT INTO tbl_tourist(Fullname,Age, BookingId) values('$inforTreNho',15,$BkId)";
+        $sqlinfor3 = "INSERT INTO tbl_tourist(Fullname,Age, BookingId) values('$inforTreEm',1,$BkId)";
         mysqli_query($connect,$sqlinfor1);
-        // mysqli_query($connect,$sqlinfor2);
-        // mysqli_query($connect,$sqlinfor3);
+        mysqli_query($connect,$sqlinfor2);
+        mysqli_query($connect,$sqlinfor3);
+    }
+
+    
 
 
 

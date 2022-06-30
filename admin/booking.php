@@ -10,13 +10,13 @@
             $confirm = $_POST["confirm"];
         }
     }
-    $sql = "UPDATE tbl_booking set CancelledBy = '$confirm' where BookingId = $bid";
+    /*$sql = "UPDATE tbl_booking set CancelledBy = '$confirm' where BookingId = $bid";
     // $result = mysqli_query($connect, $sql);
     if (mysqli_query($connect, $sql)){
         $msg="Update Successfully";
     }else {
         $errors="Something went wrong. Please try again";
-    }
+    }*/
     mysqli_close($connect);
 ?>
 <!DOCTYPE html>
@@ -74,20 +74,48 @@
                         <span><?php echo($row["UserEmail"]) ?></span>
                     </div>
                     <div class="form-group" style="display: flex;">
-                        <b>Address</b>
-                        <span><?php echo($row["Address"]) ?></span>
+                        <b>Ngày đi</b>
+                        <span><?php echo($row["FromDate"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Ngày sinh</b>
+                        <span><?php echo($row["dateOfBirth"]) ?></span>
                     </div>
                     <div class="form-group" style="display: flex;">
                         <b>Phone</b>
                         <span><?php echo($row["Phone"]) ?></span>
                     </div>
                     <div class="form-group" style="display: flex;">
-                        <b>Person/Room</b>
-                        <span><?php echo($row["Person"]."/".$row["Room"]) ?></span>
+                        <b>Address</b>
+                        <span><?php echo($row["Address"]) ?></span>
                     </div>
                     <div class="form-group" style="display: flex;">
-                        <b>Name</b>
-                        <span><?php echo($row["message"]) ?></span>
+                        <b>Nguoi Lon</b>
+                        <span><?php echo($row["NguoiLon"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Tre Em</b>
+                        <span><?php echo($row["TreEm"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Tre Nho</b>
+                        <span><?php echo($row["TreNho"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Room</b>
+                        <span><?php echo($row["Room"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Giới tính</b>
+                        <span><?php echo($row["Sex"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Message</b>
+                        <span><?php echo($row["Message"]) ?></span>
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <b>Giá tiền</b>
+                        <span><?php echo($row["price"]) ?></span>
                     </div>
                     <?php
                         $sql1 = "select * from tbl_tourpackages where PackageId=$id";
@@ -98,13 +126,8 @@
                         <b>Tour</b>
                         <span><?php echo($row1["PackageName"]); ?></span>
                     </div>
-                    <div class="form-group" style="display: flex;">
-                        <div>
-                            <b for="status">Price: </b>
-                            <span><?php echo($row1["PackagePrice"]); ?></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
+                    
+                    <!-- <div class="form-group">
                         <label for="confirm">Confirm</label>
                         <select name="confirm" id="confirm">
                             <option value="Confirm">Confirm</option>
@@ -115,7 +138,7 @@
                         <a href="manage-booking.php"
                             style="width: 100px; background-color: rgb(180, 180, 180) !important;"><button type="submit"
                                 style="width: 100%; background-color: transparent;">Submit</button></a>
-                    </div>
+                    </div> -->
                     <?php  mysqli_close($connect); ?>
                 </form>
             </div>
