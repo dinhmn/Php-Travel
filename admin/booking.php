@@ -126,7 +126,43 @@
                         <b>Tour</b>
                         <span><?php echo($row1["PackageName"]); ?></span>
                     </div>
-                    
+                    <h2>Các thành viên của đơn đăng ký này</h2>
+                    <table style="border: 1px solid black;">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                            <?php
+                              $connect = mysqli_connect($serverName, $username, $password, $mydb);
+                              $bid = intval($_GET["bid"]);
+                              $sql = "select * from tbl_tourist where BookingId = $bid";
+                              
+                              $results = mysqli_query($connect, $sql); 
+                              mysqli_fetch_all($results, MYSQLI_ASSOC);
+                              // $result = $connect -> query($sql);
+                            //   $sqlPackage = "select PackageName from tbltourpackages where 1 = 1 and $results.";
+                              $cnt=1;
+                              
+                              foreach($results as $row){
+                              // while($row = $result ->fetch_assoc()){
+                                ?>
+                                <tr>
+                                    <td><?php echo ($cnt);?></td>
+                                    <td><?php echo ($row["Fullname"]);?></td>
+                                    <td><?php echo ($row["Age"]);?></td>
+                                </tr>
+                                <?php 
+                                $cnt=$cnt+1;
+                                } 
+                                
+                                ?>
+                            </tbody>
+                        </table>
                     <!-- <div class="form-group">
                         <label for="confirm">Confirm</label>
                         <select name="confirm" id="confirm">
